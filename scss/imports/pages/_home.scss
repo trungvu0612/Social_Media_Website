@@ -1,5 +1,23 @@
 // CSS HOMEPAGE
-h1 {
-    font-size: 60px;
-    color: red;
+header {
+    position: fixed;
+    color: #fff;
+    height: 150px;
+    .header__logo {
+        img {
+            border-radius: 50%;
+            width: 150px;
+            height: 100%;
+        }
+    }
+}
+
+main {
+    .background {
+        background-image: url(/img/backgrount.jpg);
+        width: 100%;
+        height: 1000px;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 }

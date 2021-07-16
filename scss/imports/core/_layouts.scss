@@ -1,6 +1,7 @@
 @-ms-viewport {
     width: device-width;
 }
+
 * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -11,6 +12,7 @@
     -moz-appearance: none;
     -webkit-appearance: none;
 }
+
 html,
 body {
     width: 100%;
@@ -52,12 +54,11 @@ body {
         margin-right: 0;
         margin-left: 0;
     }
-    .no-gap > .col,
-    .no-gap > [class*="col-"] {
+    .no-gap>.col,
+    .no-gap>[class*="col-"] {
         padding-right: 0;
         padding-left: 0;
     }
-
     @media (min-width: $xxs-min) {
         .container {
             max-width: 540px;
@@ -78,7 +79,6 @@ body {
             max-width: $container-width;
         }
     }
-
     .mainwrapper {
         width: 100%;
         margin: auto;
@@ -99,10 +99,6 @@ body {
     @include xxs {
         // CSS responsive small mobile
     }
-
-    @media (max-width: 500px) {
-    }
-
-    @include maxW(500px) {
-    }
+    @media (max-width: 500px) {}
+    @include maxW(500px) {}
 }
