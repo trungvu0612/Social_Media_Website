@@ -1,15 +1,20 @@
 // CSS HOMEPAGE
 body {
-    .cursor {
-        width: 4px;
-        height: 4px;
+    cursor: none;
+    #cursor {
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
         background: $white-cl;
         position: absolute;
-        top: 0;
-        left: 0;
         z-index: 900;
         pointer-events: none;
+        transition: 0.1s;
+        top: 0;
+        left: 0;
+        box-sizing: border-box;
+        transform: translate(-50%, -50%);
+        mix-blend-mode: difference;
     }
     .cursorfollow {
         width: 60px;
@@ -103,6 +108,7 @@ body {
                     margin: 0px;
                     padding: 0px;
                     white-space: nowrap;
+                    overflow: hidden;
                 }
             }
         }
