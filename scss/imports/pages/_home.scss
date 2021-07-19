@@ -1,5 +1,6 @@
 // CSS HOMEPAGE
 body {
+    background: black;
     cursor: none;
     #cursor {
         width: 40px;
@@ -10,8 +11,6 @@ body {
         z-index: 900;
         pointer-events: none;
         transition: 0.1s;
-        top: 0;
-        left: 0;
         box-sizing: border-box;
         transform: translate(-50%, -50%);
         mix-blend-mode: difference;
