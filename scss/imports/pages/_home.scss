@@ -1,31 +1,33 @@
 // CSS HOMEPAGE
 body {
+    --padding_section: 100px 0px;
+    --width_contain_title: 70%;
     background: black;
-    cursor: none;
-    #cursor {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background: $white-cl;
-        position: absolute;
-        z-index: 900;
-        pointer-events: none;
-        transition: 0.1s;
-        box-sizing: border-box;
-        transform: translate(-50%, -50%);
-        mix-blend-mode: difference;
-    }
-    .cursorfollow {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        border: 1px solid #fff;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 900;
-        pointer-events: none;
-    }
+    // cursor: none;
+    // #cursor {
+    //     width: 40px;
+    //     height: 40px;
+    //     border-radius: 50%;
+    //     background: $white-cl;
+    //     position: absolute;
+    //     z-index: 900;
+    //     pointer-events: none;
+    //     transition: 0.1s;
+    //     box-sizing: border-box;
+    //     transform: translate(-50%, -50%);
+    //     mix-blend-mode: difference;
+    // }
+    // .cursorfollow {
+    //     width: 60px;
+    //     height: 60px;
+    //     border-radius: 50%;
+    //     border: 1px solid #fff;
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    //     z-index: 900;
+    //     pointer-events: none;
+    // }
     header {
         display: flex;
         justify-content: center;
@@ -38,9 +40,9 @@ body {
         z-index: 200;
         .container {
             display: flex;
-            width: $container-width;
+            max-width: $container-width;
             color: #fff;
-            margin: 0px 20px;
+            position: relative;
             justify-content: space-between;
             align-items: center;
             .header__logo {
@@ -97,18 +99,79 @@ body {
             height: 1000px;
             background-repeat: no-repeat;
             background-size: cover;
+            padding: var(--padding_section);
             &__slowgan {
                 position: absolute;
-                top: 30%;
+                top: 12%;
+                width: 80%;
+                min-height: 20%;
                 &-title {
                     text-transform: uppercase;
                     line-height: normal;
                     font-size: 120px;
                     margin: 0px;
                     padding: 0px;
-                    white-space: nowrap;
-                    overflow: hidden;
+                    word-wrap: break-word;
                 }
+            }
+        }
+        .about {
+            max-height: 1000px;
+            padding: var(--padding_section);
+            position: relative;
+            display: block;
+            .container {
+                position: relative;
+                .about__img {
+                    position: absolute;
+                    z-index: 1;
+                    max-width: 600px;
+                    top: 25%;
+                    right: 0%;
+                    padding: 15px;
+                    display: inline-block;
+                    img {
+                        opacity: 0.5;
+                    }
+                }
+            }
+        }
+        .info {
+            width: 100%;
+            max-height: 1000px;
+            padding: var(--padding_section);
+        }
+        .title {
+            display: block;
+            text-transform: uppercase;
+            line-height: normal;
+            font-size: 100px;
+            word-wrap: break-word;
+            width: var(--width_contain_title);
+            padding: 50px 0px;
+            z-index: 2;
+            position: relative;
+            &__stroke {
+                -webkit-text-stroke: 1px #ffffff;
+                -webkit-text-fill-color: transparent;
+            }
+        }
+        .contain {
+            text-transform: uppercase;
+            line-height: normal;
+            font-size: 80px;
+            word-wrap: break-word;
+            width: var(--width_contain_title);
+            overflow: hidden; // ẩn các nội dung khi kích thước lớn hơn chiều rộng khối bên ngoài
+            text-overflow: ellipsis; //thêm 3 dấu chấm ở cuối
+            -webkit-line-clamp: 5; // số dòng muốn hiển thị
+            -webkit-box-orient: vertical;
+            display: -webkit-box;
+            position: relative;
+            z-index: 2;
+            &__stroke {
+                -webkit-text-stroke: 1px #ffffff;
+                -webkit-text-fill-color: transparent;
             }
         }
     }
