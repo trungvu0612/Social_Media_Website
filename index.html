@@ -1,54 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Grunt CFD</title>
-    <link rel="icon" href="favicon.ico">
-    <meta name="title" content="" />
-    <meta name="description" content="" />
-    <!-- meta facebook -->
-    <meta property="og:locale" content="vi" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="Trang chủ" />
-    <meta property="og:description" content="" />
-    <meta property="og:url" content="" />
-    <meta property="og:site_name" content="" />
-    <meta property="og:image" content="" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 
     <link rel="stylesheet" href="dest/style.min.css">
     <link rel="stylesheet" href="dest/fonts.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 
-<body class="home">
-    <header>
-        <div class="container-fluid">
-            <div class="logo">
-                <a href=""><img src="/img/logo1.svg" alt=""></a>
+<body class="login">
+    <div class="l-form">
+        <form action="/home.html" class="form">
+
+            <img src="/img/logo1.svg" alt="">
+            <h1 class="form__title">Sign In</h1>
+
+
+            <div class="form__div">
+                <input type="text" class="form__input" placeholder=" ">
+                <label for="" class="form__label">Email</label>
             </div>
-            <div class="search">
-                <i class="search-icon fa fa-search"></i>
-                <input type="text" inputmode="search" placeholder="Search for song, arties etc..." class="search-input" />
+
+            <div class="form__div">
+                <input type="password" class="form__input" placeholder=" ">
+                <label for="" class="form__label">Password</label>
             </div>
-            <div class="right">
-                <a href="#"><i class="fa fa-bell tool-icon"></i></a>
-                <a href="#" class="btn1">Log out</a>
-            </div>
-        </div>
-    </header>
 
-    <section>
-
-    </section>
-
-    <section>
-
-    </section>
+            <input type="submit" class="form__button" value="Sign In">
+        </form>
+    </div>
 </body>
-
-<script src="dest/main.js"></script>
 
 </html>

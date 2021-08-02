@@ -11,7 +11,7 @@
 //     cursor.style.top = y + "px"; // gán y cho cursor
 // });
 
-// -- Parallax
+// -- Parallax__Marketing Page
 function parallax(element, distance, speed) {
     const item = document.querySelector(element);
     item.style.transform = `translateY(${distance * speed}px)`;
@@ -24,3 +24,5 @@ window.addEventListener("scroll", function(e) {
     parallax(".background__slowgan-title", window.scrollY, -0.1);
     parallax(".register__btn", window.scrollY, -0.2);
 });
+
+// -- Play music__Home Page
