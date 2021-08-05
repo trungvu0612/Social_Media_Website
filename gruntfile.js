@@ -1,56 +1,56 @@
 // Gruntfile.js
-module.exports = grunt => {
+module.exports = (grunt) => {
     // Load all grunt tasks matching the ['grunt-*', '@*/grunt-*'] patterns
-    require('load-grunt-tasks')(grunt);
+    require("load-grunt-tasks")(grunt);
 
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
+        pkg: grunt.file.readJSON("package.json"),
         dirs: {
-            dest: 'dest',
+            dest: "dest",
             css: "css",
             scss: "scss",
-            js: "js"
+            js: "js",
         },
 
         // minify / uglify js
         uglify: {
             my_target: {
                 files: {
-                    '<%= dirs.dest %>/jsmain.min.js': ['<%= dirs.js %>/libs/*.js']
-                }
-            }
+                    "<%= dirs.dest %>/jsmain.min.js": ["<%= dirs.js %>/libs/*.js"],
+                },
+            },
         },
         cssmin: {
             options: {
-                keepSpecialComments: 0
+                keepSpecialComments: 0,
             },
             my_target: {
                 files: [{
-                    '<%= dirs.dest %>/stylelibs.min.css': ['<%= dirs.css %>/**/*.css']
-                }]
-            }
+                    "<%= dirs.dest %>/stylelibs.min.css": ["<%= dirs.css %>/**/*.css"],
+                }, ],
+            },
         },
         sass: {
             dist: {
                 options: {
-                    style: 'compressed',
+                    style: "compressed",
                     sourcemap: false,
-                    lineNumbers: true
+                    lineNumbers: true,
                 },
                 files: {
-                    '<%= dirs.dest %>/style.min.css': '<%= dirs.scss %>/style.scss'
-                }
-            }
+                    "<%= dirs.dest %>/style.min.css": "<%= dirs.scss %>/style.scss",
+                },
+            },
         },
 
         watch: {
             options: {
                 livereload: true,
-                spawn: false
+                spawn: false,
             },
             sass: {
                 files: "<%= dirs.scss %>/**/**/*.scss",
-                tasks: ['sass']
+                tasks: ["sass"],
             },
             // cssmin: {
             //     files: "<%= dirs.css %>/**/*.css",
@@ -66,24 +66,25 @@ module.exports = grunt => {
             dev: {
                 bsFiles: {
                     src: [
-                        '<%= dirs.dest %>/style.min.css',
-                        '*.html',
-                        '<%= dirs.css %>/*.css',
-                        '<%= dirs.dest %>/.js',
-                    ]
+                        "<%= dirs.dest %>/style.min.css",
+                        "*.html",
+                        "<%= dirs.css %>/*.css",
+                        "<%= dirs.dest %>/.js",
+                    ],
                 },
                 options: {
                     watchTask: true,
-                    server: './'
+                    browser: 'Chrome',
+                    server: "./",
                 },
-            }
-        }
+            },
+        },
     });
 
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-browser-sync');
-    grunt.registerTask('default', ['browserSync', 'watch']);
+    grunt.loadNpmTasks("grunt-contrib-uglify");
+    grunt.loadNpmTasks("grunt-contrib-cssmin");
+    grunt.loadNpmTasks("grunt-contrib-sass");
+    grunt.loadNpmTasks("grunt-contrib-watch");
+    grunt.loadNpmTasks("grunt-browser-sync");
+    grunt.registerTask("default", ["browserSync", "watch"]);
 };

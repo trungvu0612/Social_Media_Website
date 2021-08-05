@@ -1,10 +1,3 @@
-$gray_text: rgb(80, 80, 80);
-$sky: #a29bfe;
-$box_shadow: 0px 3px 20px 0px rgba(0, 0, 0, 0.18);
-$textfield: rgb(161, 161, 161);
-$background_music: rgb(241, 239, 239);
-$btn_play: #ffeaa7;
-$primary: #2b48d9;
 .home {
     width: 100%;
     background-color: #fff;
@@ -14,76 +7,6 @@ $primary: #2b48d9;
     padding: 0;
     position: relative;
     z-index: 1;
-    header {
-        height: 80px;
-        display: flex;
-        position: fixed;
-        z-index: 1000;
-        width: 100%;
-        background-color: $sky;
-        box-shadow: $box_shadow;
-        .container-fluid {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
-            height: 100%;
-            .logo {
-                width: 60px;
-                height: 60px;
-                background-color: #fff;
-                border-radius: 50%;
-                padding: 4px;
-                box-shadow: $box_shadow;
-            }
-            .search {
-                background-color: #fff;
-                padding: 15px 30px;
-                border: 1px solid #e9ebf2;
-                border-radius: 100px;
-                display: flex;
-                align-items: center;
-                width: 100%;
-                max-width: 400px;
-                box-shadow: $box_shadow;
-                .search-icon {
-                    flex: 1;
-                    font-size: 16px;
-                }
-                .search-input {
-                    border: 0;
-                    outline: none;
-                    width: 100%;
-                    padding: 0 15px;
-                }
-            }
-            .right {
-                a {
-                    padding: 9px;
-                    border-radius: 50%;
-                    transition: 0.5s;
-                    background-color: #fff;
-                    box-shadow: $box_shadow;
-                    i {
-                        color: $gray_text;
-                    }
-                    &:hover {
-                        background-color: $btn_play;
-                        transition: 0.5s;
-                    }
-                }
-                .btn1 {
-                    padding: 5px 10px;
-                    background-color: #fff;
-                    color: $gray_text;
-                    margin: 5px;
-                    border-radius: 50px;
-                    text-decoration: none;
-                    display: inline-block;
-                }
-            }
-        }
-    }
     main {
         width: 100%;
         position: relative;
@@ -93,14 +16,14 @@ $primary: #2b48d9;
         .container-fluid {
             .menu {
                 display: fixed;
-                width: 20%;
+                width: 24%;
                 height: 100vh;
                 padding: 10px 20px;
                 position: fixed;
                 &__user {
                     width: 100%;
                     height: auto;
-                    margin-bottom: 20px;
+                    margin-bottom: 5px;
                     position: relative;
                     display: flex;
                     flex-direction: column;
@@ -128,6 +51,8 @@ $primary: #2b48d9;
                     width: 100%;
                     display: inline-block;
                     &-item {
+                        width: 100%;
+                        height: auto;
                         padding: 5px 10px;
                         text-decoration: none;
                         font-size: 16px;
@@ -135,7 +60,7 @@ $primary: #2b48d9;
                         margin-bottom: 20px;
                         li {
                             width: 100%;
-                            padding: 5px 10px;
+                            padding: 0px 10px;
                             transition: 0.5s;
                             i {
                                 margin-right: 10px;
@@ -143,6 +68,56 @@ $primary: #2b48d9;
                             &:hover {
                                 color: $sky;
                                 transition: 0.5s;
+                            }
+                        }
+                    }
+                }
+                &__history {
+                    width: 100%;
+                    height: auto;
+                    margin: 0px 0px;
+                    padding: 12px 5px;
+                    border-top: 2px solid rgb(94, 94, 94);
+                    &-title {
+                        font-size: 20px;
+                        font-weight: bold;
+                        margin-bottom: 8px;
+                    }
+                    &-list {
+                        width: 100%;
+                        .list__item {
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            margin-bottom: 5px;
+                            height: 40px;
+                            &-img {
+                                max-width: 30px;
+                                height: 30px;
+                                border-radius: 50%;
+                            }
+                            &-name {
+                                width: 30%;
+                                font-weight: bold;
+                                font-size: 16px;
+                                color: $gray_text;
+                                overflow: hidden; // ẩn các nội dung khi kích thước lớn hơn chiều rộng khối bên ngoài
+                                text-overflow: ellipsis; //thêm 3 dấu chấm ở cuối
+                                -webkit-line-clamp: 1; // số dòng muốn hiển thị
+                                -webkit-box-orient: vertical;
+                                display: -webkit-box;
+                            }
+                            &-author {
+                                display: inline;
+                                width: 30%;
+                                font-size: 15px;
+                                color: $gray_text;
+                                overflow: hidden; // ẩn các nội dung khi kích thước lớn hơn chiều rộng khối bên ngoài
+                                text-overflow: ellipsis; //thêm 3 dấu chấm ở cuối
+                                -webkit-line-clamp: 1; // số dòng muốn hiển thị
+                                -webkit-box-orient: vertical;
+                                display: -webkit-box;
                             }
                         }
                     }
@@ -321,7 +296,8 @@ $primary: #2b48d9;
                     #progress__input {
                         -webkit-appearance: none;
                         width: 100%;
-                        height: 3px;
+                        height: 8px;
+                        border-radius: 20px;
                         background: #d3d3d3;
                         outline: none;
                         -webkit-transition: 0.2s;
@@ -340,6 +316,12 @@ $primary: #2b48d9;
                             background: rgb(156, 224, 233);
                         }
                     }
+                    // #progress__time {
+                    //     color: $gray_text;
+                    //     font-size: 18px;
+                    //     position: absolute;
+                    //     margin: 10px 0;
+                    // }
                 }
             }
             &-btn {
