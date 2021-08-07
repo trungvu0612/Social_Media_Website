@@ -55,6 +55,24 @@ const music = {
             time: "02:30",
             like: "11",
         },
+        {
+            id: "2",
+            name: "bensound-acousticbreeze",
+            author: "Benjamin Tissot",
+            path: "/music/khong_loi/acoustic/bensound-acousticbreeze.mp3",
+            image: "/img/img_music/khong_loi/acoustic/acousticbreeze.jpg",
+            time: "02:30",
+            like: "11",
+        },
+        {
+            id: "1",
+            name: "bensound-buddy",
+            author: "Benjamin Tissot",
+            path: "/music/khong_loi/acoustic/bensound-buddy.mp3",
+            image: "/img/img_music/khong_loi/acoustic/buddy.jpg",
+            time: "02:30",
+            like: "11",
+        },
     ],
 
     // const playPromise = songUrl.play();
@@ -198,12 +216,12 @@ music.start();
 
 // ---- Notification --------
 
-let notiBtn = document.querySelector(".right #noti");
+let notiBtn = document.querySelector(".right #notiBtn");
 
 const noti = {
     handleBtnnotify: function() {
+        let displayNoti = document.querySelector(".notification");
         notiBtn.onclick = function() {
-            let displayNoti = document.querySelector(".notification");
             displayNoti.classList.toggle("active");
         };
     },
@@ -213,3 +231,19 @@ const noti = {
     },
 };
 noti.start();
+// ------ menubar -------
+
+const barMenu = {
+    handleBtnmenu: function() {
+        let menuBtn = document.querySelector(".nav-menu");
+        menuBtn.onclick = function() {
+            let activeSubmenu = document.querySelector(".item__submenu");
+            activeSubmenu.classList.toggle("active");
+        };
+    },
+
+    start: function() {
+        this.handleBtnmenu();
+    },
+};
+barMenu.start();

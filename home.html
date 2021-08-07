@@ -24,17 +24,25 @@
 </head>
 
 <body class="home">
-    <header>
+    <header class="header__main">
         <div class="container-fluid">
             <div class="logo">
-                <a href=""><img src="/img/logo1.svg" alt=""></a>
+                <a href="#"><img src="/img/logo1.svg" alt=""></a>
             </div>
             <div class="search">
                 <i class="search-icon fa fa-search"></i>
                 <input type="text" inputmode="search" placeholder="Search for song, arties etc..." class="search-input" />
             </div>
             <div class="right">
-                <div id="noti"><i class="fa fa-bell tool-icon"></i></div>
+                <div class="user">
+                    <img src="/img/avartar.jpg" alt="" class="user__avatar">
+                    <div class="user__name">
+                        <h2 class="user__name-title">
+                            Trung Vũ
+                        </h2>
+                    </div>
+                </div>
+                <div id="notiBtn"><i class="fa fa-bell tool-icon"></i></div>
                 <a href="#" class="btn1">Log out</a>
             </div>
         </div>
@@ -59,31 +67,33 @@
             </div>
         </div>
     </div>
-
-    <main>
+    <!-- main -->
+    <main class="main">
         <div class="container-fluid">
             <section class="menu">
-                <div class="menu__user">
-                    <img src="/img/avartar.jpg" alt="" class="menu__user-avatar">
-                    <h2 class="menu__user-name">
-                        Trung Vũ
-                    </h2>
-                    <span class="menu__user-email">
-                        Trungvu027@gmail.com
-                    </span>
+                <div class="menu__list">
+                    <h3 class="menu__list-title">Menu</h3>
+                    <ul class="menu__list-items">
+                        <li class="item nav-menu">
+                            <div href="" class="item__option">
+                                <i class="fa fa-user-circle-o"></i><span>My personal page</span>
+                            </div>
+                            <ul class="item__submenu">
+                                <li class="item__submenu-list">
+                                    <div href="" class="option"><i class="fa fa-pencil"></i><span>Edit personal information</span></div>
+                                </li>
+                                <li class="item__submenu-list">
+                                    <div href="" class="option"><i class="fa fa-heart-o"></i><span>My favorite playlist</span></div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="item">
+                            <div href="#" class="item__option">
+                                <i class="fa fa-plus"></i><span>Create post</span>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-                <ul class="menu__list">
-                    <a href="/profile.html" class="menu__list-item">
-                        <li>
-                            <i class="fa fa-user-circle-o"></i><span>My profile</span>
-                        </li>
-                    </a>
-                    <a href="#" class="menu__list-item">
-                        <li>
-                            <i class="fa fa-line-chart"></i><span>Music charts</span>
-                        </li>
-                    </a>
-                </ul>
                 <div class="menu__history">
                     <div class="menu__history-title">
                         <h3>Listening history</h3>
@@ -103,151 +113,141 @@
                 </div>
             </section>
 
-            <section class="main">
-                <div class="main__post">
-                    <div class="main__post-owner">
-                        <img src="/img/avartar.jpg" alt="">
-                        <a href="#">Trung Vũ</a>
+            <section class="post">
+                <div class="postperson">
+                    <div class="post__items">
+                        <div class="post__items-owner">
+                            <img src="/img/avartar.jpg" alt="">
+                            <a href="#">Trung Vũ</a>
+                        </div>
+                        <div class="post__items-contents">
+                            <span class="content">
+                                Hãy nhớ rằng, đó không phải là nội dung của bạn. Nó thậm chí không phải là nội dung của SoundCloud. Tất cả âm thanh, văn bản, hình ảnh, nhận xét và dữ liệu hoặc thông tin khác được liên kết với tài khoản người dùng trên nền tảng SoundCloud ® ("Nội dung người dùng") thuộc quyền sở hữu của người dùng SoundCloud ® đã tạo hoặc tải lên nó ("Người tải lên") và bạn phải tôn trọng quyền của họ mọi lúc. Việc sử dụng sai Nội dung của Người dùng có thể cấu thành vi phạm bản quyền và dẫn đến việc Người tải lên hoặc chủ sở hữu bản quyền khác sẽ thực hiện hành động chống lại bạn.
+                            </span>
+                        </div>
+                        <div class="post__items-like" data-index="0">
+                            <img src="/img/img_music/2.jpg" class="img" alt="">
+                            <h4 class="name">EDM</h4>
+                            <h4 class="author">Chưa biết tên</h4>
+                            <time class="time">2:46</time>
+                            <a href="#"><i class="fa fa-heart"></i></a>
+                        </div>
+                        <div class="post__items-comment">
+                        </div>
                     </div>
-                    <div class="main__post-content">
-                        <span class="post">
-                            Hãy nhớ rằng, đó không phải là nội dung của bạn. Nó thậm chí không phải là nội dung của SoundCloud. Tất cả âm thanh, văn bản, hình ảnh, nhận xét và dữ liệu hoặc thông tin khác được liên kết với tài khoản người dùng trên nền tảng SoundCloud ® ("Nội dung người dùng") thuộc quyền sở hữu của người dùng SoundCloud ® đã tạo hoặc tải lên nó ("Người tải lên") và bạn phải tôn trọng quyền của họ mọi lúc. Việc sử dụng sai Nội dung của Người dùng có thể cấu thành vi phạm bản quyền và dẫn đến việc Người tải lên hoặc chủ sở hữu bản quyền khác sẽ thực hiện hành động chống lại bạn.
-                        </span>
-                    </div>
-                    <div class="main__post-like" data-index="0">
-                        <img src="/img/img_music/2.jpg" class="img" alt="">
-                        <h4 class="name">EDM</h4>
-                        <h4 class="author">Chưa biết tên</h4>
-                        <time class="time">2:46</time>
-                        <a href="#"><i class="fa fa-heart"></i></a>
-                    </div>
-                    <div class="main__post-comment">
+                </div>
 
+                <div class="postedit">
+                    <div class="post__items">
+                        <h3 class="title">Edit personal information</h3>
+                        <div class="left-right">
+                            <div class="left">
+                                <div class="name">
+                                    <h4>Name</h4>
+                                </div>
+                                <div class="avt">
+                                    <h4>Avatar</h4>
+                                </div>
+                                <div class="phone">
+                                    <h4>Phone number</h4>
+                                </div>
+                                <div class="age">
+                                    <h4>Age</h4>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <div class="name"></div>
+                                <div class="avt"></div>
+                                <div class="phone"></div>
+                                <div class="age"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="main__post">
-                    <div class="main__post-owner">
-                        <img src="/img/avartar.jpg" alt="">
-                        <a href="#">Trung Vũ</a>
-                    </div>
-                    <div class="main__post-content">
-                        <span class="post">
-                            Hãy nhớ rằng, đó không phải là nội dung của bạn. Nó thậm chí không phải là nội dung của SoundCloud. Tất cả âm thanh, văn bản, hình ảnh, nhận xét và dữ liệu hoặc thông tin khác được liên kết với tài khoản người dùng trên nền tảng SoundCloud ® ("Nội dung người dùng") thuộc quyền sở hữu của người dùng SoundCloud ® đã tạo hoặc tải lên nó ("Người tải lên") và bạn phải tôn trọng quyền của họ mọi lúc. Việc sử dụng sai Nội dung của Người dùng có thể cấu thành vi phạm bản quyền và dẫn đến việc Người tải lên hoặc chủ sở hữu bản quyền khác sẽ thực hiện hành động chống lại bạn.
-                        </span>
-                    </div>
-                    <div class="main__post-like" data-index="1">
-                        <img src="/img/img_music/2.jpg" class="img" alt="">
-                        <h4 class="name">EDM</h4>
-                        <h4 class="author">Chưa biết tên</h4>
-                        <time class="time">2:46</time>
-                        <a href="#"><i class="fa fa-heart"></i></a>
-                    </div>
-                    <div class="main__post-comment">
-                        <audio src="/music/edm.mp3" class="progress__song"></audio>
-                    </div>
-                </div>
-                <div class="main__post">
-                    <div class="main__post-owner">
-                        <img src="/img/avartar.jpg" alt="">
-                        <a href="#">Trung Vũ</a>
-                    </div>
-                    <div class="main__post-content">
-                        <span class="post">
-                            Hãy nhớ rằng, đó không phải là nội dung của bạn. Nó thậm chí không phải là nội dung của SoundCloud. Tất cả âm thanh, văn bản, hình ảnh, nhận xét và dữ liệu hoặc thông tin khác được liên kết với tài khoản người dùng trên nền tảng SoundCloud ® ("Nội dung người dùng") thuộc quyền sở hữu của người dùng SoundCloud ® đã tạo hoặc tải lên nó ("Người tải lên") và bạn phải tôn trọng quyền của họ mọi lúc. Việc sử dụng sai Nội dung của Người dùng có thể cấu thành vi phạm bản quyền và dẫn đến việc Người tải lên hoặc chủ sở hữu bản quyền khác sẽ thực hiện hành động chống lại bạn.
-                        </span>
-                    </div>
-                    <div class="main__post-like" data-index="2">
-                        <img src="/img/img_music/2.jpg" class="img" alt="">
-                        <h4 class="name">EDM</h4>
-                        <h4 class="author">Chưa biết tên</h4>
-                        <time class="time">2:46</time>
-                        <a href="#"><i class="fa fa-heart"></i></a>
-                    </div>
-                    <div class="main__post-comment">
-                        <audio src="/music/edm.mp3" class="progress__song"></audio>
-                    </div>
-                </div>
-                <div class="main__post">
-                    <div class="main__post-owner">
-                        <img src="/img/avartar.jpg" alt="">
-                        <a href="#">Trung Vũ</a>
-                    </div>
-                    <div class="main__post-content">
-                        <span class="post">
-                            Hãy nhớ rằng, đó không phải là nội dung của bạn. Nó thậm chí không phải là nội dung của SoundCloud. Tất cả âm thanh, văn bản, hình ảnh, nhận xét và dữ liệu hoặc thông tin khác được liên kết với tài khoản người dùng trên nền tảng SoundCloud ® ("Nội dung người dùng") thuộc quyền sở hữu của người dùng SoundCloud ® đã tạo hoặc tải lên nó ("Người tải lên") và bạn phải tôn trọng quyền của họ mọi lúc. Việc sử dụng sai Nội dung của Người dùng có thể cấu thành vi phạm bản quyền và dẫn đến việc Người tải lên hoặc chủ sở hữu bản quyền khác sẽ thực hiện hành động chống lại bạn.
-                        </span>
-                    </div>
-                    <div class="main__post-like">
-                        <img src="/img/img_music/2.jpg" class="img" alt="">
-                        <h4 class="name">EDM</h4>
-                        <h4 class="author">Chưa biết tên</h4>
-                        <time class="time">2:46</time>
-                        <a href="#"><i class="fa fa-heart"></i></a>
-                    </div>
-                    <div class="main__post-comment">
-                        <audio src="/music/edm.mp3" class="progress__song"></audio>
-                    </div>
-                </div>
-                <div class="main__post">
-                    <div class="main__post-owner">
-                        <img src="/img/avartar.jpg" alt="">
-                        <a href="#">Trung Vũ</a>
-                    </div>
-                    <div class="main__post-content">
-                        <span class="post">
-                            Hãy nhớ rằng, đó không phải là nội dung của bạn. Nó thậm chí không phải là nội dung của SoundCloud. Tất cả âm thanh, văn bản, hình ảnh, nhận xét và dữ liệu hoặc thông tin khác được liên kết với tài khoản người dùng trên nền tảng SoundCloud ® ("Nội dung người dùng") thuộc quyền sở hữu của người dùng SoundCloud ® đã tạo hoặc tải lên nó ("Người tải lên") và bạn phải tôn trọng quyền của họ mọi lúc. Việc sử dụng sai Nội dung của Người dùng có thể cấu thành vi phạm bản quyền và dẫn đến việc Người tải lên hoặc chủ sở hữu bản quyền khác sẽ thực hiện hành động chống lại bạn.
-                        </span>
-                    </div>
-                    <div class="main__post-like">
-                        <img src="/img/img_music/2.jpg" class="img" alt="">
-                        <h4 class="name">EDM</h4>
-                        <h4 class="author">Chưa biết tên</h4>
-                        <time class="time">2:46</time>
-                        <a href="#"><i class="fa fa-heart"></i></a>
-                    </div>
-                    <div class="main__post-comment">
-                        <audio src="/music/edm.mp3" class="progress__song"></audio>
-                    </div>
-                </div>
-                <div class="main__post">
-                    <div class="main__post-owner">
-                        <img src="/img/avartar.jpg" alt="">
-                        <a href="#">Trung Vũ</a>
-                    </div>
-                    <div class="main__post-content">
-                        <span class="post">
-                            Hãy nhớ rằng, đó không phải là nội dung của bạn. Nó thậm chí không phải là nội dung của SoundCloud. Tất cả âm thanh, văn bản, hình ảnh, nhận xét và dữ liệu hoặc thông tin khác được liên kết với tài khoản người dùng trên nền tảng SoundCloud ® ("Nội dung người dùng") thuộc quyền sở hữu của người dùng SoundCloud ® đã tạo hoặc tải lên nó ("Người tải lên") và bạn phải tôn trọng quyền của họ mọi lúc. Việc sử dụng sai Nội dung của Người dùng có thể cấu thành vi phạm bản quyền và dẫn đến việc Người tải lên hoặc chủ sở hữu bản quyền khác sẽ thực hiện hành động chống lại bạn.
-                        </span>
-                    </div>
-                    <div class="main__post-like">
-                        <img src="/img/img_music/2.jpg" class="img" alt="">
-                        <h4 class="name">EDM</h4>
-                        <h4 class="author">Chưa biết tên</h4>
-                        <time class="time">2:46</time>
-                        <a href="#"><i class="fa fa-heart"></i></a>
-                    </div>
-                    <div class="main__post-comment">
-                    </div>
-                </div>
-                <div class="main__post">
-                    <div class="main__post-owner">
-                        <img src="/img/avartar.jpg" alt="">
-                        <a href="#">Trung Vũ</a>
-                    </div>
-                    <div class="main__post-content">
-                        <span class="post">
-                            Hãy nhớ rằng, đó không phải là nội dung của bạn. Nó thậm chí không phải là nội dung của SoundCloud. Tất cả âm thanh, văn bản, hình ảnh, nhận xét và dữ liệu hoặc thông tin khác được liên kết với tài khoản người dùng trên nền tảng SoundCloud ® ("Nội dung người dùng") thuộc quyền sở hữu của người dùng SoundCloud ® đã tạo hoặc tải lên nó ("Người tải lên") và bạn phải tôn trọng quyền của họ mọi lúc. Việc sử dụng sai Nội dung của Người dùng có thể cấu thành vi phạm bản quyền và dẫn đến việc Người tải lên hoặc chủ sở hữu bản quyền khác sẽ thực hiện hành động chống lại bạn.
-                        </span>
-                    </div>
-                    <div class="main__post-like">
-                        <img src="/img/img_music/2.jpg" class="img" alt="">
-                        <h4 class="name">EDM</h4>
-                        <h4 class="author">Chưa biết tên</h4>
-                        <time class="time">2:46</time>
-                        <a href="#"><i class="fa fa-heart"></i></a>
-                    </div>
-                    <div class="main__post-comment">
 
+                <div class="postdisplay">
+                    <div class="post__items">
+                        <div class="post__items-owner">
+                            <img src="/img/avartar.jpg" alt="">
+                            <a href="#">Trung Vũ</a>
+                        </div>
+                        <div class="post__items-contents">
+                            <span class="content">
+                                Hãy nhớ rằng, đó không phải là nội dung của bạn. Nó thậm chí không phải là nội dung của SoundCloud. Tất cả âm thanh, văn bản, hình ảnh, nhận xét và dữ liệu hoặc thông tin khác được liên kết với tài khoản người dùng trên nền tảng SoundCloud ® ("Nội dung người dùng") thuộc quyền sở hữu của người dùng SoundCloud ® đã tạo hoặc tải lên nó ("Người tải lên") và bạn phải tôn trọng quyền của họ mọi lúc. Việc sử dụng sai Nội dung của Người dùng có thể cấu thành vi phạm bản quyền và dẫn đến việc Người tải lên hoặc chủ sở hữu bản quyền khác sẽ thực hiện hành động chống lại bạn.
+                            </span>
+                        </div>
+                        <div class="post__items-like" data-index="0">
+                            <img src="/img/img_music/2.jpg" class="img" alt="">
+                            <h4 class="name">EDM</h4>
+                            <h4 class="author">Chưa biết tên</h4>
+                            <time class="time">2:46</time>
+                            <a href="#"><i class="fa fa-heart"></i></a>
+                        </div>
+                        <div class="post__items-comment">
+                        </div>
+                    </div>
+                    <div class="post__items">
+                        <div class="post__items-owner">
+                            <img src="/img/avartar.jpg" alt="">
+                            <a href="#">Trung Vũ</a>
+                        </div>
+                        <div class="post__items-contents">
+                            <span class="content">
+                                Hãy nhớ rằng, đó không phải là nội dung của bạn. Nó thậm chí không phải là nội dung của SoundCloud. Tất cả âm thanh, văn bản, hình ảnh, nhận xét và dữ liệu hoặc thông tin khác được liên kết với tài khoản người dùng trên nền tảng SoundCloud ® ("Nội dung người dùng") thuộc quyền sở hữu của người dùng SoundCloud ® đã tạo hoặc tải lên nó ("Người tải lên") và bạn phải tôn trọng quyền của họ mọi lúc. Việc sử dụng sai Nội dung của Người dùng có thể cấu thành vi phạm bản quyền và dẫn đến việc Người tải lên hoặc chủ sở hữu bản quyền khác sẽ thực hiện hành động chống lại bạn.
+                            </span>
+                        </div>
+                        <div class="post__items-like" data-index="0">
+                            <img src="/img/img_music/2.jpg" class="img" alt="">
+                            <h4 class="name">EDM</h4>
+                            <h4 class="author">Chưa biết tên</h4>
+                            <time class="time">2:46</time>
+                            <a href="#"><i class="fa fa-heart"></i></a>
+                        </div>
+                        <div class="post__items-comment">
+
+                        </div>
+                    </div>
+                    <div class="post__items">
+                        <div class="post__items-owner">
+                            <img src="/img/avartar.jpg" alt="">
+                            <a href="#">Trung Vũ</a>
+                        </div>
+                        <div class="post__items-contents">
+                            <span class="content">
+                                Hãy nhớ rằng, đó không phải là nội dung của bạn. Nó thậm chí không phải là nội dung của SoundCloud. Tất cả âm thanh, văn bản, hình ảnh, nhận xét và dữ liệu hoặc thông tin khác được liên kết với tài khoản người dùng trên nền tảng SoundCloud ® ("Nội dung người dùng") thuộc quyền sở hữu của người dùng SoundCloud ® đã tạo hoặc tải lên nó ("Người tải lên") và bạn phải tôn trọng quyền của họ mọi lúc. Việc sử dụng sai Nội dung của Người dùng có thể cấu thành vi phạm bản quyền và dẫn đến việc Người tải lên hoặc chủ sở hữu bản quyền khác sẽ thực hiện hành động chống lại bạn.
+                            </span>
+                        </div>
+                        <div class="post__items-like" data-index="0">
+                            <img src="/img/img_music/2.jpg" class="img" alt="">
+                            <h4 class="name">EDM</h4>
+                            <h4 class="author">Chưa biết tên</h4>
+                            <time class="time">2:46</time>
+                            <a href="#"><i class="fa fa-heart"></i></a>
+                        </div>
+                        <div class="post__items-comment">
+
+                        </div>
+                    </div>
+                    <div class="post__items">
+                        <div class="post__items-owner">
+                            <img src="/img/avartar.jpg" alt="">
+                            <a href="#">Trung Vũ</a>
+                        </div>
+                        <div class="post__items-contents">
+                            <span class="content">
+                                Hãy nhớ rằng, đó không phải là nội dung của bạn. Nó thậm chí không phải là nội dung của SoundCloud. Tất cả âm thanh, văn bản, hình ảnh, nhận xét và dữ liệu hoặc thông tin khác được liên kết với tài khoản người dùng trên nền tảng SoundCloud ® ("Nội dung người dùng") thuộc quyền sở hữu của người dùng SoundCloud ® đã tạo hoặc tải lên nó ("Người tải lên") và bạn phải tôn trọng quyền của họ mọi lúc. Việc sử dụng sai Nội dung của Người dùng có thể cấu thành vi phạm bản quyền và dẫn đến việc Người tải lên hoặc chủ sở hữu bản quyền khác sẽ thực hiện hành động chống lại bạn.
+                            </span>
+                        </div>
+                        <div class="post__items-like" data-index="0">
+                            <img src="/img/img_music/2.jpg" class="img" alt="">
+                            <h4 class="name">EDM</h4>
+                            <h4 class="author">Chưa biết tên</h4>
+                            <time class="time">2:46</time>
+                            <a href="#"><i class="fa fa-heart"></i></a>
+                        </div>
+                        <div class="post__items-comment">
+
+                        </div>
                     </div>
                 </div>
             </section>

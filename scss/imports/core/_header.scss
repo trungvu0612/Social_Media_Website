@@ -1,5 +1,5 @@
 // css header
-header {
+.header__main {
     height: 80px;
     display: flex;
     position: fixed;
@@ -14,12 +14,16 @@ header {
         margin-bottom: 40px;
         height: 100%;
         .logo {
-            width: 60px;
-            height: 60px;
-            background-color: #fff;
-            border-radius: 50%;
-            padding: 4px;
-            box-shadow: $box_shadow;
+            width: 25%;
+            padding-left: 20px;
+            img {
+                width: 60px;
+                height: 60px;
+                background-color: #fff;
+                border-radius: 50%;
+                padding: 4px;
+                box-shadow: $box_shadow;
+            }
         }
         .search {
             background-color: #fff;
@@ -28,7 +32,7 @@ header {
             border-radius: 100px;
             display: flex;
             align-items: center;
-            width: 100%;
+            width: 45%;
             max-width: 400px;
             box-shadow: $box_shadow;
             .search-icon {
@@ -43,13 +47,38 @@ header {
             }
         }
         .right {
+            width: 30%;
             display: flex;
-            #noti {
+            align-items: center;
+            justify-content: flex-end;
+            .user {
+                min-width: 150px;
+                display: flex;
+                align-items: center;
+                margin-right: 10px;
+                &__avatar {
+                    width: 40px;
+                    height: 40px;
+                    margin-right: 10px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+                &__name {
+                    max-width: 200px;
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+            }
+            #notiBtn {
                 padding: 9px;
                 border-radius: 50%;
                 transition: 0.5s;
                 background-color: #fff;
                 box-shadow: $box_shadow;
+                display: flex;
+                align-items: center;
+                text-align: center;
+                margin-right: 10px;
                 i {
                     color: $gray_text;
                 }
@@ -66,6 +95,10 @@ header {
                 border-radius: 50px;
                 text-decoration: none;
                 display: inline-block;
+                &:hover {
+                    background-color: $btn_play;
+                    transition: 0.5s;
+                }
             }
         }
     }
