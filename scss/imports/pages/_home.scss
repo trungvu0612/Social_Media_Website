@@ -1,7 +1,7 @@
 .home {
     width: 100%;
     background-color: #fff;
-    font-family: "Poppins", sans-serif;
+    font-family: Lucidatypewriter, monospace;
     font-size: 18px;
     margin: 0;
     padding: 0;
@@ -48,7 +48,7 @@
                                 color: $gray_text;
                                 max-width: max-content;
                                 position: relative;
-                                transition: 0.2s cubic-bezier(1, .42, .58, .7);
+                                transition: $transition_set;
                                 display: flex;
                                 cursor: pointer;
                                 i {
@@ -62,15 +62,15 @@
                                     height: 3px;
                                     border-radius: 10px;
                                     background: $sky;
-                                    margin-top: 18px;
+                                    margin-top: 19px;
                                     transform: scaleX(0);
-                                    transition: 0.2s cubic-bezier(1, .42, .58, .7);
+                                    transition: $transition_set;
                                 }
                                 &:hover {
                                     color: $sky;
-                                    transition: 0.2s cubic-bezier(1, .42, .58, .7);
+                                    transition: $transition_set;
                                     &:after {
-                                        transition: 0.2s cubic-bezier(1, .42, .58, .7);
+                                        transition: $transition_set;
                                         transform: scaleX(1);
                                     }
                                 }
@@ -82,62 +82,14 @@
                                     overflow: hidden;
                                 }
                             }
-                            &__submenu {
-                                display: none;
-                                width: 100%;
-                                padding-left: 40px;
-                                margin-top: 10px;
-                                &-list {
-                                    width: 100%;
-                                    margin-bottom: 10px;
-                                    .option {
-                                        padding: 0;
-                                        text-decoration: none;
-                                        font-size: 16px;
-                                        color: $gray_text;
-                                        max-width: max-content;
-                                        position: relative;
-                                        transition: 0.2s cubic-bezier(1, .42, .58, .7);
-                                        display: flex;
-                                        cursor: pointer;
-                                        i {
-                                            margin-right: 10px;
-                                        }
-                                        &:after {
-                                            position: absolute;
-                                            display: block;
-                                            content: "";
-                                            width: 100%;
-                                            height: 3px;
-                                            border-radius: 10px;
-                                            background: $sky;
-                                            margin-top: 17px;
-                                            transform: scaleX(0);
-                                            transition: 0.2s cubic-bezier(1, .42, .58, .7);
-                                        }
-                                        &:hover {
-                                            color: $sky;
-                                            transition: 0.2s cubic-bezier(1, .42, .58, .7);
-                                            &:after {
-                                                transition: 0.2s cubic-bezier(1, .42, .58, .7);
-                                                transform: scaleX(1);
-                                            }
-                                        }
-                                        span {
-                                            text-overflow: ellipsis; //thêm 3 dấu chấm ở cuối
-                                            -webkit-line-clamp: 1; // số dòng muốn hiển thị
-                                            -webkit-box-orient: vertical;
-                                            display: -webkit-box;
-                                            overflow: hidden;
-                                        }
-                                    }
-                                }
-                                &-list:nth-child(2) {
-                                    margin-bottom: 0px;
-                                }
-                            }
                             .active {
-                                display: block;
+                                color: $blue;
+                                transition: $transition_set;
+                                &:after {
+                                    color: $blue;
+                                    transition: $transition_set;
+                                    transform: scaleX(1);
+                                }
                             }
                         }
                     }
@@ -194,7 +146,7 @@
                 }
             }
             .post {
-                width: 45%;
+                width: 50%;
                 height: 100%;
                 position: relative;
                 top: 0;
@@ -204,68 +156,95 @@
                     display: none;
                 }
                 .postedit {
-                    display: block;
+                    display: none;
                     .title {
                         font-size: 16px;
                         font-weight: bold;
-                        margin-bottom: 12px;
+                        margin-bottom: 20px;
                         display: flex;
                         justify-content: center;
                     }
                     .left-right {
                         display: flex;
                         flex-direction: row;
+                        font-size: 14px;
+                        font-weight: bold;
                         .left {
-                            width: 20%;
+                            width: 30%;
                             display: flex;
                             flex-direction: column;
+                            &__items {
+                                width: 100%;
+                                height: 60px;
+                                margin-bottom: 10px;
+                                padding-left: 20px;
+                            }
                         }
                         .right {
                             width: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            &__items {
+                                width: 100%;
+                                height: 60px;
+                                margin-bottom: 10px;
+                                .input_info {
+                                    width: 100%;
+                                    height: 40px;
+                                    border: 2px solid;
+                                    border-color: rgb(223, 219, 219);
+                                    border-radius: 5px;
+                                    padding: 5px 10px;
+                                    transition: 0.2s;
+                                    &:hover {
+                                        transition: 0.2s;
+                                        border-color: #a29bfe65;
+                                    }
+                                    &:focus {
+                                        outline: none !important;
+                                        border-color: $sky;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .submit {
+                        width: 100%;
+                        height: 60px;
+                        position: relative;
+                        display: flex;
+                        justify-content: center;
+                        &__btn {
+                            width: 100px;
+                            height: 40px;
+                            background: $sky;
+                            border-radius: 10px;
+                            border: 1px solid #d3d3d3;
+                            color: #fff;
+                            transition: 0.5s;
+                            &:hover {
+                                transition: 0.5s;
+                                background: #a29bfec0;
+                            }
                         }
                     }
                 }
                 .postdisplay {
                     display: none;
-                    &__items {
+                }
+                .postfavrorite {
+                    display: none;
+                    .favorites {
                         width: 100%;
                         height: auto;
-                        margin-bottom: 30px;
-                        padding: 10px 20px;
-                        background-color: #fff;
-                        border-radius: 20px;
-                        box-shadow: $box_shadow;
-                        &-owner {
-                            width: 100%;
-                            height: 50px;
-                            display: flex;
-                            align-items: center;
-                            margin-bottom: 10px;
-                            img {
-                                width: 45px;
-                                height: 45px;
-                                object-fit: cover;
-                                border-radius: 50%;
-                                margin-right: 20px;
-                            }
-                            a {
-                                font-size: 18px;
-                                font-weight: bold;
-                                text-decoration: none;
-                                color: #000;
-                            }
-                        }
-                        &-contents {
-                            width: 100%;
-                            height: auto;
+                        .title {
+                            font-size: 16px;
+                            font-weight: bold;
                             margin-bottom: 20px;
-                            .content {
-                                font-size: 16px;
-                                line-height: 27px;
-                                color: $gray_text;
-                            }
+                            display: flex;
+                            justify-content: center;
                         }
-                        &-like {
+                        .like {
                             width: 100%;
                             height: 50px;
                             position: relative;
@@ -274,7 +253,7 @@
                             justify-content: space-evenly;
                             align-items: center;
                             background-color: $background_music;
-                            border-radius: 50px;
+                            border-radius: 10px;
                             transition: 0.5s;
                             .img {
                                 width: 35px;
@@ -309,140 +288,428 @@
                                 background-color: $btn_play;
                             }
                         }
-                        &-comment {}
                     }
                 }
-                .music {
-                    width: 24%;
-                    height: 80vh;
-                    background-color: #fff;
-                    position: fixed;
-                    top: 0;
-                    right: 0;
-                    margin-top: 100px;
-                    margin-right: 30px;
-                    box-shadow: $box_shadow;
-                    border-radius: 20px;
-                    &__title {
-                        font-size: 18px;
-                        font-weight: bold;
-                        text-align: center;
-                        margin-top: 20px;
-                    }
-                    &__audio {
-                        width: 80%;
-                        margin: 10px auto;
-                        padding: 20px;
-                        &-postcard {
-                            max-width: 300px;
-                            height: 50vh;
-                            border-radius: 20px;
-                            box-shadow: $box_shadow;
-                            padding: 20px;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            flex-direction: column;
-                            text-align: center;
-                            margin: auto;
-                            .player {
-                                position: relative;
-                                width: 150px;
-                                height: 150px;
-                                border-radius: 100rem;
-                                margin-bottom: 25px;
-                                &:before {
-                                    content: "";
-                                    width: 50px;
-                                    height: 50px;
-                                    background-color: white;
-                                    border-radius: 100px;
-                                    position: absolute;
-                                    top: 50%;
-                                    left: 50%;
-                                    transform: translate(-50%, -50%);
-                                    z-index: 10;
+                .postcreate {
+                    display: none;
+                    .category {
+                        width: 100%;
+                        &__title {
+                            width: 100%;
+                            padding: 5px 5px;
+                            h3 {
+                                font-size: 18px;
+                                text-align: center;
+                                margin-bottom: 10px;
+                            }
+                            span {
+                                color: $textfield;
+                                font-size: 15px;
+                                margin: 5px 10px;
+                                padding: 5px 10px;
+                            }
+                        }
+                        &__list {
+                            width: 100%;
+                            height: auto;
+                            padding: 10px 10px;
+                            display: block;
+                            position: relative;
+                            height: 120px;
+                            &-item {
+                                font-size: 15px;
+                                width: auto;
+                                display: block;
+                                float: left;
+                                margin: 2px 5px;
+                                padding: 5px 10px;
+                                color: #fff;
+                                background-color: #8000ca;
+                                border: 1px solid #fff;
+                                border-radius: 5px;
+                                opacity: 1;
+                                cursor: pointer;
+                                transition: $transition_set;
+                                &:hover {
+                                    transition: $transition_set;
+                                    opacity: 0.7;
                                 }
-                                &__img {
-                                    width: 150px;
+                            }
+                            .active {
+                                opacity: 0.7;
+                            }
+                        }
+                        &__music {
+                            display: none;
+                            width: 100%;
+                            height: auto;
+                            justify-content: flex-start;
+                            flex-wrap: wrap;
+                            .like {
+                                width: calc(90%/3 - 16px);
+                                margin: 0px 16px;
+                                height: 270px;
+                                position: relative;
+                                margin-bottom: 20px;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: flex-start;
+                                background-color: $background_music;
+                                border-radius: 5px;
+                                transition: 0.5s;
+                                padding-bottom: 10px;
+                                .img {
+                                    width: 100%;
                                     height: 150px;
+                                    border-top-left-radius: 5px;
+                                    border-top-right-radius: 5px;
+                                    border-bottom-left-radius: 0px;
+                                    border-bottom-right-radius: 0px;
                                     object-fit: cover;
-                                    border-radius: inherit;
-                                    .is-playing {
-                                        animation: rotate 10s forwards infinite linear;
+                                    margin-bottom: 5px;
+                                }
+                                .name {
+                                    font-size: 16px;
+                                    margin-bottom: 5px;
+                                    font-weight: bold;
+                                    color: $gray_text;
+                                }
+                                .author {
+                                    font-size: 15px;
+                                    margin-bottom: 5px;
+                                    font-weight: bold;
+                                    color: $textfield;
+                                }
+                                .item-create {
+                                    font-size: 14px;
+                                    border: 1px solid rgb(139, 139, 139);
+                                    border-radius: 5px;
+                                    color: #fff;
+                                    background-color: #4cc705;
+                                    padding: 2px 2px;
+                                    margin-bottom: 5px;
+                                    opacity: 1;
+                                    transition: $transition_set;
+                                    &:hover {
+                                        transition: $transition_set;
+                                        opacity: 0.7;
                                     }
-                                    @keyframes rotate {
-                                        to {
-                                            transform: rotate(360deg);
-                                        }
-                                    }
+                                }
+                            }
+                        }
+                        .acoustic {
+                            display: none;
+                        }
+                        .cinematic {
+                            display: none;
+                        }
+                        .pop {
+                            display: none;
+                        }
+                        .electric {
+                            display: none;
+                        }
+                        .urban {
+                            display: none;
+                        }
+                        .jazz {
+                            display: none;
+                        }
+                        .rock {
+                            display: none;
+                        }
+                        .world {
+                            display: none;
+                        }
+                        .edm {
+                            display: none;
+                        }
+                        .active {
+                            display: flex;
+                        }
+                    }
+                }
+                .active {
+                    display: block;
+                }
+            }
+            .music {
+                width: 20%;
+                height: 75vh;
+                background-color: #fff;
+                position: fixed;
+                top: 0;
+                right: 0;
+                margin-top: 100px;
+                margin-right: 30px;
+                box-shadow: $box_shadow;
+                border-radius: 20px;
+                &__title {
+                    font-size: 18px;
+                    font-weight: bold;
+                    text-align: center;
+                    margin-top: 20px;
+                }
+                &__audio {
+                    width: 80%;
+                    margin: 10px auto;
+                    padding: 20px;
+                    &-postcard {
+                        max-width: 300px;
+                        height: 50vh;
+                        border-radius: 20px;
+                        box-shadow: $box_shadow;
+                        padding: 20px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-direction: column;
+                        text-align: center;
+                        margin: auto;
+                        .player {
+                            position: relative;
+                            width: 120px;
+                            height: 120px;
+                            border-radius: 50%;
+                            &:before {
+                                content: "";
+                                width: 50px;
+                                height: 50px;
+                                background-color: white;
+                                border-radius: 100px;
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                z-index: 10;
+                            }
+                            &__img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                                border-radius: 50%;
+                            }
+                        }
+                        .player-title {
+                            font-size: 20px;
+                            padding: 10px 0px;
+                            .title {
+                                width: 100%;
+                                align-self: stretch;
+                            }
+                        }
+                        .player-author {
+                            font-size: 18px;
+                        }
+                        .progress {
+                            margin-bottom: 20px;
+                            margin-top: 25px;
+                            width: 100%;
+                            height: 50px;
+                            #progress__input {
+                                -webkit-appearance: none;
+                                width: 100%;
+                                height: 8px;
+                                border-radius: 20px;
+                                background: #d3d3d3;
+                                outline: none;
+                                -webkit-transition: 0.2s;
+                                transition: opacity 0.2s;
+                            }
+                            #progress__input::-webkit-slider-thumb {
+                                -webkit-appearance: none;
+                                width: 20px;
+                                height: 20px;
+                                background: $sky;
+                                border-radius: 50%;
+                                cursor: pointer;
+                                transition: 0.5;
+                                &:active {
+                                    transition: 0.5;
+                                    background: rgb(156, 224, 233);
+                                }
+                            }
+                            // #progress__time {
+                            //     color: $gray_text;
+                            //     font-size: 18px;
+                            //     position: absolute;
+                            //     margin: 10px 0;
+                            // }
+                        }
+                    }
+                    &-btn {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-top: 20px;
+                        .player-play {
+                            color: $primary;
+                            width: 45px;
+                            height: 45px;
+                            border-radius: 100rem;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            cursor: pointer;
+                            background-color: white;
+                            box-shadow: 0 0 0 10px rgba(#f2f3f4, 0.5);
+                            font-size: 16px;
+                            margin: 0 40px;
+                        }
+                        .player-next,
+                        .player-prev {
+                            cursor: pointer;
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media (max-width: 1024px) {
+        .header__main {
+            .container-fluid {
+                .search {
+                    width: 35%;
+                }
+                .right {
+                    .btn1 {
+                        font-size: 14px;
+                    }
+                    .user {
+                        width: 100px;
+                        &__name {
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+        .main {
+            .container-fluid {
+                .music {
+                    margin-top: 150px;
+                    height: 65vh;
+                    &__audio {
+                        &-postcard {
+                            height: 45vh;
+                            .player {
+                                width: 100px;
+                                height: 100px;
+                                &__img {
+                                    width: 100px;
+                                    height: 100px;
                                 }
                             }
                             .player-title {
-                                .title {
-                                    width: 100%;
-                                    align-self: stretch;
-                                }
+                                margin: 10px 0px;
+                                font-size: 14px;
+                            }
+                            .player-author {
+                                font-size: 13px;
                             }
                             .progress {
-                                margin-bottom: 20px;
-                                margin-top: 25px;
-                                width: 100%;
-                                height: 50px;
-                                #progress__input {
-                                    -webkit-appearance: none;
-                                    width: 100%;
-                                    height: 8px;
-                                    border-radius: 20px;
-                                    background: #d3d3d3;
-                                    outline: none;
-                                    -webkit-transition: 0.2s;
-                                    transition: opacity 0.2s;
-                                }
-                                #progress__input::-webkit-slider-thumb {
-                                    -webkit-appearance: none;
-                                    width: 20px;
-                                    height: 20px;
-                                    background: $sky;
-                                    border-radius: 50%;
-                                    cursor: pointer;
-                                    transition: 0.5;
-                                    &:active {
-                                        transition: 0.5;
-                                        background: rgb(156, 224, 233);
-                                    }
-                                }
-                                // #progress__time {
-                                //     color: $gray_text;
-                                //     font-size: 18px;
-                                //     position: absolute;
-                                //     margin: 10px 0;
-                                // }
+                                margin-top: 20px;
+                                height: 20px;
                             }
                         }
-                        &-btn {
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            margin-top: 18px;
-                            .player-play {
-                                color: $primary;
-                                width: 45px;
-                                height: 45px;
-                                border-radius: 100rem;
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                cursor: pointer;
-                                background-color: white;
-                                box-shadow: 0 0 0 10px rgba(#f2f3f4, 0.5);
-                                font-size: 16px;
-                                margin: 0 40px;
+                    }
+                }
+                .post {
+                    .postcreate {
+                        .category {
+                            &__music {
+                                justify-content: space-between;
+                                .like {
+                                    width: 40%;
+                                    height: 200px;
+                                    .img {
+                                        height: 100px;
+                                    }
+                                    .name {
+                                        font-size: 14px;
+                                    }
+                                    .author {
+                                        font-size: 13px;
+                                    }
+                                    .item-create {
+                                        font-size: 13px;
+                                    }
+                                }
                             }
-                            .player-next,
-                            .player-prev {
-                                cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media (max-width: 991px) {
+        .header__main {
+            .container-fluid {
+                .search {
+                    width: 35%;
+                }
+                .right {
+                    .btn1 {
+                        font-size: 14px;
+                    }
+                    .user {
+                        width: 100px;
+                        &__name {
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+        .main {
+            .container-fluid {
+                .music {
+                    &__audio {
+                        &-postcard {
+                            .player {
+                                width: 100px;
+                                height: 100px;
+                                &__img {
+                                    width: 100px;
+                                    height: 100px;
+                                }
+                            }
+                            .player-title {
+                                margin: 10px 0px;
                                 font-size: 16px;
+                            }
+                            .player-author {
+                                font-size: 14px;
+                            }
+                            .progress {
+                                margin-top: 20px;
+                                height: 20px;
+                            }
+                        }
+                    }
+                }
+                .post {
+                    .postcreate {
+                        .category {
+                            &__music {
+                                justify-content: space-between;
+                                .like {
+                                    width: 40%;
+                                    height: 200px;
+                                    .img {
+                                        height: 100px;
+                                    }
+                                    .name {
+                                        font-size: 14px;
+                                    }
+                                    .author {
+                                        font-size: 13px;
+                                    }
+                                    .item-create {
+                                        font-size: 13px;
+                                    }
+                                }
                             }
                         }
                     }

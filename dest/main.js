@@ -156,6 +156,16 @@ const music = {
         };
     },
 
+    choseMusic: function() {
+        // let listMusic = document.querySelectorAll(".post .like");
+        // console.log(listMusic);
+        // listMusic.forEach(function() {
+        //     this.addEventListener("click", function(e) {
+        //         console.log(e);
+        //     });
+        // });
+    },
+
     nextSong: function() {
         const afterMusic = music.currentIndex;
         music.currentIndex++;
@@ -203,6 +213,8 @@ const music = {
         // định nghĩa thuộc tính cho object
         this.defineProperties();
 
+        this.choseMusic();
+
         this.handleEvent();
 
         this.nextSong();
@@ -231,19 +243,65 @@ const noti = {
     },
 };
 noti.start();
-// ------ menubar -------
 
-const barMenu = {
-    handleBtnmenu: function() {
-        let menuBtn = document.querySelector(".nav-menu");
-        menuBtn.onclick = function() {
-            let activeSubmenu = document.querySelector(".item__submenu");
-            activeSubmenu.classList.toggle("active");
-        };
+// -------- Menu -------
+
+const listMenu = {
+    clickMenu: function() {
+        const menuMain = document.querySelectorAll(".menu .item__option");
+        const menuItem = document.querySelectorAll(".post-list");
+        menuMain.forEach(function(itemMenu, index) {
+            itemMenu.onclick = function(e) {
+                menuItem.forEach(function(item) {
+                    item.classList.remove("active");
+                });
+                menuMain.forEach(function(item) {
+                    item.classList.remove("active");
+                });
+                itemMenu.classList.add("active");
+
+                menuItem.forEach(function(itemList, indexList) {
+                    if (index == indexList) {
+                        itemList.classList.add("active");
+                    }
+                });
+            };
+        });
     },
 
     start: function() {
-        this.handleBtnmenu();
+        this.clickMenu();
     },
 };
-barMenu.start();
+listMenu.start();
+
+// -------- menu create page --------
+const category = {
+    handleCategory: function() {
+        const categoryList = document.querySelectorAll(
+            ".category__list .category__list-item"
+        );
+        const categoryMusic = document.querySelectorAll(".category__music");
+
+        categoryList.forEach(function(item, index) {
+            item.onclick = function() {
+                categoryList.forEach(function(e) {
+                    e.classList.remove("active");
+                });
+                categoryMusic.forEach(function(e) {
+                    e.classList.remove("active");
+                });
+                item.classList.add("active");
+                categoryMusic.forEach(function(e, indexMusic) {
+                    if (index == indexMusic) {
+                        e.classList.add("active");
+                    }
+                });
+            };
+        });
+    },
+    start: function() {
+        this.handleCategory();
+    },
+};
+category.start();
