@@ -1,6 +1,6 @@
 // css header
 .header__main {
-    height: 80px;
+    height: 10vh;
     display: flex;
     position: fixed;
     z-index: 1000;
@@ -65,8 +65,10 @@
                 }
                 &__name {
                     max-width: 200px;
-                    font-size: 16px;
-                    font-weight: bold;
+                    &-title {
+                        font-size: 16px;
+                        font-weight: bo;
+                    }
                 }
             }
             #notiBtn {

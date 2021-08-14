@@ -20,7 +20,7 @@ const songAuthor = document.querySelector(".player-author");
 const songImg = document.querySelector(".player__img");
 const songUrl = document.querySelector(".progress__song");
 const playBtn = document.querySelector(".player-play");
-const songTime = document.querySelector("#progress__input");
+const songTime = document.querySelectorAll("#progress__input");
 const nextBtn = document.querySelector(".player-next");
 const prevBtn = document.querySelector(".player-prev");
 const textTime = document.querySelector("#progress__time");
@@ -41,7 +41,7 @@ const music = {
             id: "0",
             name: "EDM",
             author: "Chưa biết tên",
-            path: "/music/edm.mp3",
+            path: "/music/khong_loi/pop/bensound-hey.mp3",
             image: "/img/img_music/1.jpg",
             time: "02:30",
             like: "10",
@@ -91,6 +91,7 @@ const music = {
     handleEvent: function() {
         // xử lý khi click nút player
         playBtn.onclick = function() {
+            console.log("123");
             if (music.playing) {
                 songUrl.play();
             } else {
@@ -233,8 +234,12 @@ let notiBtn = document.querySelector(".right #notiBtn");
 const noti = {
     handleBtnnotify: function() {
         let displayNoti = document.querySelector(".notification");
-        notiBtn.onclick = function() {
+        notiBtn.onclick = function(e) {
+            e.stopPropagation();
             displayNoti.classList.toggle("active");
+        };
+        document.onclick = function() {
+            displayNoti.classList.remove("active");
         };
     },
 
@@ -248,7 +253,7 @@ noti.start();
 
 const listMenu = {
     clickMenu: function() {
-        const menuMain = document.querySelectorAll(".menu .item__option");
+        const menuMain = document.querySelectorAll(" .item__option");
         const menuItem = document.querySelectorAll(".post-list");
         menuMain.forEach(function(itemMenu, index) {
             itemMenu.onclick = function(e) {
@@ -261,10 +266,19 @@ const listMenu = {
                 itemMenu.classList.add("active");
 
                 menuItem.forEach(function(itemList, indexList) {
-                    if (index == indexList) {
-                        itemList.classList.add("active");
+                    if (index > 4) {
+                        index = index - 5;
+                        if (index == indexList) {
+                            itemList.classList.add("active");
+                        }
+                    } else {
+                        if (index == indexList) {
+                            itemList.classList.add("active");
+                        }
                     }
                 });
+
+                // document.querySelectorAll("post-list-" + index).classList.add("active");
             };
         });
     },
@@ -305,3 +319,42 @@ const category = {
     },
 };
 category.start();
+// musicPopup
+
+const musicFooter = {
+    handleMusicFooter: function() {
+        const musicFooterTitle = document.querySelector(".music-footer");
+        const musicPopup = document.querySelector(".music-popup");
+        const btnOut = document.querySelector(".icon__out");
+        musicFooterTitle.onclick = function() {
+            var pos = -100;
+            var id = setInterval(frame, 10);
+
+            function frame() {
+                if (pos == -10) {
+                    clearInterval(id);
+                } else {
+                    pos = pos + 2;
+                    musicPopup.style.bottom = pos + "vh";
+                }
+            }
+        };
+        btnOut.onclick = function() {
+            var pos = -10;
+            var id = setInterval(frame, 10);
+
+            function frame() {
+                if (pos == -100) {
+                    clearInterval(id);
+                } else {
+                    pos = pos - 2;
+                    musicPopup.style.bottom = pos + "vh";
+                }
+            }
+        };
+    },
+    start: function() {
+        this.handleMusicFooter();
+    },
+};
+musicFooter.start();
