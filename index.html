@@ -11,90 +11,79 @@
     <link rel="stylesheet" href="dest/fonts.css">
 </head>
 
-<body class="marketing">
-    <header class="marketing__header">
-        <div class="container">
-            <div class=" header__logo">
-                <a href="/admin-login.html"><img src="/img/logo1.svg"></a>
-            </div>
-            <div class="header__menu ">
-                <span></span>
-            </div>
-        </div>
-    </header>
-
-
-    <main>
-
-        <!-- background -->
-        <section class="background">
+<body>
+    <div class="marketing">
+        <header class="marketing__header">
             <div class="container">
-                <div class="background__slowgan">
-                    <h2 class="background__slowgan-title">enjoy </br>the world</br> in a healthy way</h2>
+                <div class=" header__logo">
+                    <a href="/admin-login.html"><img src="/img/logo1.svg"></a>
+                </div>
+                <div class="header__menu ">
+                    <span></span>
                 </div>
             </div>
-        </section>
+        </header>
 
-        <!-- about my website -->
-        <section class="about">
-            <div class="container">
-                <div class="title">
-                    <h2>
-                        About <span class="title__stroke">M & C</span>
-                    </h2>
-                </div>
-                <div class="contain">
-                    <p>Music and life go hand in hand. So join and experience my <span class="title__stroke">M & C</span> music social network now</p>
-                </div>
-                <div class="about__img">
-                    <img src="/img/about.jpg" class="parallax">
-                </div>
-            </div>
-        </section>
 
-        <!-- register and go home page -->
-        <section class="register">
-            <div class="container">
-                <div class="register__btn">
-                    <div class="register__btn-in">
-                        <a href="/login.html">Register</a>
+        <main>
+
+            <!-- background -->
+            <section class="background">
+                <div class="container">
+                    <div class="background__slowgan">
+                        <h2 class="background__slowgan-title">enjoy </br>the world</br> in a healthy way</h2>
                     </div>
                 </div>
-            </div>
-        </section>
-    </main>
+            </section>
 
-    <footer>
-        <div class="container">
-            <div class="header__logo">
-                <a href="#"><img src="/img/logo1.svg"></a>
+            <!-- about my website -->
+            <section class="about">
+                <div class="container">
+                    <div class="title">
+                        <h2>
+                            About <span class="title__stroke">M & C</span>
+                        </h2>
+                    </div>
+                    <div class="contain">
+                        <p>Music and life go hand in hand. So join and experience my <span class="title__stroke">M & C</span> music social network now</p>
+                    </div>
+                    <div class="about__img">
+                        <img src="/img/about.jpg" class="parallax">
+                    </div>
+                </div>
+            </section>
+
+            <!-- register and go home page -->
+            <section class="register">
+                <div class="container">
+                    <div class="register__btn">
+                        <div class="register__btn-in">
+                            <a href="/login.html">Register</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="container">
+                <div class="header__logo">
+                    <a href="#"><img src="/img/logo1.svg"></a>
+                </div>
+                <div class="footer__center">
+                    <h2>
+                        M & C
+                    </h2>
+                </div>
+                <div class="footer__author">
+                    <p>create by: Vu Thanh Trung</p>
+                </div>
             </div>
-            <div class="footer__center">
-                <h2>
-                    M & C
-                </h2>
-            </div>
-            <div class="footer__author">
-                <p>create by: Vu Thanh Trung</p>
-            </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 </body>
 
-<script>
-    // -- Parallax__Marketing Page
-    function parallax(element, distance, speed) {
-        const item = document.querySelector(element);
-        item.style.transform = `translateY(${distance * speed}px)`;
-    }
-
-    window.addEventListener("scroll", function(e) {
-        parallax(".parallax", window.scrollY, -0.7);
-        parallax(".title", window.scrollY, -0.5);
-        parallax(".contain", window.scrollY, -0.5);
-        parallax(".background__slowgan-title", window.scrollY, -0.1);
-        parallax(".register__btn", window.scrollY, -0.2);
-    });
+<script src="/dest/main.js">
 </script>
 
 </html>
