@@ -155,17 +155,7 @@
                 top: 0;
                 left: 27%;
                 z-index: 100;
-                .postperson {
-                    display: none;
-                }
-                .postedit {
-                    display: none;
-                }
-                .postdisplay {
-                    display: none;
-                }
                 .postfavrorite {
-                    display: none;
                     .favorites {
                         width: 100%;
                         height: auto;
@@ -223,7 +213,6 @@
                     }
                 }
                 .postcreate {
-                    display: none;
                     .category {
                         width: 100%;
                         &__title {
@@ -273,7 +262,7 @@
                             }
                         }
                         &__music {
-                            display: none;
+                            display: flex;
                             width: 100%;
                             height: auto;
                             justify-content: flex-start;
@@ -330,40 +319,7 @@
                                 }
                             }
                         }
-                        .acoustic {
-                            display: none;
-                        }
-                        .cinematic {
-                            display: none;
-                        }
-                        .pop {
-                            display: none;
-                        }
-                        .electric {
-                            display: none;
-                        }
-                        .urban {
-                            display: none;
-                        }
-                        .jazz {
-                            display: none;
-                        }
-                        .rock {
-                            display: none;
-                        }
-                        .world {
-                            display: none;
-                        }
-                        .edm {
-                            display: none;
-                        }
-                        .active {
-                            display: flex !important;
-                        }
                     }
-                }
-                .active {
-                    display: block !important;
                 }
             }
             .music {

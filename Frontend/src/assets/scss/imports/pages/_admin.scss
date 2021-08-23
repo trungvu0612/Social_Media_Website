@@ -172,7 +172,7 @@
     .home-section .home-content {
         position: relative;
         padding-top: 104px;
-        display: none;
+        display: block;
     }
     .home-content .overview-boxes {
         display: flex;
@@ -342,7 +342,7 @@
         color: #333;
     }
     .music-content {
-        display: none;
+        display: block;
         position: relative;
         padding-top: 104px;
         .overview-boxes {
@@ -417,7 +417,7 @@
                         }
                     }
                     &__music {
-                        display: none;
+                        display: flex !important;
                         width: 100%;
                         height: auto;
                         justify-content: flex-start;
@@ -473,36 +473,6 @@
                                 }
                             }
                         }
-                    }
-                    .acoustic {
-                        display: none;
-                    }
-                    .cinematic {
-                        display: none;
-                    }
-                    .pop {
-                        display: none;
-                    }
-                    .electric {
-                        display: none;
-                    }
-                    .urban {
-                        display: none;
-                    }
-                    .jazz {
-                        display: none;
-                    }
-                    .rock {
-                        display: none;
-                    }
-                    .world {
-                        display: none;
-                    }
-                    .edm {
-                        display: none;
-                    }
-                    .active {
-                        display: flex !important;
                     }
                 }
             }
@@ -564,7 +534,7 @@
         }
     }
     .post-content {
-        display: none;
+        display: block;
         position: relative;
         padding-top: 104px;
         .overview-boxes {

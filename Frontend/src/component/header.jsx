@@ -5,7 +5,7 @@ export default function Header() {
     <header className="header__main">
       <div className="container-fluid">
         <div className="logo">
-          <a href="/admin.html">
+          <a href="/home">
             <img src="/img/logo1.svg" alt="" />
           </a>
         </div>

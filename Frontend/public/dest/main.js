@@ -1,17 +1,4 @@
-// -- cursor move
-
-// let cursor = document.getElementById("cursor");
-// let cursorfollow = document.getElementById("cursorfollow");
-
-// window.addEventListener("mousemove", function(e) {
-//     let x = e.clientX; // lấy giá trị tọa độ x
-//     let y = e.clientY; // lấy giá trị tọa độ Y
-//     console.log(e);
-//     cursor.style.left = x + "px"; // gán x cho cursor
-//     cursor.style.top = y + "px"; // gán y cho cursor
-// });
-
-// ------ admin page------------
+// ************* admin page *****************
 let sidebar = document.querySelector(".sidebar");
 let sidebarBtn = document.querySelector(".sidebarBtn");
 sidebarBtn.onclick = function() {
@@ -21,35 +8,35 @@ sidebarBtn.onclick = function() {
     } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
 };
 // category music page
-const category1 = {
-    handleCategory: function() {
-        const categoryList = document.querySelectorAll(
-            ".category__list .category__list-item"
-        );
-        const categoryMusic = document.querySelectorAll(".category__music");
+// const category1 = {
+//     handleCategory: function() {
+//         const categoryList = document.querySelectorAll(
+//             ".category__list .category__list-item"
+//         );
+//         const categoryMusic = document.querySelectorAll(".category__music");
 
-        categoryList.forEach(function(item, index) {
-            item.onclick = function() {
-                categoryList.forEach(function(e) {
-                    e.classList.remove("active");
-                });
-                categoryMusic.forEach(function(e) {
-                    e.classList.remove("active");
-                });
-                item.classList.add("active");
-                categoryMusic.forEach(function(e, indexMusic) {
-                    if (index == indexMusic) {
-                        e.classList.add("active");
-                    }
-                });
-            };
-        });
-    },
-    start: function() {
-        this.handleCategory();
-    },
-};
-category1.start();
+//         categoryList.forEach(function(item, index) {
+//             item.onclick = function() {
+//                 categoryList.forEach(function(e) {
+//                     e.classList.remove("active");
+//                 });
+//                 categoryMusic.forEach(function(e) {
+//                     e.classList.remove("active");
+//                 });
+//                 item.classList.add("active");
+//                 categoryMusic.forEach(function(e, indexMusic) {
+//                     if (index == indexMusic) {
+//                         e.classList.add("active");
+//                     }
+//                 });
+//             };
+//         });
+//     },
+//     start: function() {
+//         this.handleCategory();
+//     },
+// };
+// category1.start();
 
 // close/open popup edits
 const popUp = {
@@ -73,38 +60,36 @@ const popUp = {
 popUp.start();
 
 // menubar
-const menuAdmin = {
-    handleMenuAdmin: function() {
-        console.log("123");
-        const menuContent = document.querySelectorAll(".menu-bar");
-        const menuLink = document.querySelectorAll(".menuItem");
-        console.log(menuLink);
-        menuLink.forEach(function(e, index) {
-            e.onclick = function() {
-                console.log("123");
-                menuLink.forEach(function(item) {
-                    item.classList.remove("active");
-                });
-                menuContent.forEach(function(item) {
-                    item.classList.remove("active");
-                });
-                e.classList.add("active");
+// const menuAdmin = {
+//     handleMenuAdmin: function() {
+//         console.log("123");
+//         const menuContent = document.querySelectorAll(".menu-bar");
+//         const menuLink = document.querySelectorAll(".menuItem");
+//         console.log(menuLink);
+//         menuLink.forEach(function(e, index) {
+//             e.onclick = function() {
+//                 console.log("123");
+//                 menuLink.forEach(function(item) {
+//                     item.classList.remove("active");
+//                 });
+//                 menuContent.forEach(function(item) {
+//                     item.classList.remove("active");
+//                 });
+//                 e.classList.add("active");
 
-                menuContent.forEach(function(item, indexContent) {
-                    if (index == indexContent) {
-                        item.classList.add("active");
-                    }
-                });
-            };
-        });
-    },
-    start: function() {
-        this.handleMenuAdmin();
-    },
-};
-menuAdmin.start();
-
-// --------- marketing page------------
+//                 menuContent.forEach(function(item, indexContent) {
+//                     if (index == indexContent) {
+//                         item.classList.add("active");
+//                     }
+//                 });
+//             };
+//         });
+//     },
+//     start: function() {
+//         this.handleMenuAdmin();
+//     },
+// };
+// menuAdmin.start();
 
 // ********** Home page *********
 
