@@ -1,4 +1,9 @@
 import React from "react";
+import About from "./component/about";
+import Background from "./component/background";
+import FooterMarketing from "./component/footer";
+import HeaderMarketing from "./component/header";
+import Login from "./component/login";
 
 export default function Marketing() {
   function parallax(element, distance, speed) {
@@ -27,77 +32,16 @@ export default function Marketing() {
   });
   return (
     <div className="marketing">
-      <header className="marketing__header">
-        <div className="container">
-          <div className=" header__logo">
-            <a href="/admin-login.html">
-              <img src="/img/logo1.svg" />
-            </a>
-          </div>
-          <div className="header__menu ">
-            <span />
-          </div>
-        </div>
-      </header>
+      <HeaderMarketing />
       <main>
         {/* background */}
-        <section className="background">
-          <div className="container">
-            <div className="background__slowgan">
-              <h2 className="background__slowgan-title">
-                enjoy <br />
-                the world
-                <br /> in a healthy way
-              </h2>
-            </div>
-          </div>
-        </section>
+        <Background />
         {/* about my website */}
-        <section className="about">
-          <div className="container">
-            <div className="title">
-              <h2>
-                About <span className="title__stroke">M &amp; C</span>
-              </h2>
-            </div>
-            <div className="contain">
-              <p>
-                Music and life go hand in hand. So join and experience my{" "}
-                <span className="title__stroke">M &amp; C</span> music social
-                network now
-              </p>
-            </div>
-            <div className="about__img">
-              <img src="/img/about.jpg" className="parallax" />
-            </div>
-          </div>
-        </section>
+        <About />
         {/* register and go home page */}
-        <section className="register">
-          <div className="container">
-            <div className="register__btn">
-              <div className="register__btn-in">
-                <a href="/login.html">Register</a>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Login />
       </main>
-      <footer>
-        <div className="container">
-          <div className="header__logo">
-            <a href="#">
-              <img src="/img/logo1.svg" />
-            </a>
-          </div>
-          <div className="footer__center">
-            <h2>M &amp; C</h2>
-          </div>
-          <div className="footer__author">
-            <p>create by: Vu Thanh Trung</p>
-          </div>
-        </div>
-      </footer>
+      <FooterMarketing />
     </div>
   );
 }
