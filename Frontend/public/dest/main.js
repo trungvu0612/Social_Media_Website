@@ -39,25 +39,25 @@ sidebarBtn.onclick = function() {
 // category1.start();
 
 // close/open popup edits
-const popUp = {
-    handlePopup: function() {
-        const popupBtn = document.querySelector("#outbtn");
-        const popUpEdit = document.querySelector(".edit-popup");
-        const editBtn = document.querySelectorAll(".item-create");
-        editBtn.forEach(function(e) {
-            e.onclick = function() {
-                popUpEdit.classList.add("active");
-            };
-        });
-        popupBtn.onclick = function() {
-            popUpEdit.classList.remove("active");
-        };
-    },
-    start: function() {
-        this.handlePopup();
-    },
-};
-popUp.start();
+// const popUp = {
+//     handlePopup: function() {
+//         const popupBtn = document.querySelector("#outbtn");
+//         const popUpEdit = document.querySelector(".edit-popup");
+//         const editBtn = document.querySelectorAll(".item-create");
+//         editBtn.forEach(function(e) {
+//             e.onclick = function() {
+//                 popUpEdit.classList.add("active");
+//             };
+//         });
+//         popupBtn.onclick = function() {
+//             popUpEdit.classList.remove("active");
+//         };
+//     },
+//     start: function() {
+//         this.handlePopup();
+//     },
+// };
+// popUp.start();
 
 // menubar
 // const menuAdmin = {

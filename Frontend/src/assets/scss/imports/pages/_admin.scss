@@ -634,6 +634,18 @@
             width: calc(100% - 220px);
             left: 220px;
         }
+        .music-content {
+            .overview-boxes {
+                .post__items {
+                    .category__music {
+                        .like {
+                            width: calc(90%/3 - 5px);
+                            margin: 0px 19px;
+                        }
+                    }
+                }
+            }
+        }
     }
     @media (max-width: 1150px) {
         .home-content .sales-boxes {
@@ -647,11 +659,35 @@
         .home-content .sales-boxes .top-sales {
             margin: 0;
         }
+        .music-content {
+            .overview-boxes {
+                .post__items {
+                    .category__music {
+                        .like {
+                            width: calc(90%/4 - 5px);
+                            margin: 0px 10px;
+                        }
+                    }
+                }
+            }
+        }
     }
     @media (max-width: 1000px) {
         .overview-boxes .box {
             width: calc(100% / 2 - 15px);
             margin-bottom: 15px;
+        }
+        .music-content {
+            .overview-boxes {
+                .post__items {
+                    .category__music {
+                        .like {
+                            width: calc(90%/4 - 5px);
+                            margin: 0px 10px;
+                        }
+                    }
+                }
+            }
         }
     }
     @media (max-width: 700px) {

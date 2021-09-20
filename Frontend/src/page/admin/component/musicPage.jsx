@@ -1,5 +1,5 @@
 import React from "react";
-import CategoryMusic from "../../../component/categoryMusic";
+import CategoryMusicAdmin from "./categoryMusicAdmin";
 import PopupMusic from "./popupMusic";
 
 export default function MusicPage() {
@@ -101,6 +101,7 @@ export default function MusicPage() {
                   <input
                     type="submit"
                     className="submit__btn"
+                    value="Add"
                     defaultValue="Upload"
                   />
                 </div>
@@ -110,7 +111,7 @@ export default function MusicPage() {
         </div>
       </div>
       <div className="overview-boxes">
-        <CategoryMusic />
+        <CategoryMusicAdmin />
       </div>
       <PopupMusic />
     </div>

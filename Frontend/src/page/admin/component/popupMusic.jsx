@@ -1,10 +1,17 @@
 import React from "react";
 
 export default function PopupMusic() {
+  function outPopupMusic() {
+    const popUpEdit = document.querySelector(".edit-popup");
+    popUpEdit.classList.remove("active");
+  }
+
   return (
     <div className="edit-popup">
       <div className="post__items">
-        <div id="outbtn">X</div>
+        <div id="outbtn" onClick={outPopupMusic}>
+          X
+        </div>
         <h3 className="title">Upload music</h3>
         <div className="left-right">
           <div className="left">
@@ -65,6 +72,7 @@ export default function PopupMusic() {
                 <input
                   type="submit"
                   className="submit__btn"
+                  value="Save"
                   defaultValue="Upload"
                 />
               </div>
