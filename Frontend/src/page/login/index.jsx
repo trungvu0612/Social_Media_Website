@@ -14,8 +14,8 @@ export default function Login() {
       <div className="l-form">
         <form action="/home.html" className="form">
           <img src="/img/logo1.svg" alt="" />
-
-          {/* <div className="form__div">
+          <h2 className="form__title">Login</h2>
+          <div className="form__div">
             <input type="text" className="form__input" placeholder=" " />
             <label htmlFor className="form__label">
               Email
@@ -32,7 +32,7 @@ export default function Login() {
             className="form__button"
             defaultValue="Sign In"
             value="Login"
-          /> */}
+          />
           <GoogleLogin
             clientId="1092699882576-7bnelde1sddfrqbnn20928cmenj5qvqr.apps.googleusercontent.com"
             buttonText="Login with google account"
