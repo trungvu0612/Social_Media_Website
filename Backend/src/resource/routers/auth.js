@@ -26,8 +26,9 @@ router.post("/register", async(req, res) => {
                 .status(400)
                 .json({ success: false, message: "Username already taken" });
 
-        // All good
+        // Hash password with argon2
         const hashedPassword = await argon2.hash(userPassword);
+        // Save this user to the database if everything ok
         const newUser = new User({
             userEmail,
             userPassword: hashedPassword,
@@ -59,25 +60,25 @@ router.post("/login", async(req, res) => {
     const { userEmail, userPassword } = req.body;
 
     // Simple validation
-    if (!userEmail | userPassword)
+    if (!userEmail || !userPassword)
         return res
             .status(400)
-            .json({ success: false, message: "Missing username and/or password" });
+            .json({ success: false, message: "Missing userEmail and/or password" });
 
     try {
-        // Check for existing user
+        // check if this user is registered in the database
         const user = await User.findOne({ userEmail: userEmail });
         if (!user)
             return res
                 .status(400)
-                .json({ success: false, message: "Incorrect username or password" });
+                .json({ success: false, message: "Incorrect username" });
 
-        // Username found
-        const passwordValid = await argon2.verify(user.password, password);
+        // Check user's password
+        const passwordValid = await argon2.verify(user.userPassword, userPassword);
         if (!passwordValid)
             return res
                 .status(400)
-                .json({ success: false, message: "Incorrect username or password" });
+                .json({ success: false, message: "Incorrect password" });
 
         // All good
         // Return token
