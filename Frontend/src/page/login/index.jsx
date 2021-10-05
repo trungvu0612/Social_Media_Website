@@ -1,13 +1,16 @@
 import React, { useContext, useState } from "react";
 import GoogleLogin from "react-google-login";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 
 export default function Login() {
   // hook contexts
   const { loginUser } = useContext(AuthContext);
 
-  // use Hook to set new data
+  // Router
+  const history = useHistory();
+
+  // use Hook to set new data/ local state
   const [login, setLogin] = useState({
     userEmail: "",
     userPassword: "",
@@ -23,7 +26,6 @@ export default function Login() {
     setLogin({ ...login, [event.target.name]: event.target.value });
   };
 
-  //
   const userLogin = async (event) => {
     //avoid login according to the original data of html
     event.preventDefault();
@@ -31,10 +33,17 @@ export default function Login() {
     try {
       // call the function AuthContext use this page state
       const loginData = await loginUser(login);
+
       console.log(loginData);
-      if (!loginData.success) {
+      if (loginData.success) {
         setAlert({ type: "danger", message: loginData.message });
         setTimeout(() => setAlert(null), 5000);
+        if (loginData.message == "Admin logged in successfully") {
+          history.push("/admin");
+        }
+        if (loginData.message == "User logged in successfully") {
+          history.push("/home");
+        }
       }
     } catch (error) {
       console.log(error);

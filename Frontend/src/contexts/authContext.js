@@ -4,12 +4,18 @@ import { apiUrl, LOCAL_STORAGE_TOKEN_NAME } from "./constants";
 import axios from "axios";
 import setAuthToken from "./setAuthToken";
 
+// create context
 export const AuthContext = createContext();
 
+// use useReducer manage the state of the web
 const AuthContextProvider = ({ children }) => {
+  // This object = first state on authReducer
   const [authState, dispatch] = useReducer(authReducer, {
+    // when the user is not logged in to the web
     authLoading: true,
+    //  the user is not authenticated
     isAuthenticated: false,
+    // without any user information
     user: null,
   });
 
@@ -42,8 +48,9 @@ const AuthContextProvider = ({ children }) => {
   // Login
   const loginUser = async (userForm) => {
     try {
-      // call api with axios
+      // Send req for sever
       const response = await axios.post(`${apiUrl}/auth/login`, userForm);
+      // if successful, return accessToken
       if (response.data.success)
         localStorage.setItem(
           LOCAL_STORAGE_TOKEN_NAME,
@@ -51,7 +58,7 @@ const AuthContextProvider = ({ children }) => {
         );
 
       await loadUser();
-
+      // return response user data
       return response.data;
     } catch (error) {
       if (error.response.data) return error.response.data;

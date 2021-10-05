@@ -1,4 +1,5 @@
 export const authReducer = (state, action) => {
+    // First state for login web
     const {
         type,
         payload: { isAuthenticated, user },

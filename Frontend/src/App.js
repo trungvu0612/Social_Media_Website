@@ -4,7 +4,7 @@ import Admin from "./page/admin";
 import AdminLogin from "./page/admin-login";
 import Home from "./page/home";
 import Login from "./page/login";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Register from "./page/register";
 import AuthContextProvider from "./contexts/authContext";
 
@@ -18,7 +18,7 @@ function App() {
             <Route exact path="/" component={Marketing} />{" "}
             <Route path="/login" component={Login} />{" "}
             <Route path="/register" component={Register} />{" "}
-            <Route path="/home" component={Home} />{" "}
+            <Route exact path="/home" component={Home} />{" "}
             <Route path="/login-admin" component={AdminLogin} />{" "}
             <Route path="/admin" component={Admin} />{" "}
           </Switch>{" "}
