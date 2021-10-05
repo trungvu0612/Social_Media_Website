@@ -4,12 +4,32 @@ const argon2 = require("argon2");
 const jwt = require("jsonwebtoken");
 
 const User = require("../models/users");
+const verifyToken = require("../middleware/verifyAuth");
+
+// @route GET api/auth
+// @desc Check if user is logged in
+// @access Public
+router.get("/", verifyToken, async(req, res) => {
+    try {
+        const user = await User.findById(req.userId).select("-password");
+        if (!user)
+            return res
+                .status(400)
+                .json({ success: false, message: "User not found" });
+        res.json({ success: true, user });
+    } catch (error) {
+        console.log(error);
+        res
+            .status(500)
+            .json({ success: false, message: "Internal server error!!!!" });
+    }
+});
 
 // @route POST api/auth/register
 // Register user
 // @access public
 router.post("/register", async(req, res) => {
-    const { userEmail, userPassword, userName, userAvatar } = req.body;
+    const { userEmail, userPassword, userName, userAvatar, roleId } = req.body;
 
     // Simple validation
     if (!userEmail || !userPassword || !userName || !userAvatar)
@@ -34,6 +54,7 @@ router.post("/register", async(req, res) => {
             userPassword: hashedPassword,
             userName,
             userAvatar,
+            roleId,
         });
         await newUser.save();
 
@@ -49,7 +70,9 @@ router.post("/register", async(req, res) => {
         });
     } catch (error) {
         console.log(error);
-        res.status(500).json({ success: false, message: "Internal server error" });
+        res
+            .status(500)
+            .json({ success: false, message: "Internal server error !!!!" });
     }
 });
 // @route POST api/auth/login
@@ -66,21 +89,50 @@ router.post("/login", async(req, res) => {
             .json({ success: false, message: "Missing userEmail and/or password" });
 
     try {
+        // All good
+        // check role
+
         // check if this user is registered in the database
         const user = await User.findOne({ userEmail: userEmail });
+        if (user.roleId == "615aba567b19409446d0128e") {
+            if (!user)
+                return res
+                    .status(400)
+                    .json({ success: false, message: "Incorrect username or password" });
+
+            // Check user's password
+            const passwordValid = await argon2.verify(
+                user.userPassword,
+                userPassword
+            );
+            if (!passwordValid)
+                return res
+                    .status(400)
+                    .json({ success: false, message: "Incorrect username or password" });
+
+            // Return token
+            const accessToken = jwt.sign({ userId: user._id },
+                process.env.ACCESS_TOKEN_SECRET
+            );
+
+            res.json({
+                success: true,
+                message: "Admin logged in successfully",
+                accessToken,
+            });
+        }
         if (!user)
             return res
                 .status(400)
-                .json({ success: false, message: "Incorrect username" });
+                .json({ success: false, message: "Incorrect username or password" });
 
         // Check user's password
         const passwordValid = await argon2.verify(user.userPassword, userPassword);
         if (!passwordValid)
             return res
                 .status(400)
-                .json({ success: false, message: "Incorrect password" });
+                .json({ success: false, message: "Incorrect  username or password" });
 
-        // All good
         // Return token
         const accessToken = jwt.sign({ userId: user._id },
             process.env.ACCESS_TOKEN_SECRET
@@ -93,7 +145,10 @@ router.post("/login", async(req, res) => {
         });
     } catch (error) {
         console.log(error);
-        res.status(500).json({ success: false, message: "Internal server error" });
+        res.status(500).json({
+            success: false,
+            message: "You do not have an account, please register an account to log in!",
+        });
     }
 });
 

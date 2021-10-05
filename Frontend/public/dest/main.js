@@ -7,6 +7,9 @@ sidebarBtn.onclick = function() {
         sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
     } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
 };
+
+// ******* marketing *********
+
 // category music page
 // const category1 = {
 //     handleCategory: function() {

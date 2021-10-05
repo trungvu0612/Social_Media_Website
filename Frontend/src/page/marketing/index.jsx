@@ -28,7 +28,11 @@ export default function Marketing() {
       window.scrollY,
       -0.1
     );
-    parallax(".register .container .register__btn", window.scrollY, -0.2);
+    parallax(
+      ".marketing .register_marketing .container .register__btn",
+      window.scrollY,
+      -0.2
+    );
   });
   return (
     <div className="marketing">

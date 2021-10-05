@@ -1,7 +1,47 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import GoogleLogin from "react-google-login";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/authContext";
 
 export default function Login() {
+  // hook contexts
+  const { loginUser } = useContext(AuthContext);
+
+  // use Hook to set new data
+  const [login, setLogin] = useState({
+    userEmail: "",
+    userPassword: "",
+  });
+
+  const [alert, setAlert] = useState(null);
+
+  // When the data changes, the login changes accordingly
+  const { userEmail, userPassword } = login;
+
+  // get new data entered by user
+  const onchangeLogin = (event) => {
+    setLogin({ ...login, [event.target.name]: event.target.value });
+  };
+
+  //
+  const userLogin = async (event) => {
+    //avoid login according to the original data of html
+    event.preventDefault();
+
+    try {
+      // call the function AuthContext use this page state
+      const loginData = await loginUser(login);
+      console.log(loginData);
+      if (!loginData.success) {
+        setAlert({ type: "danger", message: loginData.message });
+        setTimeout(() => setAlert(null), 5000);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // login with google
   const responseSuccessGoogle = (response) => {
     console.log(response);
   };
@@ -12,22 +52,42 @@ export default function Login() {
   return (
     <div className="login">
       <div className="l-form">
-        <form action="/home.html" className="form">
+        <form onSubmit={userLogin} className="form">
           <img src="/img/logo1.svg" alt="" />
           <h2 className="form__title">Login</h2>
           <div className="form__div">
-            <input type="text" className="form__input" placeholder=" " />
+            <input
+              type="text"
+              className="form__input"
+              placeholder=" "
+              name="userEmail"
+              value={userEmail}
+              required
+              onChange={onchangeLogin}
+            />
             <label htmlFor className="form__label">
               Email
             </label>
           </div>
           <div className="form__div">
-            <input type="password" className="form__input" placeholder=" " />
+            <input
+              type="password"
+              className="form__input"
+              placeholder=" "
+              name="userPassword"
+              value={userPassword}
+              required
+              onChange={onchangeLogin}
+            />
             <label htmlFor className="form__label">
               Password
             </label>
           </div>
+          <Link to="/register" className="register-btn">
+            Click here to register.
+          </Link>
           <input
+            variant="success"
             type="submit"
             className="form__button"
             defaultValue="Sign In"

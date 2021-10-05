@@ -99,6 +99,19 @@
                 box-shadow: 0 10px 36px rgba(0, 0, 0, .15);
             }
         }
+        .register-btn {
+            text-align: center;
+            margin-bottom: 2px;
+            padding: 2px;
+            text-decoration: none;
+            color: #576169;
+            opacity: 1;
+            transition: $transition_set;
+            &:hover {
+                opacity: 0.5;
+                transition: $transition_set;
+            }
+        }
     }
     /*Input focus move up label*/
     .form__input:focus+.form__label {

@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const app = express();
 const authRoute = require("./src/resource/routers/auth");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 // HTTP loggers
 app.use(morgan("combined"));
@@ -29,6 +30,7 @@ connectDB();
 //     res.send("home");
 // });
 app.use(express.json());
+app.use(cors());
 
 app.use("/api/auth", authRoute);
 

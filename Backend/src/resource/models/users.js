@@ -18,12 +18,18 @@ const UserSchema = new Schema({
     },
 
     userAvatar: {
-        type: String,
+        type: Buffer,
+        contentType: String,
         required: true,
     },
     userCreationDate: {
         type: Date,
         default: Date.now,
+    },
+    roleId: {
+        type: Schema.Types.ObjectId,
+        ref: "role",
+        default: "615aba747b19409446d0128f",
     },
 });
 
