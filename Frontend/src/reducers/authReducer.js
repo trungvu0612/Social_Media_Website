@@ -1,3 +1,4 @@
+// reducer save state for authenticated user
 export const authReducer = (state, action) => {
     // First state for login web
     const {

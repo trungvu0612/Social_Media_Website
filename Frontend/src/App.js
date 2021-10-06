@@ -6,7 +6,9 @@ import Home from "./page/home";
 import Login from "./page/login";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Register from "./page/register";
-import AuthContextProvider from "./contexts/authContext";
+import AuthContextProvider, { AuthContext } from "./contexts/authContext";
+import { useContext } from "react";
+import setAuthToken from "./contexts/setAuthToken";
 
 function App() {
   return (
@@ -18,7 +20,7 @@ function App() {
             <Route exact path="/" component={Marketing} />{" "}
             <Route path="/login" component={Login} />{" "}
             <Route path="/register" component={Register} />{" "}
-            <Route exact path="/home" component={Home} />{" "}
+            <Route path="/home" component={Home} />{" "}
             <Route path="/login-admin" component={AdminLogin} />{" "}
             <Route path="/admin" component={Admin} />{" "}
           </Switch>{" "}

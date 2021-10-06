@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
 import GoogleLogin from "react-google-login";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, Redirect } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
+import setAuthToken from "../../contexts/setAuthToken";
 
 export default function Login() {
   // hook contexts
@@ -16,7 +17,7 @@ export default function Login() {
     userPassword: "",
   });
 
-  const [alert, setAlert] = useState(null);
+  const [alertLogin, setAlertLogin] = useState(null);
 
   // When the data changes, the login changes accordingly
   const { userEmail, userPassword } = login;
@@ -35,15 +36,18 @@ export default function Login() {
       const loginData = await loginUser(login);
 
       console.log(loginData);
+
       if (loginData.success) {
-        setAlert({ type: "danger", message: loginData.message });
-        setTimeout(() => setAlert(null), 5000);
+        setAlertLogin({ type: "danger", message: loginData.message });
+        setTimeout(() => setAlertLogin(null), 5000);
         if (loginData.message == "Admin logged in successfully") {
           history.push("/admin");
         }
         if (loginData.message == "User logged in successfully") {
           history.push("/home");
         }
+      } else {
+        alert("UserEmail or password incorrect. Please try again");
       }
     } catch (error) {
       console.log(error);

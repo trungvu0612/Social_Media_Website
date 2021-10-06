@@ -10,13 +10,7 @@ export default function Register() {
           <div className="form__div">
             <input type="text" className="form__input" placeholder=" " />
             <label htmlFor className="form__label">
-              Name
-            </label>
-          </div>
-          <div className="form__div">
-            <input type="text" className="form__input" placeholder=" " />
-            <label htmlFor className="form__label">
-              Username
+              Email
             </label>
           </div>
           <div className="form__div">
@@ -26,15 +20,15 @@ export default function Register() {
             </label>
           </div>
           <div className="form__div">
-            <input type="password" className="form__input" placeholder=" " />
+            <input type="text" className="form__input" placeholder=" " />
             <label htmlFor className="form__label">
-              Email
+              Your name
             </label>
           </div>
           <div className="form__div">
             <input type="file" className="form__input" placeholder=" " />
             <label htmlFor className="form__label">
-              Avatar
+              Your avartar
             </label>
           </div>
           <input

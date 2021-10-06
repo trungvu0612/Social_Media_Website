@@ -1,6 +1,8 @@
 import React from "react";
+import CheckRedirect from "../../../hook/checkRedirect";
 
 export default function PostPerson() {
+  CheckRedirect();
   return (
     <div className="postperson post-list post-list-1">
       <div className="post__items">

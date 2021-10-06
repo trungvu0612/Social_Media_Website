@@ -12,9 +12,13 @@ import PostFavorite from "./component/postFavorite";
 import PostPerson from "./component/postPerson";
 import { NavLink, useRouteMatch, Switch, Route } from "react-router-dom";
 import MenuHistory from "./component/menuHistory";
+import CheckRedirect from "../../hook/checkRedirect";
 
 export default function Home() {
   let { path } = useRouteMatch();
+
+  CheckRedirect();
+
   return (
     <div className="home">
       <Header />
@@ -72,7 +76,7 @@ export default function Home() {
               {/* create page */}
               <Route path={`${path}/create-post`} component={PostCreate} />
               {/* home page */}
-              <Route path={path} component={PostDisplay} />
+              <Route exact path={`${path}/`} component={PostDisplay} />
             </Switch>
           </section>
           {/* Music */}

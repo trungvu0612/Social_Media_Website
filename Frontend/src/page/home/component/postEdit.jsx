@@ -1,6 +1,8 @@
 import React from "react";
+import CheckRedirect from "../../../hook/checkRedirect";
 
 export default function PostEdit() {
+  CheckRedirect();
   return (
     <div className="postedit post-list post-list-2">
       <div className="post__items">

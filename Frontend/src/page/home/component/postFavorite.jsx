@@ -1,6 +1,8 @@
 import React from "react";
+import CheckRedirect from "../../../hook/checkRedirect";
 
 export default function PostFavorite() {
+  CheckRedirect();
   return (
     <div className="postfavrorite post-list post-list-3">
       <div className="post__items">
