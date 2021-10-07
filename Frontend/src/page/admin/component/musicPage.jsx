@@ -1,10 +1,9 @@
 import React from "react";
-import CheckRedirect from "../../../hook/checkRedirect";
+
 import CategoryMusicAdmin from "./categoryMusicAdmin";
 import PopupMusic from "./popupMusic";
 
 export default function MusicPage() {
-  CheckRedirect();
   return (
     <div className="music-content menu-bar">
       <div className="overview-boxes">

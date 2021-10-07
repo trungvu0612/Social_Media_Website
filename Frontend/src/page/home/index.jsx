@@ -12,12 +12,10 @@ import PostFavorite from "./component/postFavorite";
 import PostPerson from "./component/postPerson";
 import { NavLink, useRouteMatch, Switch, Route } from "react-router-dom";
 import MenuHistory from "./component/menuHistory";
-import CheckRedirect from "../../hook/checkRedirect";
 
 export default function Home() {
   let { path } = useRouteMatch();
-
-  CheckRedirect();
+  // console.log(localStorage);
 
   return (
     <div className="home">

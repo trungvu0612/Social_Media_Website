@@ -1,9 +1,7 @@
 import React from "react";
 import PostItems from "../../../component/postItems";
-import CheckRedirect from "../../../hook/checkRedirect";
 
 export default function PostDisplay() {
-  CheckRedirect();
   return (
     <div className="postdisplay post-list post-list-0 ">
       <PostItems

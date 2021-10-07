@@ -1,8 +1,6 @@
 import React from "react";
-import CheckRedirect from "../../../hook/checkRedirect";
 
 export default function PostPage() {
-  CheckRedirect();
   return (
     <div className="post-content menu-bar">
       <div className="overview-boxes">

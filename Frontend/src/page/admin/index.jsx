@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, Route, Switch, useRouteMatch } from "react-router-dom";
-import CheckRedirect from "../../hook/checkRedirect";
+
 import Dashboard from "./component/dashboard";
 import MusicPage from "./component/musicPage";
 import Nav from "./component/nav";
@@ -8,7 +8,7 @@ import PostPage from "./component/postPage";
 
 export default function Admin() {
   let { path } = useRouteMatch();
-  CheckRedirect();
+
   return (
     <div className="admin">
       <div className="sidebar">

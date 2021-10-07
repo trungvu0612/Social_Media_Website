@@ -1,8 +1,7 @@
 import React, { useContext, useState } from "react";
 import GoogleLogin from "react-google-login";
-import { Link, useHistory, Redirect } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
-import setAuthToken from "../../contexts/setAuthToken";
 
 export default function Login() {
   // hook contexts
@@ -36,7 +35,6 @@ export default function Login() {
       const loginData = await loginUser(login);
 
       console.log(loginData);
-
       if (loginData.success) {
         setAlertLogin({ type: "danger", message: loginData.message });
         setTimeout(() => setAlertLogin(null), 5000);
