@@ -18,9 +18,8 @@ const UserSchema = new Schema({
     },
 
     userAvatar: {
-        type: Buffer,
+        type: String,
         contentType: String,
-        required: true,
     },
     userCreationDate: {
         type: Date,

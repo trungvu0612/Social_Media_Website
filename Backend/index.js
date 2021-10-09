@@ -3,27 +3,15 @@ const express = require("express");
 const morgan = require("morgan");
 const app = express();
 const authRoute = require("./src/resource/routers/auth");
-const mongoose = require("mongoose");
 const cors = require("cors");
+const connectDb = require("./src/resource/config/db.config");
+const uploadFile = require("./src/resource/middleware/upload");
+const gfs = require("multer-gridfs-storage");
 
 // HTTP loggers
 app.use(morgan("combined"));
 
-// connect to mongodb
-const connectDB = async() => {
-    try {
-        await mongoose.connect(
-            `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWD}@cluster0.dd2yf.mongodb.net/social-media-web?retryWrites=true&w=majority`, {
-                useNewUrlParser: true,
-                useUnifiedTopology: true,
-            }
-        );
-        console.log("MongoDB Connected");
-    } catch (e) {
-        console.log(e.message);
-    }
-};
-connectDB();
+connectDb();
 
 // route
 // app.get("/", (req, res) => {

@@ -2,9 +2,38 @@ const express = require("express");
 const router = express.Router();
 const argon2 = require("argon2");
 const jwt = require("jsonwebtoken");
-
+// const fs = require("fs-extra");
 const User = require("../models/users");
 const verifyToken = require("../middleware/verifyAuth");
+const mongoose = require("mongoose");
+const multer = require("multer");
+const path = require("path");
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, "./uploadFile");
+    },
+    filename: function(req, file, cb) {
+        cb(null, new Date().toISOString().replace(/:/g, "-") + file.originalname);
+    },
+});
+
+const fileFilter = (req, file, cb) => {
+    // reject a file
+    if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
+        cb(null, true);
+    } else {
+        cb(null, false);
+    }
+};
+
+const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1024 * 1024 * 5,
+    },
+    fileFilter: fileFilter,
+});
 
 // @route GET api/auth
 // @desc Check if user is logged in
@@ -28,11 +57,11 @@ router.get("/", verifyToken, async(req, res) => {
 // @route POST api/auth/register
 // Register user
 // @access public
-router.post("/register", async(req, res) => {
+router.post("/register", upload.single("userAvatar"), async(req, res) => {
     const { userEmail, userPassword, userName, userAvatar, roleId } = req.body;
 
     // Simple validation
-    if (!userEmail || !userPassword || !userName || !userAvatar)
+    if (!userEmail || !userPassword || !userName)
         return res
             .status(400)
             .json({ success: false, message: "Missing userEmail and/or password" });
@@ -53,9 +82,11 @@ router.post("/register", async(req, res) => {
             userEmail,
             userPassword: hashedPassword,
             userName,
-            userAvatar,
+            userAvatar: req.file.path,
             roleId,
         });
+        // newUser.userAvatar.data = fs.readFileSync(req.files.userPhoto.path);
+        // newUser.userAvatar.contentType = "image/png";
         await newUser.save();
 
         // Return token

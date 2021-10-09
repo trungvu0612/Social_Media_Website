@@ -9,8 +9,6 @@ const CheckRedirect = ({ component: Component, ...rest }) => {
   const {
     authState: { authLoading, isAuthenticated },
   } = useContext(AuthContext);
-  // hook contexts
-  const { loginUser } = useContext(AuthContext);
 
   const decoded = jwt_decode(localStorage[LOCAL_STORAGE_TOKEN_NAME]);
 

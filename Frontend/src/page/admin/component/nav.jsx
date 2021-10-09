@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../../contexts/authContext";
 
 export default function Nav() {
+  const {
+    authState: {
+      user: { userName, userAvatar },
+    },
+  } = useContext(AuthContext);
   return (
     <nav>
       <div className="sidebar-button">
@@ -12,8 +18,8 @@ export default function Nav() {
         <i className="bx bx-search" />
       </div>
       <div className="profile-details">
-        <img src="/img/avartar.jpg" alt="" />
-        <span className="admin_name">Prem Shahi</span>
+        <img src={userAvatar} alt="" />
+        <span className="admin_name">{userName}</span>
       </div>
     </nav>
   );

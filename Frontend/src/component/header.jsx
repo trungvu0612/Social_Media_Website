@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../contexts/authContext";
 
 export default function Header() {
+  const {
+    authState: {
+      user: { userName },
+    },
+  } = useContext(AuthContext);
+
   return (
     <header className="header__main">
       <div className="container-fluid">
@@ -22,7 +29,7 @@ export default function Header() {
           <div className="user">
             <img src="/img/avartar.jpg" alt="" className="user__avatar" />
             <div className="user__name">
-              <h2 className="user__name-title">Trung Vũ</h2>
+              <h2 className="user__name-title">{userName}</h2>
             </div>
           </div>
           <div id="notiBtn">

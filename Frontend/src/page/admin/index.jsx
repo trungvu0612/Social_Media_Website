@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, Route, Switch, useRouteMatch } from "react-router-dom";
+import { AuthContext } from "../../contexts/authContext";
 
 import Dashboard from "./component/dashboard";
 import MusicPage from "./component/musicPage";
@@ -8,6 +9,12 @@ import PostPage from "./component/postPage";
 
 export default function Admin() {
   let { path } = useRouteMatch();
+
+  const {
+    authState: {
+      user: { userName, userAvatar },
+    },
+  } = useContext(AuthContext);
 
   return (
     <div className="admin">
