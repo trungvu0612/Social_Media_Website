@@ -4,9 +4,14 @@ import { AuthContext } from "../contexts/authContext";
 export default function Header() {
   const {
     authState: {
-      user: { userName },
+      user: { userName, userAvatar },
     },
   } = useContext(AuthContext);
+
+  console.log(userAvatar);
+  const avatar = userAvatar.data.data.toString("base64");
+
+  console.log(avatar);
 
   return (
     <header className="header__main">
@@ -27,7 +32,11 @@ export default function Header() {
         </div>
         <div className="right">
           <div className="user">
-            <img src="/img/avartar.jpg" alt="" className="user__avatar" />
+            <img
+              src={`data:image/png;base64,${userAvatar}`}
+              alt=""
+              className="user__avatar"
+            />
             <div className="user__name">
               <h2 className="user__name-title">{userName}</h2>
             </div>

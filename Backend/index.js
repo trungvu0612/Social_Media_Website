@@ -20,6 +20,8 @@ connectDb();
 app.use(express.json());
 app.use(cors());
 
+app.use("/uploadFile", express.static("uploadFile"));
+
 app.use("/api/auth", authRoute);
 
 // address

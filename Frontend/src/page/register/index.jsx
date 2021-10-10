@@ -48,7 +48,11 @@ export default function Register() {
   return (
     <div className="register">
       <div className="l-form">
-        <form onSubmit={userRegister} className="form">
+        <form
+          onSubmit={userRegister}
+          enctype="multipart/form-data"
+          className="form"
+        >
           <img src="/img/logo1.svg" alt="" />
           <h2 className="form__title">Register</h2>
           <div className="form__div">

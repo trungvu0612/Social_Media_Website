@@ -7,6 +7,7 @@ export default function Nav() {
       user: { userName, userAvatar },
     },
   } = useContext(AuthContext);
+  console.log(userAvatar);
   return (
     <nav>
       <div className="sidebar-button">

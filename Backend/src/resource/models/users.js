@@ -18,6 +18,7 @@ const UserSchema = new Schema({
     },
 
     userAvatar: {
+        // data: Buffer,
         type: String,
         contentType: String,
     },
