@@ -1,10 +1,12 @@
+import axios from "axios";
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router";
 import { AuthContext } from "../../contexts/authContext";
+import { apiUrl, LOCAL_STORAGE_TOKEN_NAME } from "../../contexts/constants";
 
 export default function Register() {
   // Context
-  const { registerUser } = useContext(AuthContext);
+  const { loadUser } = useContext(AuthContext);
 
   // local state
   const [register, setRegister] = useState({
@@ -23,26 +25,45 @@ export default function Register() {
     setRegister({ ...register, [event.target.name]: event.target.value });
   };
 
-  // when the data changes, add new data for register state
+  //get file as user input
+  const onChangeFileUserForm = function (event) {
+    setRegister({ ...register, userAvatar: event.target.files[0] });
+    // console.log(event.target.files[0]);
+  };
 
-  const { userEmail, userPassword, confirmPassword, userName, userAvatar } =
-    register;
+  // handle submit event in form with axios
+  const userRegister = (e) => {
+    e.preventDefault();
 
-  const userRegister = async function (event) {
-    event.preventDefault();
+    // initialize formdata to store values in state and assign those values to name in input
+    const formData = new FormData();
+    formData.append("userEmail", register.userEmail);
+    formData.append("userPassword", register.userPassword);
+    formData.append("confirmPassword", register.confirmPassword);
+    formData.append("userName", register.userName);
+    formData.append("userAvatar", register.userAvatar);
 
-    if (userPassword != confirmPassword) {
-      alert("Passwords do not match");
-    }
-    try {
-      const registerData = await registerUser(register);
-      if (!registerData.success) {
-        alert("Registration failed");
-      }
-      history.push("/login");
-    } catch (e) {
-      console.log(e);
-    }
+    axios
+      .post(`${apiUrl}/auth/register`, formData)
+      .then((response) => {
+        console.log(response.data);
+        if (response.data.success) {
+          localStorage.setItem(
+            LOCAL_STORAGE_TOKEN_NAME,
+            response.data.accessToken
+          );
+          history.push("/login");
+          loadUser();
+          return response;
+        }
+        if (!response.success) {
+          alert(response.data.message);
+        }
+      })
+      .catch((error) => {
+        if (error.response) return error.response;
+        else return { success: false, message: error.message };
+      });
   };
 
   return (
@@ -61,9 +82,11 @@ export default function Register() {
               className="form__input"
               placeholder=" "
               name="userEmail"
-              value={userEmail}
+              value={register.userEmail}
               required
-              onChange={onChangeRegisterForm}
+              onChange={(event) => {
+                onChangeRegisterForm(event);
+              }}
             />
             <label htmlFor className="form__label">
               Email
@@ -75,7 +98,7 @@ export default function Register() {
               className="form__input"
               placeholder=" "
               name="userPassword"
-              value={userPassword}
+              value={register.userPassword}
               required
               onChange={onChangeRegisterForm}
             />
@@ -89,7 +112,7 @@ export default function Register() {
               className="form__input"
               placeholder=" "
               name="confirmPassword"
-              value={confirmPassword}
+              value={register.confirmPassword}
               required
               onChange={onChangeRegisterForm}
             />
@@ -103,7 +126,7 @@ export default function Register() {
               className="form__input"
               placeholder=" "
               name="userName"
-              value={userName}
+              value={register.userName}
               required
               onChange={onChangeRegisterForm}
             />
@@ -115,11 +138,7 @@ export default function Register() {
             <input
               type="file"
               className="form__input"
-              placeholder=" "
-              name="userAvatar"
-              value={userAvatar}
-              required
-              onChange={onChangeRegisterForm}
+              onChange={onChangeFileUserForm}
             />
             <label htmlFor className="form__label">
               Your avartar

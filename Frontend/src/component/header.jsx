@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../contexts/authContext";
+import { apiUpload } from "../contexts/constants";
 
 export default function Header() {
   const {
@@ -7,11 +8,6 @@ export default function Header() {
       user: { userName, userAvatar },
     },
   } = useContext(AuthContext);
-
-  console.log(userAvatar);
-  const avatar = userAvatar.data.data.toString("base64");
-
-  console.log(avatar);
 
   return (
     <header className="header__main">
@@ -33,7 +29,7 @@ export default function Header() {
         <div className="right">
           <div className="user">
             <img
-              src={`data:image/png;base64,${userAvatar}`}
+              src={`${apiUpload}${userAvatar}`}
               alt=""
               className="user__avatar"
             />
