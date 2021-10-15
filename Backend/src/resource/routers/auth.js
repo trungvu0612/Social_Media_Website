@@ -2,38 +2,11 @@ const express = require("express");
 const router = express.Router();
 const argon2 = require("argon2");
 const jwt = require("jsonwebtoken");
-const fs = require("fs-extra");
 const User = require("../models/users");
 const verifyToken = require("../middleware/verifyAuth");
-const mongoose = require("mongoose");
-const multer = require("multer");
+const upload = require("../middleware/upload");
 const path = require("path");
-
-const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, "./uploadFile/");
-    },
-    filename: function(req, file, cb) {
-        cb(null, new Date().toISOString().replace(/:/g, "-") + file.originalname);
-    },
-});
-
-const fileFilter = (req, file, cb) => {
-    // reject a file
-    if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
-        cb(null, true);
-    } else {
-        cb(null, false);
-    }
-};
-
-const upload = multer({
-    storage: storage,
-    limits: {
-        fileSize: 1024 * 1024 * 5,
-    },
-    fileFilter: fileFilter,
-});
+const mongoose = require("mongoose");
 
 // @route GET api/auth
 // @desc Check if user is logged in

@@ -7,6 +7,7 @@ const cors = require("cors");
 const connectDb = require("./src/resource/config/db.config");
 const uploadFile = require("./src/resource/middleware/upload");
 const gfs = require("multer-gridfs-storage");
+const updateUser = require("./src/resource/routers/update");
 
 // HTTP loggers
 app.use(morgan("combined"));
@@ -23,6 +24,7 @@ app.use(cors());
 app.use("/uploadFile", express.static("uploadFile"));
 
 app.use("/api/auth", authRoute);
+app.use("/api/update/user", updateUser);
 
 // address
 const PORT = 5000;
