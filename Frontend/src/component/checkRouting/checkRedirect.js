@@ -24,8 +24,8 @@ const CheckRedirect = ({ component: Component, ...rest }) => {
             transform: "translate(-50%, -50%)",
           }}
           color="#be97e8"
-        />
-        ;
+        />{" "}
+        ;{" "}
       </div>
     );
   }
@@ -36,7 +36,7 @@ const CheckRedirect = ({ component: Component, ...rest }) => {
       render={(props) =>
         isAuthenticated ? (
           <>
-            <Component {...rest} {...props} />
+            <Component {...rest} {...props} />{" "}
           </>
         ) : (
           <Redirect to="/login" />

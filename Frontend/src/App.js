@@ -9,23 +9,25 @@ import Register from "./page/register";
 import AuthContextProvider from "./contexts/authContext";
 import CheckRedirect from "./component/checkRouting/checkRedirect";
 import ProtectAdmin from "./component/checkRouting/protectAdmin";
+import UserContextProvider from "./contexts/userContext";
 
 function App() {
   return (
     <AuthContextProvider>
-      {" "}
-      <BrowserRouter>
-        <div className="App">
-          <Switch>
-            <Route exact path="/" component={Marketing} />{" "}
-            <Route path="/login" component={Login} />{" "}
-            <Route path="/register" component={Register} />{" "}
-            <CheckRedirect path="/home" component={Home} />{" "}
-            <Route path="/login-admin" component={AdminLogin} />{" "}
-            <ProtectAdmin path="/admin" component={Admin} />{" "}
-          </Switch>{" "}
-        </div>{" "}
-      </BrowserRouter>{" "}
+      <UserContextProvider>
+        <BrowserRouter>
+          <div className="App">
+            <Switch>
+              <Route exact path="/" component={Marketing} />{" "}
+              <Route path="/login" component={Login} />{" "}
+              <Route path="/register" component={Register} />{" "}
+              <CheckRedirect path="/home" component={Home} />{" "}
+              <Route path="/login-admin" component={AdminLogin} />{" "}
+              <ProtectAdmin path="/admin" component={Admin} />{" "}
+            </Switch>{" "}
+          </div>{" "}
+        </BrowserRouter>{" "}
+      </UserContextProvider>{" "}
     </AuthContextProvider>
   );
 }
