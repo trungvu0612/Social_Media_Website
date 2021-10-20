@@ -1,11 +1,11 @@
-// middleware use to save image
+// middleware use to save image user
 
 const multer = require("multer");
 const fs = require("fs-extra");
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, "./uploadFile/");
+        cb(null, "./uploadFile/user/");
     },
     filename: function(req, file, cb) {
         cb(null, new Date().toISOString().replace(/:/g, "-") + file.originalname);

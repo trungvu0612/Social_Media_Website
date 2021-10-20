@@ -89,10 +89,13 @@ router.post("/register", upload.single("userAvatar"), async(req, res) => {
             process.env.ACCESS_TOKEN_SECRET
         );
 
+        const file = req.file;
+
         res.json({
             success: true,
             message: "User created successfully",
             accessToken,
+            file,
         });
     } catch (error) {
         console.log(error);

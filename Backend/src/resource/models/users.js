@@ -22,14 +22,15 @@ const UserSchema = new Schema({
         type: String,
         contentType: String,
     },
-    userCreationDate: {
-        type: Date,
-        default: Date.now,
-    },
+
     roleId: {
         type: Schema.Types.ObjectId,
         ref: "role",
         default: "615aba747b19409446d0128f",
+    },
+    userCreationDate: {
+        type: Date,
+        default: Date.now,
     },
 });
 
