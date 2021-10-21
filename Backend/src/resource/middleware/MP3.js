@@ -4,6 +4,7 @@ const mm = require("music-metadata");
 
 const storage = multer.diskStorage({
     destination: function(req, fileMP3, cb) {
+        // cb(null, "./uploadFile/Mp3/");
         if (fileMP3.mimetype === "audio/mpeg") {
             cb(null, "./uploadFile/Mp3/");
         }
@@ -12,27 +13,35 @@ const storage = multer.diskStorage({
         }
     },
     filename: function(req, fileMP3, cb) {
-        if (fileMP3.mimetype === "audio/mpeg") {
-            cb(
-                null,
-                new Date().toISOString().replace(/:/g, "-") + fileMP3.originalname
-            );
-        }
-        if (fileMP3.mimetype === "image/jpeg" || fileMP3.mimetype === "image/png") {
-            cb(
-                null,
-                new Date().toISOString().replace(/:/g, "-") + fileMP3.originalname
-            );
-        }
+        cb(
+            null,
+            new Date().toISOString().replace(/:/g, "-") + fileMP3.originalname
+        );
+        // if (fileMP3.mimetype === "audio/mpeg") {
+        //     cb(
+        //         null,
+        //         new Date().toISOString().replace(/:/g, "-") + fileMP3.originalname
+        //     );
+        // }
+        // if (fileMP3.mimetype === "image/jpeg" || fileMP3.mimetype === "image/png") {
+        //     cb(
+        //         null,
+        //         new Date().toISOString().replace(/:/g, "-") + fileMP3.originalname
+        //     );
+        // }
     },
 });
 
 const fileFilter = (req, fileMP3, cb) => {
     // reject a file
-    if (fileMP3.mimetype === "audio/mpeg") {
-        cb(null, true);
-    }
-    if (fileMP3.mimetype === "image/jpeg" || fileMP3.mimetype === "image/png") {
+    // if () {
+    //     cb(null, true);
+    // }
+    if (
+        fileMP3.mimetype === "image/jpeg" ||
+        fileMP3.mimetype === "image/png" ||
+        fileMP3.mimetype === "audio/mpeg"
+    ) {
         cb(null, true);
     } else {
         cb(null, false);
@@ -41,9 +50,9 @@ const fileFilter = (req, fileMP3, cb) => {
 
 const uploadMP3Test = multer({
     storage: storage,
-    limits: {
-        fileSize: 1024 * 1024 * 5,
-    },
+    // limits: {
+    //     fileSize: 1024 * 1024 * 5,
+    // },
     fileFilter: fileFilter,
 });
 

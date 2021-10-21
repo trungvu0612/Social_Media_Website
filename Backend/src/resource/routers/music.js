@@ -1,6 +1,4 @@
 const express = require("express");
-const uploadMP3 = require("../middleware/uploadMp3File");
-const uploadImgMp3 = require("../middleware/uploadImgMp3");
 const router = express.Router();
 const Music = require("../models/musics");
 const uploadMp3Test = require("../middleware/MP3");
@@ -9,19 +7,16 @@ const uploadMp3Test = require("../middleware/MP3");
 // @desc input music to database
 // @access Public
 
-const middlewareMp3 = [
-    // uploadImgMp3.single("musicImg"),
-    // uploadMP3.single("musicFile"),
-    uploadMp3Test.fields([{
-            name: "musicFile",
-            maxCount: 1,
-        },
-        {
-            name: "musicImg",
-            maxCount: 1,
-        },
-    ]),
-];
+const middlewareMp3 = uploadMp3Test.fields([{
+        name: "musicFile",
+        maxCount: 10,
+    },
+    {
+        name: "musicImg",
+        maxCount: 10,
+    },
+]);
+
 router.post("/upload", middlewareMp3, async(req, res) => {
     const { musicName, musicAuthor, musicImg, musicFile } = req.body;
 
@@ -33,15 +28,19 @@ router.post("/upload", middlewareMp3, async(req, res) => {
 
     try {
         // const imgMP3 = req.file.path;
-        const fileMP3 = req.files;
-        console.log(fileMP3);
+        const imgMp3 = req.files.musicImg.map((element) => element.path);
+        console.log(imgMp3);
+        const fileMp3 = req.files.musicFile.map((element) => {
+            return element.path;
+        });
+        console.log(fileMp3.toString());
 
         // Save this user to the database if everything ok
         const newMusic = new Music({
             musicName,
             musicAuthor,
-            musicImg: fileMP3,
-            musicFile: fileMP3,
+            musicImg: imgMp3.toString().replace("uploadFile\\ImgMp3\\", ""),
+            musicFile: fileMp3.toString().replace("uploadFile\\Mp3\\", ""),
         });
 
         await newMusic.save();
