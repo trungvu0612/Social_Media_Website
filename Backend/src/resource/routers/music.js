@@ -7,6 +7,7 @@ const uploadMp3Test = require("../middleware/MP3");
 // @desc input music to database
 // @access Public
 
+// use middleware of multer to get multiple files for multiple fields
 const middlewareMp3 = uploadMp3Test.fields([{
         name: "musicFile",
         maxCount: 10,
@@ -18,13 +19,14 @@ const middlewareMp3 = uploadMp3Test.fields([{
 ]);
 
 router.post("/upload", middlewareMp3, async(req, res) => {
-    const { musicName, musicAuthor, musicImg, musicFile } = req.body;
+    const { musicName, musicAuthor, musicImg, musicFile, musicCategory } =
+    req.body;
 
     // Simple validation
     if (!musicName || !musicAuthor)
         return res
             .status(400)
-            .json({ success: false, message: "Missing musicName and/or password" });
+            .json({ success: false, message: "Missing information" });
 
     try {
         // const imgMP3 = req.file.path;
@@ -41,6 +43,7 @@ router.post("/upload", middlewareMp3, async(req, res) => {
             musicAuthor,
             musicImg: imgMp3.toString().replace("uploadFile\\ImgMp3\\", ""),
             musicFile: fileMp3.toString().replace("uploadFile\\Mp3\\", ""),
+            musicCategory,
         });
 
         await newMusic.save();

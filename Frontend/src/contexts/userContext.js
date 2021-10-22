@@ -12,23 +12,10 @@ const UserContextProvider = ({ children }) => {
     users: [],
     usersLoading: true,
   });
-  // Update post
-  //   const updateUser = async (updatedUser) => {
-  //     try {
-  //       const response = await axios.put(
-  //         `${apiUrl}/update/user/${updatedUser._id}`,
-  //         updatedUser
-  //       );
-
-  //     } catch (error) {
-
-  //     }
-  //   };
 
   // user context data
   const userContextData = {
     userState,
-    // updateUser,
   };
   return (
     <UserContext.Provider value={userContextData}>

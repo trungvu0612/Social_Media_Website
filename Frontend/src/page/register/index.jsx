@@ -84,9 +84,7 @@ export default function Register() {
               name="userEmail"
               value={register.userEmail}
               required
-              onChange={(event) => {
-                onChangeRegisterForm(event);
-              }}
+              onChange={onChangeRegisterForm}
             />
             <label htmlFor className="form__label">
               Email

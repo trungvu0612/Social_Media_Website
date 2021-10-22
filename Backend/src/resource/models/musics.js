@@ -40,6 +40,17 @@ const MusicSchema = new Schema({
     musicCategory: {
         type: Schema.Types.String,
         ref: "categories",
+        // enum: [
+        //     "accoustic",
+        //     "cinematic",
+        //     "edm",
+        //     "electronic",
+        //     "jazz",
+        //     "pop",
+        //     "rock",
+        //     "urban",
+        //     "order",
+        // ],
     },
     musicLike: {
         type: Number,
