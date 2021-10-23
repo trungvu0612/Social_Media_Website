@@ -24,14 +24,13 @@ export default function MusicPage() {
   // get data as user input
   const onChangeMusicForm = function (event) {
     setuploadMusic({ ...uploadMusic, [event.target.name]: event.target.value });
-    console.log(uploadMusic);
   };
 
   //get img file as user input
   const onChangeFileImgForm = function (event) {
     setuploadMusic({ ...uploadMusic, musicImg: event.target.files[0] });
   };
-  console.log(uploadMusic.musicImg);
+
   //get mp3 file as user input
   const onChangeMp3Form = function (event) {
     setuploadMusic({ ...uploadMusic, musicFile: event.target.files[0] });
@@ -55,7 +54,7 @@ export default function MusicPage() {
         console.log(response.data);
         if (response.data.success) {
           dispatch({ type: ADD_MUSIC, payload: response.data.post });
-
+          document.getElementById("upload").reset();
           return response.data;
         }
         if (!response.success) {
@@ -91,7 +90,11 @@ export default function MusicPage() {
                 <h4>Category</h4>
               </div>
             </div>
-            <form onSubmit={musicUploadForm} enctype="multipart/form-data">
+            <form
+              id="upload"
+              onSubmit={musicUploadForm}
+              enctype="multipart/form-data"
+            >
               <div className="right">
                 <div className="right__items">
                   <input
@@ -127,62 +130,28 @@ export default function MusicPage() {
                     onChange={onChangeMp3Form}
                   />
                 </div>
-                <div className="right__items checkbox">
-                  <div className="checkbox">
-                    <div className="checkbox__item">
-                      <input type="radio" id="Acoustic/Fork" />
-                      <i className="bx bxs-check-circle" />
-                      <label htmlFor="Acoustic/Fork">Acoustic/Fork</label>
-                    </div>
-                    <div className="checkbox__item">
-                      <input type="radio" id="Cinematic" />
-                      <i className="bx bxs-check-circle" />
-                      <label htmlFor="Cinematic">Cinematic</label>
-                    </div>
-                    <div className="checkbox__item">
-                      <input type="radio" id="Pop" />
-                      <i className="bx bxs-check-circle" />
-                      <label htmlFor="Pop">Pop</label>
-                    </div>
-                    <div className="checkbox__item">
-                      <input type="radio" id="Electronic" />
-                      <i className="bx bxs-check-circle" />
-                      <label htmlFor="Electronic">Electronic</label>
-                    </div>
-                    <div className="checkbox__item">
-                      <input type="radio" id="Urban/groove" />
-                      <i className="bx bxs-check-circle" />
-                      <label htmlFor="Urban/groove">Urban/groove</label>
-                    </div>
-                    <div className="checkbox__item">
-                      <input type="radio" id="Jazz" />
-                      <i className="bx bxs-check-circle" />
-                      <label htmlFor="Jazz">Jazz</label>
-                    </div>
-                    <div className="checkbox__item">
-                      <input type="radio" id="Rock" />
-                      <i className="bx bxs-check-circle" />
-                      <label htmlFor="Rock">Rock</label>
-                    </div>
-                    <div className="checkbox__item">
-                      <input type="radio" id="World/orthers" />
-                      <i className="bx bxs-check-circle" />
-                      <label htmlFor="World/orthers">World/orthers</label>
-                    </div>
-                    <div className="checkbox__item">
-                      <input type="radio" id="EDM" />
-                      <i className="bx bxs-check-circle" />
-                      <label htmlFor="EDM">EDM</label>
-                    </div>
-                  </div>
+
+                <div className="checkbox__item">
+                  <select name="musicCategory" onChange={onChangeMusicForm}>
+                    <option value="acoustic">acoustic</option>
+                    <option value="cinematic">cinematic</option>
+                    <option value="edm">edm</option>
+                    <option value="electronic">electronic</option>
+                    <option value="pop">pop</option>
+                    <option value="jazz">jazz</option>
+                    <option value="urban">urban</option>
+                    <option value="rock">rock</option>
+                    <option value="order">order</option>
+                  </select>
                 </div>
+
                 <div className="submit">
                   <input
                     type="submit"
                     className="submit__btn"
                     value="Add"
                     defaultValue="Upload"
-                  />
+                  ></input>
                 </div>
               </div>
             </form>

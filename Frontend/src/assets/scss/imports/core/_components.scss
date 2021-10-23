@@ -208,37 +208,25 @@
                         border-color: $sky;
                     }
                 }
-                .checkbox {
-                    display: flex;
-                    justify-content: center;
-                    flex-wrap: wrap;
-                    width: 100%;
-                    &__item {
-                        font-weight: normal;
-                        width: calc(90% / 3 - 10px);
-                        margin: 5px 10px;
-                        i {
-                            color: $green;
-                            transform: scale(0) rotateZ(180deg);
-                            transition: all 0.4s cubic-bezier(0.54, 0.01, 0, 1.49);
-                        }
-                        input[type="checkbox"]:checked+i {
-                            transform: scale(1) rotateZ(0deg);
-                        }
-                        label {
-                            margin-left: 10px;
-                            position: relative;
-                            &:after {
-                                content: " ";
-                                height: 12px;
-                                width: 12px;
-                                left: -27px;
-                                top: 1px;
-                                border-radius: 50%;
-                                border: 2px solid $green;
-                                position: absolute;
-                            }
-                        }
+            }
+            .checkbox__item {
+                width: 100%;
+                select {
+                    display: block;
+                    border: 2px solid;
+                    border-color: rgb(223, 219, 219);
+                    border-radius: 5px;
+                    padding: 5px 10px;
+                    transition: 0.2s;
+                    margin-bottom: 10px;
+                    appearance: auto;
+                    &:hover {
+                        transition: 0.2s;
+                        border-color: #a29bfe65;
+                    }
+                    &:focus {
+                        outline: none !important;
+                        border-color: $sky;
                     }
                 }
             }
