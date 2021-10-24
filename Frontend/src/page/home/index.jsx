@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Header from "../../component/header";
 import Notification from "../../component/notification";
 import MenuFooter from "./component/menuFooter";
@@ -12,10 +12,10 @@ import PostFavorite from "./component/postFavorite";
 import PostPerson from "./component/postPerson";
 import { NavLink, useRouteMatch, Switch, Route } from "react-router-dom";
 import MenuHistory from "./component/menuHistory";
+import { AuthContext } from "../../contexts/authContext";
 
 export default function Home() {
   let { path } = useRouteMatch();
-  // console.log(localStorage);
 
   return (
     <div className="home">

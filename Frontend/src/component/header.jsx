@@ -1,13 +1,24 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../contexts/authContext";
-import { apiUpload } from "../contexts/constants";
+import { apiUpload, LOCAL_STORAGE_TOKEN_NAME } from "../contexts/constants";
 
 export default function Header() {
   const {
     authState: {
       user: { userName, userAvatar },
+      isAuthenticated,
     },
+
+    logoutUser,
   } = useContext(AuthContext);
+
+  // const history = useHistory();
+
+  const logout = () => {
+    logoutUser();
+
+    console.log(isAuthenticated);
+  };
 
   return (
     <header className="header__main">
@@ -40,7 +51,7 @@ export default function Header() {
           <div id="notiBtn">
             <i className="fa fa-bell tool-icon" />
           </div>
-          <a href="#" className="btn1">
+          <a onClick={logout} className="btn1">
             Log out
           </a>
         </div>

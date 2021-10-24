@@ -32,12 +32,6 @@ router.put(
     async(req, res) => {
         const { userName, userAvatar, userPassword } = req.body;
 
-        // Simple validation
-        if (!userName)
-            return res
-                .status(400)
-                .json({ success: false, message: "Name is required" });
-
         try {
             const hashedPassword = await argon2.hash(userPassword);
             const avatar = req.file.path;

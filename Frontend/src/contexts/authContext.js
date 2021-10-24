@@ -73,12 +73,15 @@ const AuthContextProvider = ({ children }) => {
   };
 
   // Logout
-  const logoutUser = () => {
-    localStorage.removeItem(LOCAL_STORAGE_TOKEN_NAME);
+  const logoutUser = async () => {
     dispatch({
       type: "SET_AUTH",
       payload: { isAuthenticated: false, user: null },
     });
+    localStorage.removeItem(LOCAL_STORAGE_TOKEN_NAME);
+    // setTimeout(() => {
+    //   localStorage.removeItem(LOCAL_STORAGE_TOKEN_NAME);
+    // }, 1000);
   };
 
   // Context data

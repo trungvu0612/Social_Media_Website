@@ -10,10 +10,6 @@ const ProtectAdmin = ({ component: Component, ...rest }) => {
     authState: { authLoading, isAuthenticated },
   } = useContext(AuthContext);
 
-  const decoded = jwt_decode(localStorage[LOCAL_STORAGE_TOKEN_NAME]);
-
-  console.log(decoded.userId);
-
   if (authLoading) {
     return (
       <div style={{ width: "100%", height: "100vh", position: "absolute" }}>
@@ -30,22 +26,30 @@ const ProtectAdmin = ({ component: Component, ...rest }) => {
       </div>
     );
   }
-  if (decoded.userId === "61600aa78b331c8efe5a3d84") {
-    return (
-      <Route
-        {...rest}
-        render={(props) =>
-          isAuthenticated ? (
-            <>
-              <Component {...rest} {...props} />{" "}
-            </>
-          ) : (
-            <Redirect to="/login" />
-          )
-        }
-      />
-    );
+
+  if (localStorage[LOCAL_STORAGE_TOKEN_NAME]) {
+    const decoded = jwt_decode(localStorage[LOCAL_STORAGE_TOKEN_NAME]);
+    if (decoded.userId === "617526f758a9696ae85205a4") {
+      return (
+        <Route
+          {...rest}
+          render={(props) =>
+            isAuthenticated ? (
+              <>
+                <Component {...rest} {...props} />{" "}
+              </>
+            ) : (
+              <Redirect to="/login" />
+            )
+          }
+        />
+      );
+    }
+    console.log(decoded.userId);
+  } else {
+    <Redirect to="/login" />;
   }
+
   return <Redirect to="/login" />;
 };
 

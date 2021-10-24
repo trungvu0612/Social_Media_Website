@@ -44,7 +44,7 @@ export default function PostEdit() {
 
     // get userID in local storage
     const decoded = jwt_decode(localStorage[LOCAL_STORAGE_TOKEN_NAME]);
-    console.log(decoded._id);
+    console.log(decoded.userId);
     axios
       .put(`${apiUrl}/update/user/${decoded.userId}`, formData)
       .then((response) => {

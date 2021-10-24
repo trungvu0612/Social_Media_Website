@@ -4,15 +4,13 @@ import { AuthContext } from "../../contexts/authContext";
 import Ripple from "@bit/joshk.react-spinners-css.ripple";
 import jwt_decode from "jwt-decode";
 import { LOCAL_STORAGE_TOKEN_NAME } from "../../contexts/constants";
+import Header from "../header";
 
 const CheckRedirect = ({ component: Component, ...rest }) => {
   const {
     authState: { authLoading, isAuthenticated },
   } = useContext(AuthContext);
 
-  const decoded = jwt_decode(localStorage[LOCAL_STORAGE_TOKEN_NAME]);
-
-  console.log(decoded.userId);
   if (authLoading) {
     return (
       <div style={{ width: "100%", height: "100vh", position: "absolute" }}>
@@ -33,14 +31,25 @@ const CheckRedirect = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={(props) =>
-        isAuthenticated ? (
-          <>
-            <Component {...rest} {...props} />{" "}
-          </>
-        ) : (
-          <Redirect to="/login" />
-        )
+      render={
+        // (props) => {
+        //   if (isAuthenticated) {
+        //     <>
+        //       <Component {...rest} {...props} />{" "}
+        //     </>;
+        //   } else {
+        //     <Redirect to="/login" />;
+        //   }
+        // }
+
+        (props) =>
+          isAuthenticated ? (
+            <>
+              <Component {...rest} {...props} />{" "}
+            </>
+          ) : (
+            <Redirect to="/login" />
+          )
       }
     />
   );

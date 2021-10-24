@@ -97,6 +97,7 @@
                 border-radius: 50px;
                 text-decoration: none;
                 display: inline-block;
+                cursor: pointer;
                 &:hover {
                     background-color: $btn_play;
                     transition: 0.5s;

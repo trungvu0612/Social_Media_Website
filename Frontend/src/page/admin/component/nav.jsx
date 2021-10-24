@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../../contexts/authContext";
+import { apiUpload } from "../../../contexts/constants";
 
 export default function Nav() {
   const {
@@ -19,7 +20,7 @@ export default function Nav() {
         <i className="bx bx-search" />
       </div>
       <div className="profile-details">
-        <img src={userAvatar} alt="" />
+        <img src={`${apiUpload}${userAvatar}`} alt="" />
         <span className="admin_name">{userName}</span>
       </div>
     </nav>

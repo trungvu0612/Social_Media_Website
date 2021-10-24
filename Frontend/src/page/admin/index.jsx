@@ -13,8 +13,16 @@ export default function Admin() {
   const {
     authState: {
       user: { userName, userAvatar },
+      isAuthenticated,
     },
+    logoutUser,
   } = useContext(AuthContext);
+
+  const logout = () => {
+    logoutUser();
+
+    console.log(isAuthenticated);
+  };
 
   return (
     <div className="admin">
@@ -42,8 +50,8 @@ export default function Admin() {
               <span className="links_name">Posts</span>
             </NavLink>
           </li>
-          <li className="log_out">
-            <NavLink to={"/"}>
+          <li className="log_out" onClick={logout}>
+            <NavLink to={"/login"}>
               <i className="bx bx-log-out" />
               <span className="links_name">Log out</span>
             </NavLink>
