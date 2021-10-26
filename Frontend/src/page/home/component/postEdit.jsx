@@ -30,7 +30,6 @@ export default function PostEdit() {
   const onChangeUserImg = function (event) {
     setUpdatedUser({ ...updatedUser, userAvatar: event.target.files[0] });
   };
-  console.log(updatedUser);
 
   const onSubmitUpdate = function (event) {
     event.preventDefault();
@@ -44,24 +43,27 @@ export default function PostEdit() {
 
     // get userID in local storage
     const decoded = jwt_decode(localStorage[LOCAL_STORAGE_TOKEN_NAME]);
-    console.log(decoded.userId);
-    axios
-      .put(`${apiUrl}/update/user/${decoded.userId}`, formData)
-      .then((response) => {
-        if (updatedUser.userPassword == updatedUser.confirmPassword) {
-          console.log(response.data);
-          if (response.data.success) {
-            dispatch({ type: UPDATE_USER, payload: response.data.user });
-            return response.data;
+    if (updatedUser.userPassword == updatedUser.confirmPassword) {
+      axios
+        .put(`${apiUrl}/update/user/${decoded.userId}`, formData)
+        .then((response) => {
+          if (updatedUser.userPassword == updatedUser.confirmPassword) {
+            console.log(response.data);
+            if (response.data.success) {
+              dispatch({ type: UPDATE_USER, payload: response.data.user });
+              return response.data;
+            }
           }
-        }
-        alert("Passwords do not match");
-      })
-      .catch((error) => {
-        return error.response
-          ? error.response
-          : { success: false, message: "Server error" };
-      });
+          alert("Passwords do not match");
+        })
+        .catch((error) => {
+          return error.response
+            ? error.response
+            : { success: false, message: "Server error" };
+        });
+    } else {
+      alert("Passwords do not match");
+    }
   };
 
   return (

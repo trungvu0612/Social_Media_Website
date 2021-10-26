@@ -1,19 +1,14 @@
 import React from "react";
 
-export default function Listmusic() {
+export default function Listmusic({
+  music: { musicName, musicAuthor, musicImg, musicFile },
+}) {
   return (
     <div className="like">
-      <img
-        className="img"
-        src="/img/img_music/khong_loi/acoustic/acousticbreeze.jpg"
-        alt=""
-      />
-      <h5 className="name">Breeze</h5>
-      <h5 className="author">Benjamin Tissot </h5>
-      <audio
-        className="audio"
-        src="/music/khong_loi/acoustic/bensound-acousticbreeze.mp3"
-      />
+      <img className="img" src={musicImg} alt="" />
+      <h5 className="name">{musicName}</h5>
+      <h5 className="author">{musicAuthor}</h5>
+      <audio className="audio" src={musicFile} />
       <button className="item-create">Create post</button>
       <button className="item-create">Download</button>
     </div>

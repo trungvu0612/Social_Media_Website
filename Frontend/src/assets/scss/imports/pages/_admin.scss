@@ -425,7 +425,7 @@
                         .like {
                             width: calc(90%/4 - 5px);
                             margin: 0px 16px;
-                            height: 270px;
+                            height: auto;
                             position: relative;
                             margin-bottom: 20px;
                             display: flex;
@@ -450,12 +450,14 @@
                                 margin-bottom: 10px;
                                 font-weight: bold;
                                 color: $gray_text;
+                                text-align: center;
                             }
                             .author {
-                                font-size: 15px;
+                                font-size: 14px;
                                 margin-bottom: 5px;
                                 font-weight: bold;
                                 color: $textfield;
+                                text-align: center;
                             }
                             .item-create {
                                 font-size: 14px;
@@ -683,7 +685,7 @@
                     .category__music {
                         .like {
                             width: calc(90%/4 - 5px);
-                            margin: 0px 10px;
+                            margin: 10px 10px;
                         }
                     }
                 }

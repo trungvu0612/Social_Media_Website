@@ -3,6 +3,19 @@ const router = express.Router();
 const Music = require("../models/musics");
 const uploadMp3Test = require("../middleware/MP3");
 
+// @route GET api/posts
+// @desc Get posts
+// @access Private
+router.get("/", async(req, res) => {
+    try {
+        const musics = await Music.find(req);
+        res.json({ success: true, musics });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ success: false, message: "Internal server error" });
+    }
+});
+
 // @route PUT api/musics
 // @desc input music to database
 // @access Public
@@ -23,7 +36,7 @@ router.post("/upload", middlewareMp3, async(req, res) => {
     req.body;
 
     // Simple validation
-    if (!musicName || !musicAuthor)
+    if (!musicName || !musicAuthor || !musicCategory)
         return res
             .status(400)
             .json({ success: false, message: "Missing information" });

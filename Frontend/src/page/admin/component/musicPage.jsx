@@ -25,6 +25,7 @@ export default function MusicPage() {
   const onChangeMusicForm = function (event) {
     setuploadMusic({ ...uploadMusic, [event.target.name]: event.target.value });
   };
+  console.log(uploadMusic);
 
   //get img file as user input
   const onChangeFileImgForm = function (event) {
@@ -54,7 +55,8 @@ export default function MusicPage() {
         console.log(response.data);
         if (response.data.success) {
           dispatch({ type: ADD_MUSIC, payload: response.data.post });
-          document.getElementById("upload").reset();
+
+          alert(response.data.message);
           return response.data;
         }
         if (!response.success) {
@@ -133,6 +135,7 @@ export default function MusicPage() {
 
                 <div className="checkbox__item">
                   <select name="musicCategory" onChange={onChangeMusicForm}>
+                    <option>choose music genre</option>
                     <option value="acoustic">acoustic</option>
                     <option value="cinematic">cinematic</option>
                     <option value="edm">edm</option>

@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function PopupMusic() {
+  // close popup
   function outPopupMusic() {
     const popUpEdit = document.querySelector(".edit-popup");
     popUpEdit.classList.remove("active");
@@ -12,7 +13,7 @@ export default function PopupMusic() {
         <div id="outbtn" onClick={outPopupMusic}>
           X
         </div>
-        <h3 className="title">Upload music</h3>
+        <h3 className="title">Update music</h3>
         <div className="left-right">
           <div className="left">
             <div className="left__items">
