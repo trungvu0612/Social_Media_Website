@@ -1,38 +1,42 @@
-import React from "react";
-
+import React, { useContext, useEffect } from "react";
+import { MusicContext } from "../../contexts/musicContext";
+import ListMusic from "./listmusic";
+import Ripple from "@bit/joshk.react-spinners-css.ripple";
 export default function Rock() {
-  return (
-    <div className="category__music rock">
-      <div className="like">
-        <img
-          className="img"
-          src="/img/img_music/khong_loi/acoustic/cute.jpg"
-          alt=""
-        />
-        <h5 className="name">Breeze</h5>
-        <h5 className="author">Benjamin Tissot </h5>
-        <audio
-          className="audio"
-          src="/music/khong_loi/acoustic/bensound-acousticbreeze.mp3"
-        />
-        <button className="item-create">Create post</button>
-        <button className="item-create">Download</button>
+  const {
+    musicState: { music, musics, musicsLoading },
+    getMusics,
+  } = useContext(MusicContext);
+  // start get all musics
+  useEffect(() => getMusics(), []);
+
+  const getCategory = musics.filter((music) => {
+    return music.musicCategory == "rock";
+  });
+  console.log(getCategory);
+
+  if (musicsLoading) {
+    return (
+      <div style={{ width: "100%", height: "100vh", position: "absolute" }}>
+        <Ripple
+          style={{
+            top: "50%",
+            left: "50%",
+            position: "relative",
+            transform: "translate(-50%, -50%)",
+          }}
+          color="#be97e8"
+        />{" "}
+        ;{" "}
       </div>
-      <div className="like">
-        <img
-          className="img"
-          src="/img/img_music/khong_loi/acoustic/acousticbreeze.jpg"
-          alt=""
-        />
-        <h5 className="name">Breeze</h5>
-        <h5 className="author">Benjamin Tissot </h5>
-        <audio
-          className="audio"
-          src="/music/khong_loi/acoustic/bensound-acousticbreeze.mp3"
-        />
-        <button className="item-create">Create post</button>
-        <button className="item-create">Download</button>
+    );
+  } else {
+    return (
+      <div className="category__music acoustic">
+        {getCategory.map((music) => (
+          <ListMusic music={music} />
+        ))}
       </div>
-    </div>
-  );
+    );
+  }
 }
