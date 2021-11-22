@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  apiUpload,
   apiUploadFileMp3,
   apiUploadImgMp3,
 } from "../../../../contexts/constants";

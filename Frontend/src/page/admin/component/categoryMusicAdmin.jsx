@@ -45,7 +45,7 @@ export default function CategoryMusicAdmin() {
             Rock
           </NavLink>
           <NavLink to={`${path}/world`} className="category__list-item">
-            World/orthers
+            World/others
           </NavLink>
           <NavLink to={`${path}/edm`} className="category__list-item">
             EDM
