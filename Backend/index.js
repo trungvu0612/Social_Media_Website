@@ -7,6 +7,7 @@ const cors = require("cors");
 const connectDb = require("./src/resource/config/db.config");
 const updateUser = require("./src/resource/routers/update");
 const music = require("./src/resource/routers/music");
+const posts = require("./src/resource/routers/post");
 
 // HTTP loggers
 app.use(morgan("combined"));
@@ -21,9 +22,14 @@ app.use(cors());
 // load img with browser
 app.use("/uploadFile", express.static("uploadFile"));
 
+// api auth
 app.use("/api/auth", authRoute);
+// api update user
 app.use("/api/update/user", updateUser);
+// api push music to db
 app.use("/api/music", music);
+// api push posts to db
+app.use("/api/posts", posts);
 
 // address
 const PORT = 5000;

@@ -6,8 +6,8 @@ const User = require("../models/users");
 const upload = require("../middleware/upload");
 const path = require("path");
 
-// @route GET api/posts
-// @desc Get posts
+// @route GET api/users
+// @desc Get users
 // @access Private
 router.get("/", verifyToken, async(req, res) => {
     try {
