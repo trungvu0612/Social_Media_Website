@@ -574,44 +574,48 @@
                         width: 30%;
                     }
                 }
-                .post-list {
+                .list__post-admin {
                     display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    margin-bottom: 10px;
-                    padding: 2px 5px;
-                    border-radius: 10px;
-                    background-color: $background_music;
-                    cursor: pointer;
-                    .owner {
-                        width: 20%;
-                        margin: 0px;
-                    }
-                    .contents {
-                        width: 50%;
-                        margin: 0px;
-                        .content {
-                            text-overflow: ellipsis; //thêm 3 dấu chấm ở cuối
-                            -webkit-line-clamp: 3; // số dòng muốn hiển thị
-                            -webkit-box-orient: vertical;
-                            display: -webkit-box;
-                            overflow: hidden;
+                    flex-direction: column-reverse;
+                    .post-list {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        margin-bottom: 10px;
+                        padding: 2px 5px;
+                        border-radius: 10px;
+                        background-color: $background_music;
+                        cursor: pointer;
+                        .owner {
+                            width: 140px;
+                            margin: 0px;
                         }
-                    }
-                    .like {
-                        width: 30%;
-                        margin: 0px;
-                        &:hover {
-                            background-color: $background_music;
+                        .contents {
+                            width: 360px;
+                            margin: 0px;
+                            .content {
+                                text-overflow: ellipsis; //thêm 3 dấu chấm ở cuối
+                                -webkit-line-clamp: 3; // số dòng muốn hiển thị
+                                -webkit-box-orient: vertical;
+                                display: -webkit-box;
+                                overflow: hidden;
+                            }
                         }
-                    }
-                    .submit__btn {
-                        background-color: rgb(255, 21, 21);
-                        transition: $transition_set;
-                        opacity: 1;
-                        &:hover {
+                        .like {
+                            width: 300px;
+                            margin: 0px;
+                            &:hover {
+                                background-color: $background_music;
+                            }
+                        }
+                        .submit__btn {
+                            background-color: rgb(255, 21, 21);
                             transition: $transition_set;
-                            opacity: 0.6;
+                            opacity: 1;
+                            &:hover {
+                                transition: $transition_set;
+                                opacity: 0.6;
+                            }
                         }
                     }
                 }
