@@ -155,6 +155,10 @@
                 top: 0;
                 left: 27%;
                 z-index: 100;
+                .postdisplay {
+                    display: flex;
+                    flex-direction: column-reverse;
+                }
                 .postfavrorite {
                     .favorites {
                         width: 100%;

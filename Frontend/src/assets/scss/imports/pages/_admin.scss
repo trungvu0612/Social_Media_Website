@@ -446,6 +446,10 @@
                                 margin-bottom: 10px;
                             }
                             .name {
+                                width: 100%;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
                                 font-size: 16px;
                                 margin-bottom: 10px;
                                 font-weight: bold;
@@ -454,6 +458,10 @@
                                 padding: 0px 5px;
                             }
                             .author {
+                                width: 100%;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
                                 font-size: 14px;
                                 margin-bottom: 5px;
                                 font-weight: bold;

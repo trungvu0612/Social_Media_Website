@@ -34,12 +34,26 @@ router.post("/", upload.array(), async(req, res) => {
         res.json({
             success: true,
             message: "Post created successfully",
+            newPost,
         });
     } catch (error) {
         console.log(error);
         res
             .status(500)
             .json({ success: false, message: "Internal server error !!!!" });
+    }
+});
+
+// @route GET api/posts
+// @desc Get posts
+// @access Private
+router.get("/datapost", async(req, res) => {
+    try {
+        const posts = await Post.find(req).populate("music").populate("user");
+        res.json({ success: true, posts });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ success: false, message: "Internal server error" });
     }
 });
 module.exports = router;

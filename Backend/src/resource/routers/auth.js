@@ -7,6 +7,8 @@ const verifyToken = require("../middleware/verifyAuth");
 const upload = require("../middleware/upload");
 const path = require("path");
 const mongoose = require("mongoose");
+const multer = require("multer");
+const uploadlogin = multer();
 
 // @route GET api/auth
 // @desc Check if user is logged in
@@ -108,7 +110,7 @@ router.post("/register", upload.single("userAvatar"), async(req, res) => {
 // Login user
 // @access public
 
-router.post("/login", async(req, res) => {
+router.post("/login", uploadlogin.array(), async(req, res) => {
     const { userEmail, userPassword } = req.body;
 
     // Simple validation

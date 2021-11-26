@@ -1,6 +1,10 @@
 import axios from "axios";
 import { createContext, useReducer } from "react";
-import { POSTS_LOADED_FAIL, POSTS_LOADED_SUCCESS } from "../contexts/constants";
+import {
+  apiPost,
+  POSTS_LOADED_FAIL,
+  POSTS_LOADED_SUCCESS,
+} from "../contexts/constants";
 import { postReducer } from "../reducers/postReducer";
 
 import { apiUrl } from "./constants";
@@ -18,7 +22,7 @@ const PostContextProvider = ({ children }) => {
   // Get all posts
   const getPosts = async () => {
     try {
-      const response = await axios.get(`${apiUrl}/posts`);
+      const response = await axios.get(`${apiPost}/datapost`);
       if (response.data.success) {
         dispatch({
           type: POSTS_LOADED_SUCCESS,

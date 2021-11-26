@@ -1,9 +1,5 @@
 import React, { useContext } from "react";
-import {
-  apiUploadFileMp3,
-  apiUploadImgMp3,
-  MUSIC_CLICK,
-} from "../../contexts/constants";
+import { apiUploadFileMp3, apiUploadImgMp3 } from "../../contexts/constants";
 import { MusicContext } from "../../contexts/musicContext";
 
 export default function ListMusic({

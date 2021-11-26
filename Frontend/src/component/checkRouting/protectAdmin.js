@@ -29,7 +29,7 @@ const ProtectAdmin = ({ component: Component, ...rest }) => {
 
   if (localStorage[LOCAL_STORAGE_TOKEN_NAME]) {
     const decoded = jwt_decode(localStorage[LOCAL_STORAGE_TOKEN_NAME]);
-    if (decoded.userId === "617526f758a9696ae85205a4") {
+    if (decoded.userId === "61a116542b045ccba68bd438") {
       return (
         <Route
           {...rest}

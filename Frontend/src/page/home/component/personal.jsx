@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function personal() {
+export default function Personal() {
   return (
     <div className="postperson post-list post-list-1">
       <div className="post__items">

@@ -1,31 +1,34 @@
 import React from "react";
+import {
+  apiUpload,
+  apiUploadFileMp3,
+  apiUploadImgMp3,
+} from "../contexts/constants";
 
 export default function PostItems({
-  owneravatar,
-  postowner,
-  content,
-  imgmusic,
-  namemusic,
-  authormusic,
-  linkmusic,
+  post: {
+    user: { userName, userAvatar },
+    postContent,
+    music: { musicName, musicImg, musicAuthor, musicFile },
+  },
 }) {
   return (
     <div className="post__items">
       <div className="owner">
-        <img src={owneravatar} alt="" />
-        <a href="#">{postowner}</a>
+        <img src={`${apiUpload}${userAvatar}`} alt="" />
+        <a href="#">{userName}</a>
       </div>
       <div className="contents">
-        <span className="content">{content}</span>
+        <span className="content">{postContent}</span>
       </div>
       <div className="like">
-        <img src={imgmusic} className="img" alt="" />
-        <h4 className="name">{namemusic}</h4>
-        <h4 className="author">{authormusic}</h4>
+        <img src={`${apiUploadImgMp3}${musicImg}`} className="img" alt="" />
+        <h4 className="name">{musicName}</h4>
+        <h4 className="author">{musicAuthor}</h4>
         <a href="#">
           <i className="fa fa-heart" />
         </a>
-        <audio className="audio" src={linkmusic} />
+        <audio className="audio" src={`${apiUploadFileMp3}${musicFile}`} />
       </div>
       <div className="comment">
         <form action>
