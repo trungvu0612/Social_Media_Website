@@ -2,23 +2,27 @@ import React, { useContext, useEffect } from "react";
 import PostItems from "../../../component/postItems";
 import { PostContext } from "../../../../src/contexts/postContext";
 import Ripple from "@bit/joshk.react-spinners-css.ripple";
-import AuthContext from "../../../contexts/authContext";
+import { AuthContext } from "../../../contexts/authContext";
 
-export default function personal() {
+export default function PostPerson() {
   // get global data by useContext
   const {
     postState: { posts, postsLoading },
     getPosts,
   } = useContext(PostContext);
   const {
-    authState: { user: _id },
+    authState: {
+      user: { _id: userId },
+    },
   } = useContext(AuthContext);
 
-  console.log(_id);
+  // start get all posts
+  useEffect(() => getPosts(), []);
+  console.log(userId);
 
   // check id for render post data
   const checkIdpost = posts.filter((post) => {
-    return posts.user._id === _id;
+    return post.user._id === userId;
   });
 
   if (postsLoading) {
@@ -39,7 +43,7 @@ export default function personal() {
   } else {
     return (
       <div className="postperson post-list post-list-1">
-        {posts.map((post) => (
+        {checkIdpost.map((post) => (
           <PostItems post={post} />
         ))}
       </div>

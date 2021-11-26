@@ -12,7 +12,6 @@ import PostFavorite from "./component/postFavorite";
 import PostPerson from "./component/postPerson";
 import { NavLink, useRouteMatch, Switch, Route } from "react-router-dom";
 import MenuHistory from "./component/menuHistory";
-import { AuthContext } from "../../contexts/authContext";
 
 export default function Home() {
   let { path } = useRouteMatch();

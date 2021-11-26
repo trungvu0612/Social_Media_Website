@@ -1,12 +1,7 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../../contexts/authContext";
-import {
-  ADD_POST,
-  apiPost,
-  apiUrl,
-  LOCAL_STORAGE_TOKEN_NAME,
-} from "../../../contexts/constants";
+import { ADD_POST, apiUrl } from "../../../contexts/constants";
 import { MusicContext } from "../../../contexts/musicContext";
 import { PostContext } from "../../../contexts/postContext";
 
