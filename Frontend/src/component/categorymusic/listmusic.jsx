@@ -1,12 +1,19 @@
-import React from "react";
-import { apiUploadFileMp3, apiUploadImgMp3 } from "../../contexts/constants";
+import React, { useContext } from "react";
+import {
+  apiUploadFileMp3,
+  apiUploadImgMp3,
+  MUSIC_CLICK,
+} from "../../contexts/constants";
+import { MusicContext } from "../../contexts/musicContext";
 
 export default function ListMusic({
-  music: { musicName, musicAuthor, musicImg, musicFile },
+  music: { _id, musicName, musicAuthor, musicImg, musicFile },
 }) {
-  function createPost() {
+  const { findIDMusic } = useContext(MusicContext);
+  function createPost(musicId) {
     const popupCreate = document.querySelector(".create-popup");
     popupCreate.classList.add("active");
+    findIDMusic(musicId);
   }
 
   return (
@@ -15,7 +22,7 @@ export default function ListMusic({
       <h5 className="name">{musicName}</h5>
       <h5 className="author">{musicAuthor}</h5>
       <audio className="audio" src={`${apiUploadFileMp3}${musicFile}`} />
-      <button className="item-create" onClick={createPost}>
+      <button className="item-create" onClick={createPost.bind(this, _id)}>
         Create post
       </button>
       <button className="item-create">Download</button>

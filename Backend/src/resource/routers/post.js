@@ -3,12 +3,14 @@ const router = express.Router();
 const Post = require("../models/posts");
 const User = require("../models/users");
 const Music = require("../models/musics");
+const multer = require("multer");
+const upload = multer();
 
 // @route POST api/posts
 // @desc POST posts
 // @access Private
-router.post("/", async(req, res) => {
-    const { user, postContent, music } = req.body;
+router.post("/", upload.array(), async(req, res) => {
+    const { postContent } = req.body;
 
     // Simple validation
     if (!postContent)
@@ -32,7 +34,6 @@ router.post("/", async(req, res) => {
         res.json({
             success: true,
             message: "Post created successfully",
-            newPost,
         });
     } catch (error) {
         console.log(error);

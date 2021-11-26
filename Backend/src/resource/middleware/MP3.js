@@ -17,18 +17,6 @@ const storage = multer.diskStorage({
             null,
             new Date().toISOString().replace(/:/g, "-") + fileMP3.originalname
         );
-        // if (fileMP3.mimetype === "audio/mpeg") {
-        //     cb(
-        //         null,
-        //         new Date().toISOString().replace(/:/g, "-") + fileMP3.originalname
-        //     );
-        // }
-        // if (fileMP3.mimetype === "image/jpeg" || fileMP3.mimetype === "image/png") {
-        //     cb(
-        //         null,
-        //         new Date().toISOString().replace(/:/g, "-") + fileMP3.originalname
-        //     );
-        // }
     },
 });
 

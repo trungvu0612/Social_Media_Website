@@ -8,13 +8,19 @@ const connectDb = require("./src/resource/config/db.config");
 const updateUser = require("./src/resource/routers/update");
 const music = require("./src/resource/routers/music");
 const posts = require("./src/resource/routers/post");
+const multer = require("multer");
+const upload = multer();
 
 // HTTP loggers
 app.use(morgan("combined"));
 
 connectDb();
 
-app.use(express.urlencoded());
+// for parsing application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }));
+
+// for parsing multipart/form-data
+app.use(express.static("public"));
 
 app.use(express.json());
 app.use(cors());

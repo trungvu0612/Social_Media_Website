@@ -14,7 +14,6 @@ export default function Acoustic() {
   const getCategory = musics.filter((music) => {
     return music.musicCategory == "acoustic";
   });
-  console.log(getCategory);
 
   if (musicsLoading) {
     return (

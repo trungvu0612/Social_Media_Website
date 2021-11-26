@@ -1,4 +1,14 @@
-import React from "react";
+import axios from "axios";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../../../contexts/authContext";
+import {
+  ADD_POST,
+  apiPost,
+  apiUrl,
+  LOCAL_STORAGE_TOKEN_NAME,
+} from "../../../contexts/constants";
+import { MusicContext } from "../../../contexts/musicContext";
+import { PostContext } from "../../../contexts/postContext";
 
 export default function PopupCreate() {
   // close popup
@@ -6,80 +16,95 @@ export default function PopupCreate() {
     const popUpEdit = document.querySelector(".create-popup");
     popUpEdit.classList.remove("active");
   }
+  // change state context post and get data
+  const { dispatch } = useContext(PostContext);
+  const {
+    authState: {
+      user: { _id: userId },
+    },
+  } = useContext(AuthContext);
+  const {
+    musicState: {
+      music: { _id: musicId },
+    },
+  } = useContext(MusicContext);
+  // save the musicId value in a new variable
 
+  // local state
+  const [inputPost, setinputPost] = useState({
+    user: userId,
+    postContent: "",
+    music: musicId,
+  });
+
+  const getMusicId = musicId;
+
+  // get data as user input
+  const onChangePost = (event) => {
+    setinputPost({ ...inputPost, [event.target.name]: event.target.value });
+  };
+
+  const createPost = (e) => {
+    e.preventDefault();
+    console.log(inputPost.music);
+    // initialize formdata to store values in state and assign those values to name in input
+    const formData = new FormData();
+    formData.append("user", inputPost.user);
+    formData.append("postContent", inputPost.postContent);
+    formData.append("music", getMusicId);
+    console.log(formData);
+    axios
+      .post(`${apiUrl}/posts`, formData)
+      .then((response) => {
+        console.log("t");
+        console.log(response.data);
+        if (response.data.success) {
+          dispatch({ type: ADD_POST, payload: response.data.post });
+
+          return response.data;
+        }
+        if (!response.success) {
+          alert(response.data.message);
+        }
+      })
+      .catch((error) => {
+        if (error.response) return error.response;
+        else return { success: false, message: error.message };
+      });
+  };
   return (
     <div className="create-popup">
       <div className="post__items">
         <div id="outbtn" onClick={outPopupMusic}>
           X
         </div>
-        <h3 className="title">Update music</h3>
-        <div className="left-right">
-          <div className="left">
-            <div className="left__items">
-              <h4>Name Music</h4>
-            </div>
-            <div className="left__items">
-              <h4>Image</h4>
-            </div>
-            <div className="left__items">
-              <h4>Author</h4>
-            </div>
-            <div className="left__items">
-              <h4>Link</h4>
-            </div>
-            <div className="left__items">
-              <h4>Category</h4>
-            </div>
+        <h3 className="title">create your new post</h3>
+        <form onSubmit={createPost} enctype="multipart/form-data">
+          <div className="brise-text">
+            <textarea
+              name="postContent"
+              id=""
+              cols="30"
+              rows="10"
+              value={inputPost.postContent}
+              onChange={onChangePost}
+              required
+            ></textarea>
+
+            <label>
+              How do you feel about the song or how are you feeling right now?
+            </label>
           </div>
-          <form action>
-            <div className="right">
-              <div className="right__items">
-                <input
-                  className="input_info"
-                  type="text"
-                  placeholder="enter your new name"
-                />
-              </div>
-              <div className="right__items">
-                <input type="file" />
-              </div>
-              <div className="right__items">
-                <input
-                  className="input_info"
-                  type="text"
-                  placeholder="enter your new phone"
-                />
-              </div>
-              <div className="right__items">
-                <input type="file" />
-              </div>
-              <div className="right__items checkbox">
-                <div className="checkbox">
-                  <select>
-                    <option value="Acoustic/Fork">Acoustic/Fork</option>
-                    <option value="Cinematic">Cinematic</option>
-                    <option value="Pop">Pop</option>
-                    <option value="Electronic">Electronic</option>
-                    <option value="Urban/groove">Urban/groove</option>
-                    <option value="Jazz">Jazz</option>
-                    <option value="Rock">Rock</option>
-                    <option value="World/orthers">World/orthers</option>
-                    <option value="EDM">EDM</option>
-                  </select>
-                </div>
-              </div>
-              <div className="submit">
-                <input
-                  type="submit"
-                  className="submit__btn"
-                  value="Save"
-                  defaultValue="Upload"
-                />
-              </div>
-            </div>
-          </form>
-        </div>
+          <div className="submit">
+            <input
+              type="submit"
+              className="submit__btn"
+              value="Create"
+              defaultValue="Upload"
+              onClick={outPopupMusic}
+            />
+          </div>
+        </form>
       </div>
     </div>
   );

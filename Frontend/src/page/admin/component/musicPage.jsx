@@ -18,9 +18,6 @@ export default function MusicPage() {
     musicCategory: "",
   });
 
-  // //Router
-  // const history = useHistory();
-
   // get data as user input
   const onChangeMusicForm = function (event) {
     setuploadMusic({ ...uploadMusic, [event.target.name]: event.target.value });

@@ -39,3 +39,17 @@ export const ADD_MUSIC = "ADD_MUSIC";
 export const DELETE_MUSIC = "DELETE_MUSIC";
 export const FIND_MUSIC = "FIND_MUSIC";
 export const MUSICS_LOADED_FAIL = "MUSICS_LOADED_FAIL";
+export const MUSIC_CLICK = "MUSIC_CLICK";
+
+// *** POST ***
+// api POST a new post to db
+export const apiPost =
+    process.env.NODE_ENV !== "production" ?
+    `${api}api/posts` :
+    "https://sleepy-inlet-56101.herokuapp.com/api";
+
+// state post in context
+export const POSTS_LOADED_SUCCESS = "POSTS_LOADED_SUCCESS";
+export const ADD_POST = "ADD_POST";
+export const FIND_POST = "FIND_POST";
+export const POSTS_LOADED_FAIL = "MUSICS_LOADED_FAIL";

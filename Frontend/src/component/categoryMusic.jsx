@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Acoustic from "./categorymusic/acoustic";
 import Cinematic from "./categorymusic/cinematic";
 import Edm from "./categorymusic/edm";
@@ -9,6 +9,7 @@ import Rock from "./categorymusic/rock";
 import Urban from "./categorymusic/urban";
 import World from "./categorymusic/world";
 import { NavLink, Route, Switch, useRouteMatch } from "react-router-dom";
+import { MusicContext } from "../contexts/musicContext";
 
 export default function CategoryMusic() {
   let { path } = useRouteMatch();
