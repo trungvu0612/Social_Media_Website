@@ -1,18 +1,34 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   apiUpload,
   apiUploadFileMp3,
   apiUploadImgMp3,
 } from "../contexts/constants";
 import { Link } from "react-router-dom";
+import { MusicContext } from "../contexts/musicContext";
 
 export default function PostItems({
   post: {
     user: { userName, userAvatar },
     postContent,
-    music: { musicName, musicImg, musicAuthor, musicFile },
+    music: { _id, musicName, musicImg, musicAuthor, musicFile },
   },
 }) {
+  // set  music state at MusicContext to data music selected
+  const { getIdMusicHome } = useContext(MusicContext);
+  const getMusicSelected = (music) => {
+    getIdMusicHome(music);
+    console.log(music);
+  };
+
+  // get data form music state
+  // const {
+  //   musicState: {
+  //     music: { musicFile: musicUrl },
+  //   },
+  // } = useContext(MusicContext);
+
+  // console.log(musicUrl);
   return (
     <div className="post__items">
       <div className="owner">
@@ -22,7 +38,7 @@ export default function PostItems({
       <div className="contents">
         <span className="content">{postContent}</span>
       </div>
-      <div className="like">
+      <div onClick={getMusicSelected.bind(this, _id)} className="like">
         <img src={`${apiUploadImgMp3}${musicImg}`} className="img" alt="" />
         <h4 className="name">{musicName}</h4>
         <h4 className="author">{musicAuthor}</h4>

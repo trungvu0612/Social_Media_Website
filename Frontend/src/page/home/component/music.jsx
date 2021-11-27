@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function Music() {
+  const [musicPlaying, setMusicPlaying] = useState(false);
+  console.log(musicPlaying);
+  function playMusic() {
+    const urlMusic = document.querySelector(".progress__song");
+    if (!musicPlaying) {
+      urlMusic.play();
+      setMusicPlaying(!musicPlaying);
+    } else {
+      urlMusic.pause();
+      setMusicPlaying(!musicPlaying);
+    }
+  }
+
   return (
     <section className="music">
       <div className="music__title">
@@ -28,7 +41,7 @@ export default function Music() {
         </div>
         <div className="music__audio-btn">
           <i className="fa fa-backward player-prev" />
-          <i className="fa fa-play player-play" />
+          <i onClick={playMusic} className="fa fa-play player-play" />
           <i className="fa fa-forward player-next" />
         </div>
       </div>

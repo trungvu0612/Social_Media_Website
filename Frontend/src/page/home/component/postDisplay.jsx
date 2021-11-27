@@ -31,8 +31,8 @@ export default function PostDisplay() {
   } else {
     return (
       <div className="postdisplay post-list post-list-0 ">
-        {posts.map((post) => (
-          <PostItems post={post} />
+        {posts.map((post, i) => (
+          <PostItems post={post} key={i} />
         ))}
       </div>
     );

@@ -40,6 +40,7 @@ export const DELETE_MUSIC = "DELETE_MUSIC";
 export const FIND_MUSIC = "FIND_MUSIC";
 export const MUSICS_LOADED_FAIL = "MUSICS_LOADED_FAIL";
 export const MUSIC_CLICK = "MUSIC_CLICK";
+export const MUSIC_CLICK_HOME = "MUSIC_CLICK_HOME";
 
 // *** POST ***
 // api POST a new post to db

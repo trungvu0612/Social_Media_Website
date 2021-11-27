@@ -33,8 +33,8 @@ export default function Acoustic() {
   } else {
     return (
       <div className="category__music acoustic">
-        {getCategory.map((music) => (
-          <ListMusic music={music} />
+        {getCategory.map((music, i) => (
+          <ListMusic music={music} key={i} />
         ))}
       </div>
     );

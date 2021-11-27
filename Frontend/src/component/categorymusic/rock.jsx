@@ -34,7 +34,7 @@ export default function Rock() {
     return (
       <div className="category__music acoustic">
         {getCategory.map((music) => (
-          <ListMusic music={music} />
+          <ListMusic music={music} key={music._id} />
         ))}
       </div>
     );

@@ -4,6 +4,7 @@ import {
     MUSICS_LOADED_FAIL,
     MUSICS_LOADED_SUCCESS,
     MUSIC_CLICK,
+    MUSIC_CLICK_HOME,
 } from "../contexts/constants";
 
 export const musicReducer = (state, action) => {
@@ -14,8 +15,15 @@ export const musicReducer = (state, action) => {
                 ...state,
                 musics: [...state.musics, payload],
             };
+
         case MUSIC_CLICK:
             return {...state, music: payload };
+
+        case MUSIC_CLICK_HOME:
+            return {
+                ...state,
+                musicHome: payload,
+            };
 
         case DELETE_MUSIC:
             return {

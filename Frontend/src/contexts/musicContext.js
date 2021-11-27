@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 import { musicReducer } from "../reducers/musicReducer";
 import {
   apiUrl,
@@ -7,6 +7,7 @@ import {
   MUSICS_LOADED_FAIL,
   MUSICS_LOADED_SUCCESS,
   MUSIC_CLICK,
+  MUSIC_CLICK_HOME,
 } from "./constants";
 
 export const MusicContext = createContext();
@@ -14,6 +15,7 @@ export const MusicContext = createContext();
 const MusicContextProvider = ({ children }) => {
   // State
   const [musicState, dispatch] = useReducer(musicReducer, {
+    musicHome: {},
     music: {},
     musics: [],
     musicsLoading: true,
@@ -40,11 +42,21 @@ const MusicContextProvider = ({ children }) => {
     dispatch({ type: MUSIC_CLICK, payload: music });
   };
 
+  useEffect(() => getMusics(), []);
+  // Find id music when user click play music
+  const getIdMusicHome = (musicIdHome) => {
+    const musicGet = musicState.musics.find(
+      (music) => music._id === musicIdHome
+    );
+    dispatch({ type: MUSIC_CLICK_HOME, payload: musicGet });
+  };
+
   // music context data
   const musicContextData = {
     musicState,
     getMusics,
     findIDMusic,
+    getIdMusicHome,
   };
   return (
     <MusicContext.Provider value={musicContextData}>
