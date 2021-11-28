@@ -6,6 +6,7 @@ import {
 } from "../contexts/constants";
 import { Link } from "react-router-dom";
 import { MusicContext } from "../contexts/musicContext";
+import { PostContext } from "../contexts/postContext";
 
 export default function PostItems({
   post: {
@@ -14,11 +15,23 @@ export default function PostItems({
     music: { _id, musicName, musicImg, musicAuthor, musicFile },
   },
 }) {
-  // set  music state at MusicContext to data music selected
+  // get data music by MusicContext
+  const {
+    musicState: { musicsLoading },
+  } = useContext(MusicContext);
+
+  // console.log(musicFirst);
+  // set state for play btn
   const { getIdMusicHome } = useContext(MusicContext);
-  const getMusicSelected = (music) => {
+  const musicError = document.querySelector(".music__noti");
+  const musicPlayed = document.querySelector(".music__audio");
+
+  // set  music state at MusicContext to data music selected
+  const getMusicSelected = async (music) => {
     getIdMusicHome(music);
     console.log(music);
+    musicError.style.display = "none";
+    musicPlayed.style.display = "block";
   };
 
   // get data form music state

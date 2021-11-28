@@ -174,7 +174,7 @@ sidebarBtn.onclick = function() {
 //     handleEvent: function() {
 //         // xử lý khi click nút player
 //         playBtn.onclick = function() {
-//             console.log("123");
+//
 //             if (music.playing) {
 //                 songUrl.play();
 //             } else {

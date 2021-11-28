@@ -21,6 +21,9 @@ const MusicContextProvider = ({ children }) => {
     musicsLoading: true,
   });
 
+  const musicFirst = musicState.musics[musicState.musics.length - 1];
+  console.log(musicFirst);
+
   // Get all posts
   const getMusics = async () => {
     try {
@@ -48,7 +51,10 @@ const MusicContextProvider = ({ children }) => {
     const musicGet = musicState.musics.find(
       (music) => music._id === musicIdHome
     );
-    dispatch({ type: MUSIC_CLICK_HOME, payload: musicGet });
+    dispatch({
+      type: MUSIC_CLICK_HOME,
+      payload: musicGet,
+    });
   };
 
   // music context data
@@ -57,6 +63,7 @@ const MusicContextProvider = ({ children }) => {
     getMusics,
     findIDMusic,
     getIdMusicHome,
+    musicFirst,
   };
   return (
     <MusicContext.Provider value={musicContextData}>

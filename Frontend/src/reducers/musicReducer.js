@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import {
     ADD_MUSIC,
     DELETE_MUSIC,
@@ -6,9 +7,11 @@ import {
     MUSIC_CLICK,
     MUSIC_CLICK_HOME,
 } from "../contexts/constants";
+import { MusicContext } from "../contexts/musicContext";
 
 export const musicReducer = (state, action) => {
     const { type, payload } = action;
+
     switch (type) {
         case ADD_MUSIC:
             return {
@@ -23,6 +26,7 @@ export const musicReducer = (state, action) => {
             return {
                 ...state,
                 musicHome: payload,
+                musicsLoading: true,
             };
 
         case DELETE_MUSIC:
