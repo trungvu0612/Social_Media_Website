@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import PostItems from "../../../component/postItems";
 import { PostContext } from "../../../../src/contexts/postContext";
 import Ripple from "@bit/joshk.react-spinners-css.ripple";
+import { CommentContext } from "../../../contexts/cmtContext";
 
 export default function PostDisplay() {
   // get global data by useContext
@@ -12,6 +13,16 @@ export default function PostDisplay() {
 
   // start get all posts
   useEffect(() => getPosts(), []);
+
+  // // comment function
+  // // get global data by useContext
+  // const {
+  //   commentState: { comments },
+  //   getComments,
+  // } = useContext(CommentContext);
+
+  // // start get all cmts
+  // useEffect(() => getComments(), []);
 
   if (postsLoading) {
     return (

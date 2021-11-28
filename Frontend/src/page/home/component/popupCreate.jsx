@@ -51,8 +51,6 @@ export default function PopupCreate() {
     axios
       .post(`${apiUrl}/posts`, formData)
       .then((response) => {
-        console.log("t");
-        console.log(response.data);
         if (response.data.success) {
           dispatch({ type: ADD_POST, payload: response.data.post });
 

@@ -1,12 +1,16 @@
+import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../contexts/authContext";
+import { CommentContext } from "../contexts/cmtContext";
 import {
+  ADD_FAVORITE,
   apiUpload,
   apiUploadFileMp3,
   apiUploadImgMp3,
+  apiUrl,
 } from "../contexts/constants";
-import { Link } from "react-router-dom";
+import { FavoriteContext } from "../contexts/farvoriteContext";
 import { MusicContext } from "../contexts/musicContext";
-import { PostContext } from "../contexts/postContext";
 
 export default function PostItems({
   post: {
@@ -15,33 +19,48 @@ export default function PostItems({
     music: { _id, musicName, musicImg, musicAuthor, musicFile },
   },
 }) {
-  // get data music by MusicContext
-  const {
-    musicState: { musicsLoading },
-  } = useContext(MusicContext);
-
-  // console.log(musicFirst);
   // set state for play btn
   const { getIdMusicHome } = useContext(MusicContext);
+  const {
+    authState: {
+      user: { _id: userId },
+    },
+  } = useContext(AuthContext);
+
   const musicError = document.querySelector(".music__noti");
   const musicPlayed = document.querySelector(".music__audio");
 
   // set  music state at MusicContext to data music selected
   const getMusicSelected = async (music) => {
     getIdMusicHome(music);
-    console.log(music);
     musicError.style.display = "none";
     musicPlayed.style.display = "block";
   };
+  const { dispatch } = useContext(FavoriteContext);
+  const clickFavorite = (e) => {
+    getMusicSelected.bind(this, _id);
+    const formData = new FormData();
+    formData.append("user", userId);
+    formData.append("music", _id);
+    console.log(userId, _id);
+    axios
+      .post(`${apiUrl}/favorites`, formData)
+      .then((response) => {
+        if (response.data.success) {
+          dispatch({ type: ADD_FAVORITE, payload: response.data.favorite });
 
-  // get data form music state
-  // const {
-  //   musicState: {
-  //     music: { musicFile: musicUrl },
-  //   },
-  // } = useContext(MusicContext);
+          return response.data;
+        }
+        if (!response.success) {
+          alert(response.data.message);
+        }
+      })
+      .catch((error) => {
+        if (error.response) return error.response;
+        else return { success: false, message: error.message };
+      });
+  };
 
-  // console.log(musicUrl);
   return (
     <div className="post__items">
       <div className="owner">
@@ -55,9 +74,14 @@ export default function PostItems({
         <img src={`${apiUploadImgMp3}${musicImg}`} className="img" alt="" />
         <h4 className="name">{musicName}</h4>
         <h4 className="author">{musicAuthor}</h4>
-        <a href="#">
-          <i className="fa fa-heart" />
-        </a>
+
+        <form onClick={clickFavorite} enctype="multipart/form-data">
+          <a>
+            <input style={{ display: "none" }} type="submit" />
+            <i className="fa fa-heart" />
+          </a>
+        </form>
+
         <audio className="audio" src={`${apiUploadFileMp3}${musicFile}`} />
       </div>
       <div className="comment">

@@ -5,9 +5,10 @@ import {
     MUSICS_LOADED_FAIL,
     MUSICS_LOADED_SUCCESS,
     MUSIC_CLICK,
+    MUSIC_CLICK_FAVORITE,
     MUSIC_CLICK_HOME,
+    UPDATE_MUSIC,
 } from "../contexts/constants";
-import { MusicContext } from "../contexts/musicContext";
 
 export const musicReducer = (state, action) => {
     const { type, payload } = action;
@@ -26,8 +27,17 @@ export const musicReducer = (state, action) => {
             return {
                 ...state,
                 musicHome: payload,
-                musicsLoading: true,
             };
+
+        case MUSIC_CLICK_FAVORITE:
+            return {
+                ...state,
+                musicFavorite: payload,
+            };
+        case UPDATE_MUSIC:
+            const newMusics = state.musics.map((music) =>
+                music._id === payload._id ? payload : music
+            );
 
         case DELETE_MUSIC:
             return {

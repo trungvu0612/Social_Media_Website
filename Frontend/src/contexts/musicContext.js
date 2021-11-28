@@ -7,6 +7,7 @@ import {
   MUSICS_LOADED_FAIL,
   MUSICS_LOADED_SUCCESS,
   MUSIC_CLICK,
+  MUSIC_CLICK_FAVORITE,
   MUSIC_CLICK_HOME,
 } from "./constants";
 
@@ -15,14 +16,12 @@ export const MusicContext = createContext();
 const MusicContextProvider = ({ children }) => {
   // State
   const [musicState, dispatch] = useReducer(musicReducer, {
+    musicFavorite: {},
     musicHome: {},
     music: {},
     musics: [],
     musicsLoading: true,
   });
-
-  const musicFirst = musicState.musics[musicState.musics.length - 1];
-  console.log(musicFirst);
 
   // Get all posts
   const getMusics = async () => {
@@ -46,7 +45,7 @@ const MusicContextProvider = ({ children }) => {
   };
 
   useEffect(() => getMusics(), []);
-  // Find id music when user click play music
+  // Find id music when user click play music at home page
   const getIdMusicHome = (musicIdHome) => {
     const musicGet = musicState.musics.find(
       (music) => music._id === musicIdHome
@@ -57,13 +56,24 @@ const MusicContextProvider = ({ children }) => {
     });
   };
 
+  // Find id music when user click play music at favorite page
+  const getIdMusicFavorite = (musicIdFavorite) => {
+    const musicGet = musicState.musics.find(
+      (music) => music._id === musicIdFavorite
+    );
+    dispatch({
+      type: MUSIC_CLICK_FAVORITE,
+      payload: musicGet,
+    });
+  };
+
   // music context data
   const musicContextData = {
     musicState,
     getMusics,
     findIDMusic,
     getIdMusicHome,
-    musicFirst,
+    getIdMusicFavorite,
   };
   return (
     <MusicContext.Provider value={musicContextData}>

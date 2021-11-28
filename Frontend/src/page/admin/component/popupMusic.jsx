@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { MusicContext } from "../../../contexts/musicContext";
 
 export default function PopupMusic() {
   // close popup
@@ -6,6 +7,64 @@ export default function PopupMusic() {
     const popUpEdit = document.querySelector(".edit-popup");
     popUpEdit.classList.remove("active");
   }
+
+  // const {
+  //   userState: { music, musics, musicsLoading },
+  //   dispatch,
+  // } = useContext(MusicContext);
+
+  // // State
+  // const [updatedUser, setUpdatedUser] = useState({
+  //   musicName: "",
+  //   musicAuthor: "",
+  //   musicImg: "",
+  //   musicFile: "",
+  //   musicCategory: "",
+  // });
+  // // get data use enter in form
+  // const onChangeUser = function (event) {
+  //   setUpdatedUser({ ...updatedUser, [event.target.name]: event.target.value });
+  // };
+
+  // // get image user enter in formData
+  // const onChangeUserImg = function (event) {
+  //   setUpdatedUser({ ...updatedUser, userAvatar: event.target.files[0] });
+  // };
+
+  // const onSubmitUpdate = function (event) {
+  //   event.preventDefault();
+
+  // initialize formdata to store values in state and assign those values to name in input
+  //   const formData = new FormData();
+  //   formData.append("userName", updatedUser.userName);
+  //   formData.append("userPassword", updatedUser.userPassword);
+  //   formData.append("confirmPassword", updatedUser.confirmPassword);
+  //   formData.append("userAvatar", updatedUser.userAvatar);
+
+  //   // get userID in local storage
+  //   const decoded = jwt_decode(localStorage[LOCAL_STORAGE_TOKEN_NAME]);
+  //   if (updatedUser.userPassword == updatedUser.confirmPassword) {
+  //     axios
+  //       .put(`${apiUrl}/update/user/${decoded.userId}`, formData)
+  //       .then((response) => {
+  //         if (updatedUser.userPassword == updatedUser.confirmPassword) {
+  //           console.log(response.data);
+  //           if (response.data.success) {
+  //             dispatch({ type: UPDATE_USER, payload: response.data.user });
+  //             return response.data;
+  //           }
+  //         }
+  //         alert("Passwords do not match");
+  //       })
+  //       .catch((error) => {
+  //         return error.response
+  //           ? error.response
+  //           : { success: false, message: "Server error" };
+  //       });
+  //   } else {
+  //     alert("Passwords do not match");
+  //   }
+  // };
 
   return (
     <div className="edit-popup">

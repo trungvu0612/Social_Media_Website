@@ -12,6 +12,8 @@ import ProtectAdmin from "./component/checkRouting/protectAdmin";
 import UserContextProvider from "./contexts/userContext";
 import MusicContextProvider from "./contexts/musicContext";
 import PostContextProvider from "./contexts/postContext";
+import FavoriteContextProvider from "./contexts/farvoriteContext";
+import CommentContextProvider from "./contexts/cmtContext";
 
 function App() {
   return (
@@ -19,18 +21,22 @@ function App() {
       <UserContextProvider>
         <MusicContextProvider>
           <PostContextProvider>
-            <BrowserRouter>
-              <div className="App">
-                <Switch>
-                  <Route exact path="/" component={Marketing} />{" "}
-                  <Route path="/login" component={Login} />{" "}
-                  <Route path="/register" component={Register} />{" "}
-                  <CheckRedirect path="/home" component={Home} />{" "}
-                  <Route path="/login-admin" component={AdminLogin} />{" "}
-                  <ProtectAdmin path="/admin" component={Admin} />{" "}
-                </Switch>{" "}
-              </div>{" "}
-            </BrowserRouter>{" "}
+            <FavoriteContextProvider>
+              <CommentContextProvider>
+                <BrowserRouter>
+                  <div className="App">
+                    <Switch>
+                      <Route exact path="/" component={Marketing} />{" "}
+                      <Route path="/login" component={Login} />{" "}
+                      <Route path="/register" component={Register} />{" "}
+                      <CheckRedirect path="/home" component={Home} />{" "}
+                      <Route path="/login-admin" component={AdminLogin} />{" "}
+                      <ProtectAdmin path="/admin" component={Admin} />{" "}
+                    </Switch>{" "}
+                  </div>{" "}
+                </BrowserRouter>{" "}
+              </CommentContextProvider>{" "}
+            </FavoriteContextProvider>{" "}
           </PostContextProvider>{" "}
         </MusicContextProvider>{" "}
       </UserContextProvider>{" "}

@@ -95,6 +95,7 @@
                     }
                 }
                 &__history {
+                    display: none;
                     overflow: scroll;
                     scroll-behavior: smooth;
                     @include customscroll();

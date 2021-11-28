@@ -8,8 +8,8 @@ const connectDb = require("./src/resource/config/db.config");
 const updateUser = require("./src/resource/routers/update");
 const music = require("./src/resource/routers/music");
 const posts = require("./src/resource/routers/post");
-const multer = require("multer");
-const upload = multer();
+const favorites = require("./src/resource/routers/favorite");
+const comments = require("./src/resource/routers/cmt");
 
 // HTTP loggers
 app.use(morgan("combined"));
@@ -25,17 +25,21 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use(cors());
 
-// load img with browser
+// load img and music file with browser
 app.use("/uploadFile", express.static("uploadFile"));
 
 // api auth
 app.use("/api/auth", authRoute);
 // api update user
 app.use("/api/update/user", updateUser);
-// api push music to db
+// api music
 app.use("/api/music", music);
-// api push posts to db
+// api posts
 app.use("/api/posts", posts);
+// api favorites
+app.use("/api/favorites", favorites);
+// api cmt
+app.use("/api/comments", comments);
 
 // address
 const PORT = 5000;

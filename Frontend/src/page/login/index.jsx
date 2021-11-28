@@ -104,13 +104,6 @@ export default function Login() {
             defaultValue="Sign In"
             value="Login"
           />
-          <GoogleLogin
-            clientId="1092699882576-7bnelde1sddfrqbnn20928cmenj5qvqr.apps.googleusercontent.com"
-            buttonText="Login with google account"
-            onSuccess={responseSuccessGoogle}
-            onFailure={responseErrorGoogle}
-            cookiePolicy={"single_host_origin"}
-          />
         </form>
       </div>
     </div>
