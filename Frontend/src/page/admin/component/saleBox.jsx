@@ -99,31 +99,31 @@ export default function SaleBox() {
           <ul className="details">
             <li className="topic">Like</li>
             <li>
-              <a href="#">$204.98</a>
+              <a href="#">204</a>
             </li>
             <li>
-              <a href="#">$24.55</a>
+              <a href="#">124</a>
             </li>
             <li>
-              <a href="#">$25.88</a>
+              <a href="#">88</a>
             </li>
             <li>
-              <a href="#">$170.66</a>
+              <a href="#">87</a>
             </li>
             <li>
-              <a href="#">$56.56</a>
+              <a href="#">76</a>
             </li>
             <li>
-              <a href="#">$44.95</a>
+              <a href="#">70</a>
             </li>
             <li>
-              <a href="#">$67.33</a>
+              <a href="#">68</a>
             </li>
             <li>
-              <a href="#">$23.53</a>
+              <a href="#">66</a>
             </li>
             <li>
-              <a href="#">$46.52</a>
+              <a href="#">65</a>
             </li>
           </ul>
         </div>
@@ -139,56 +139,56 @@ export default function SaleBox() {
               {/*<img src="images/sunglasses.jpg" alt="">*/}
               <span className="product">Vuitton Sunglasses</span>
             </a>
-            <span className="price">$1107</span>
+            <span className="price">1107</span>
           </li>
           <li>
             <a href="#">
               {/*<img src="images/jeans.jpg" alt="">*/}
               <span className="product">Hourglass Jeans </span>
             </a>
-            <span className="price">$1567</span>
+            <span className="price">1567</span>
           </li>
           <li>
             <a href="#">
               {/* <img src="images/nike.jpg" alt="">*/}
               <span className="product">Nike Sport Shoe</span>
             </a>
-            <span className="price">$1234</span>
+            <span className="price">1234</span>
           </li>
           <li>
             <a href="#">
               {/*<img src="images/scarves.jpg" alt="">*/}
               <span className="product">Hermes Silk Scarves.</span>
             </a>
-            <span className="price">$2312</span>
+            <span className="price">2312</span>
           </li>
           <li>
             <a href="#">
               {/*<img src="images/blueBag.jpg" alt="">*/}
               <span className="product">Succi Ladies Bag</span>
             </a>
-            <span className="price">$1456</span>
+            <span className="price">1456</span>
           </li>
           <li>
             <a href="#">
               {/*<img src="images/bag.jpg" alt="">*/}
               <span className="product">Gucci Womens's Bags</span>
             </a>
-            <span className="price">$2345</span>
+            <span className="price">2345</span>
           </li>
           <li>
             <a href="#">
               {/*<img src="images/addidas.jpg" alt="">*/}
               <span className="product">Addidas Running Shoe</span>
             </a>
-            <span className="price">$2345</span>
+            <span className="price">2345</span>
           </li>
           <li>
             <a href="#">
               {/*<img src="images/shirt.jpg" alt="">*/}
               <span className="product">Bilack Wear's Shirt</span>
             </a>
-            <span className="price">$1245</span>
+            <span className="price">1245</span>
           </li>
         </ul>
       </div>

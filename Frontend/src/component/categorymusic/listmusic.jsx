@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { apiUploadFileMp3, apiUploadImgMp3 } from "../../contexts/constants";
 import { MusicContext } from "../../contexts/musicContext";
+import { Link } from "react-router-dom";
 
 export default function ListMusic({
   music: { _id, musicName, musicAuthor, musicImg, musicFile },
@@ -11,6 +12,7 @@ export default function ListMusic({
     popupCreate.classList.add("active");
     findIDMusic(musicId);
   }
+  console.log(apiUploadFileMp3, musicFile);
 
   return (
     <div className="like">
@@ -21,7 +23,14 @@ export default function ListMusic({
       <button className="item-create" onClick={createPost.bind(this, _id)}>
         Create post
       </button>
-      <button className="item-create">Download</button>
+      <Link
+        to={`${apiUploadFileMp3}${musicFile}`}
+        className="item-create"
+        target="_blank"
+        download={musicFile}
+      >
+        Download
+      </Link>
     </div>
   );
 }

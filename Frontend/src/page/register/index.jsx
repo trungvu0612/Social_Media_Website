@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { useHistory } from "react-router";
 import { AuthContext } from "../../contexts/authContext";
 import { apiUrl, LOCAL_STORAGE_TOKEN_NAME } from "../../contexts/constants";
+import { Link } from "react-router-dom";
 
 export default function Register() {
   // Context
@@ -142,6 +143,9 @@ export default function Register() {
               Your avartar
             </label>
           </div>
+          <Link to="/login" id="return">
+            Return login page
+          </Link>
           <input
             type="submit"
             className="form__button"

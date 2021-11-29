@@ -53,19 +53,6 @@ router.post("/register", upload.single("userAvatar"), async(req, res) => {
         // Hash password with argon2
         const hashedPassword = await argon2.hash(userPassword);
 
-        // // // convert data buffer to base64
-        // // // // Create a base64 string from an image => ztso+Mfuej2mPmLQxgD ...
-        // const base64 = fs.readFileSync(req.file.path);
-        // // // // // Convert base64 to buffer => <Buffer ff d8 ff db 00 43 00 ...
-        // // const buffer = new Buffer.from(base64, "base64");
-        // // // let base64data = base64.toString("base64");
-
-        // // // console.log("Image converted to base 64 is:\n\n" + base64data);
-
-        // // // userAvatarbin = fs.readFileSync(req.file.path)
-        // // // userAvatar = new Buffer.from(userAuserAvatarbinvatar, "base64");
-        // console.log(base64);
-
         const avatar = req.file.path;
 
         // Save this user to the database if everything ok
@@ -74,16 +61,8 @@ router.post("/register", upload.single("userAvatar"), async(req, res) => {
             userPassword: hashedPassword,
             userName,
             userAvatar: avatar.replace("uploadFile\\", ""),
-            // {
-            //     data: fs.readFileSync(req.file.path),
-            //     // data: req.file.path,
-            //     contentType: "image/png",
-            // },
             roleId,
         });
-
-        // newUser.userAvatar.data = fs.readFileSync(req.files.userPhoto.path);
-        // newUser.userAvatar.contentType = "image/png";
         await newUser.save();
 
         // Return token

@@ -21,6 +21,7 @@
         height: 80px;
         display: flex;
         align-items: center;
+        justify-content: center;
     }
     .sidebar .logo-details i {
         font-size: 28px;
@@ -630,6 +631,11 @@
     @media (max-width: 1240px) {
         .sidebar {
             width: 60px;
+            .logo-details {
+                text-align: center;
+                display: flex;
+                justify-content: center;
+            }
         }
         .sidebar.active {
             width: 220px;

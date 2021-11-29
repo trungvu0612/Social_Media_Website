@@ -28,8 +28,7 @@ export default function Admin() {
     <div className="admin">
       <div className="sidebar">
         <div className="logo-details">
-          <i className="bx bxl-c-plus-plus" />
-          <span className="logo_name">CodingLab</span>
+          <span className="logo_name">M&C</span>
         </div>
         <ul className="nav-links">
           <li>
