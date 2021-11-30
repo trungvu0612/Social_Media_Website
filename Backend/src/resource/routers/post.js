@@ -56,4 +56,26 @@ router.get("/datapost", async(req, res) => {
         res.status(500).json({ success: false, message: "Internal server error" });
     }
 });
+
+// @route DELETE api/posts
+// @desc Delete post
+// @access Private
+router.delete("/delete/:id", async(req, res) => {
+    try {
+        const postDeleteCondition = { _id: req.params.id, post: req.postId };
+        const deletedPost = await Post.findOneAndDelete(postDeleteCondition);
+
+        // User not authorised or post not found
+        if (!deletedPost)
+            return res.status(401).json({
+                success: false,
+                message: "Post not found",
+            });
+
+        res.json({ success: true, post: deletedPost });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ success: false, message: "Internal server error" });
+    }
+});
 module.exports = router;
