@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   apiUploadFileMp3,
   apiUploadImgMp3,
 } from "../../../../contexts/constants";
+import { MusicContext } from "../../../../contexts/musicContext";
 
 export default function ListMusicAdmin({
-  music: { musicName, musicAuthor, musicImg, musicFile },
+  music: { _id, musicName, musicAuthor, musicImg, musicFile },
 }) {
   function editMussic() {
     const popUpEdit = document.querySelector(".edit-popup");
@@ -21,7 +22,6 @@ export default function ListMusicAdmin({
       <button className="item-create edit" onClick={editMussic}>
         Edit
       </button>
-      <button className="item-create delete">Delete</button>
     </div>
   );
 }

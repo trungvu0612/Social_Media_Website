@@ -78,4 +78,49 @@ router.delete("/delete/:id", async(req, res) => {
         res.status(500).json({ success: false, message: "Internal server error" });
     }
 });
+
+// @route PUT api/post
+// @desc update post information
+// @access private
+router.put("/update/:id", upload.array(), async(req, res) => {
+    const { postContent } = req.body;
+
+    if (!postContent) {
+        return res
+            .status(400)
+            .json({ success: false, message: "Missing information" });
+    }
+
+    try {
+        // input new data music
+        let updatedPost = {
+            postContent,
+        };
+        // check if this music is in the database or not. If so, it must match id to be updated.
+        const musicUpdateCondition = { _id: req.params.id, post: req.postId };
+
+        updatedPost = await Post.findOneAndUpdate(
+            musicUpdateCondition,
+            updatedPost, { new: true }
+        );
+
+        //  music not found
+        if (!updatedPost)
+            return res.status(401).json({
+                success: false,
+                message: "Post not found",
+            });
+
+        res.json({
+            success: true,
+            message: "Excellent progress!",
+            post: updatedPost,
+        });
+    } catch (error) {
+        console.log(error);
+        res
+            .status(500)
+            .json({ success: false, message: "Internal server error123!!!!" });
+    }
+});
 module.exports = router;

@@ -39,11 +39,6 @@ export const musicReducer = (state, action) => {
                 music._id === payload._id ? payload : music
             );
 
-        case DELETE_MUSIC:
-            return {
-                ...state,
-                musics: state.musics.filter((music) => music._id !== payload),
-            };
         case MUSICS_LOADED_SUCCESS:
             return {
                 ...state,

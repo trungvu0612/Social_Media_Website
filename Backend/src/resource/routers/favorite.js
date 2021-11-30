@@ -50,4 +50,31 @@ router.get("/datafavorites", async(req, res) => {
     }
 });
 
+// @route DELETE api/favorite
+// @desc Delete favorite
+// @access Private
+router.delete("/delete/:id", async(req, res) => {
+    try {
+        const favoriteDeleteCondition = {
+            _id: req.params.id,
+            favorite: req.favoriteId,
+        };
+        const deletedFavorite = await Favorite.findOneAndDelete(
+            favoriteDeleteCondition
+        );
+
+        // favorite not found
+        if (!deletedFavorite)
+            return res.status(401).json({
+                success: false,
+                message: "Favorite not found",
+            });
+
+        res.json({ success: true, post: deletedFavorite });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ success: false, message: "Internal server error" });
+    }
+});
+
 module.exports = router;

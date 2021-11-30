@@ -2,6 +2,7 @@ import axios from "axios";
 import { createContext, useEffect, useReducer } from "react";
 import { musicReducer } from "../reducers/musicReducer";
 import {
+  api,
   apiUrl,
   DELETE_MUSIC,
   MUSICS_LOADED_FAIL,

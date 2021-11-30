@@ -49,11 +49,11 @@ export default function MusicPage() {
     axios
       .post(`${apiUrl}/music/upload`, formData)
       .then((response) => {
-        console.log(response.data);
         if (response.data.success) {
           dispatch({ type: ADD_MUSIC, payload: response.data.post });
 
           alert(response.data.message);
+          alert("Successfully added new song");
           return response.data;
         }
         if (!response.success) {
