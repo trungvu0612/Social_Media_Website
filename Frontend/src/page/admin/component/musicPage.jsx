@@ -4,7 +4,6 @@ import { ADD_MUSIC, apiUrl } from "../../../contexts/constants";
 import { MusicContext } from "../../../contexts/musicContext";
 
 import CategoryMusicAdmin from "./categoryMusicAdmin";
-import PopupMusic from "./popupMusic";
 
 export default function MusicPage() {
   const { dispatch } = useContext(MusicContext);
@@ -22,7 +21,6 @@ export default function MusicPage() {
   const onChangeMusicForm = function (event) {
     setuploadMusic({ ...uploadMusic, [event.target.name]: event.target.value });
   };
-  console.log(uploadMusic);
 
   //get img file as user input
   const onChangeFileImgForm = function (event) {
@@ -50,10 +48,11 @@ export default function MusicPage() {
       .post(`${apiUrl}/music/upload`, formData)
       .then((response) => {
         if (response.data.success) {
+          window.alert("Upload Success");
           dispatch({ type: ADD_MUSIC, payload: response.data.post });
 
           alert(response.data.message);
-          alert("Successfully added new song");
+
           return response.data;
         }
         if (!response.success) {
@@ -141,7 +140,7 @@ export default function MusicPage() {
                     <option value="jazz">jazz</option>
                     <option value="urban">urban</option>
                     <option value="rock">rock</option>
-                    <option value="order">order</option>
+                    <option value="other">other</option>
                   </select>
                 </div>
 
@@ -161,7 +160,6 @@ export default function MusicPage() {
       <div className="overview-boxes">
         <CategoryMusicAdmin />
       </div>
-      <PopupMusic />
     </div>
   );
 }

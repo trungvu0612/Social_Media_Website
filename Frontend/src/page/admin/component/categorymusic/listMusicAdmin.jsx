@@ -4,6 +4,7 @@ import {
   apiUploadImgMp3,
 } from "../../../../contexts/constants";
 import { MusicContext } from "../../../../contexts/musicContext";
+import PopupMusic from "./popupMusic";
 
 export default function ListMusicAdmin({
   music: { _id, musicName, musicAuthor, musicImg, musicFile },
@@ -22,6 +23,7 @@ export default function ListMusicAdmin({
       <button className="item-create edit" onClick={editMussic}>
         Edit
       </button>
+      <PopupMusic musicdata={_id} />
     </div>
   );
 }

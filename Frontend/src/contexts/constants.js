@@ -56,6 +56,7 @@ export const POSTS_LOADED_SUCCESS = "POSTS_LOADED_SUCCESS";
 export const ADD_POST = "ADD_POST";
 export const FIND_POST = "FIND_POST";
 export const POSTS_LOADED_FAIL = "POSTS_LOADED_FAIL";
+export const DELETE_POST = "DELETE_POST";
 
 // *** FAVORITE ***
 // api FAVORITE a new post to db

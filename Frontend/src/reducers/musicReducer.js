@@ -39,6 +39,11 @@ export const musicReducer = (state, action) => {
                 music._id === payload._id ? payload : music
             );
 
+            return {
+                ...state,
+                posts: newMusics,
+            };
+
         case MUSICS_LOADED_SUCCESS:
             return {
                 ...state,

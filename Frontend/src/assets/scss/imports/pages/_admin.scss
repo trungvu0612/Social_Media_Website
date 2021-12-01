@@ -485,65 +485,65 @@
                                     opacity: 0.7;
                                 }
                             }
-                        }
-                    }
-                }
-            }
-        }
-        .edit-popup {
-            position: fixed;
-            z-index: 1000;
-            width: 100vw;
-            height: 100vh;
-            top: 50%;
-            left: 50%;
-            display: none;
-            transform: translate(-50%, -50%);
-            background-color: rgba(163, 162, 162, 0.452);
-            .post__items {
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 450px;
-                height: 450px;
-                #outbtn {
-                    z-index: 1100;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    width: 20px;
-                    height: 20px;
-                    padding: 5px 5px;
-                    border-radius: 50%;
-                    background-color: #fff;
-                    position: fixed;
-                    top: 0%;
-                    left: 0%;
-                    transform: translate(-50%, -50%);
-                    cursor: pointer;
-                    transition: $transition_set;
-                    &:hover {
-                        background-color: rgba(255, 0, 0, 0.486);
-                        transition: $transition_set;
-                    }
-                }
-                .left-right {
-                    .right {
-                        .checkbox {
-                            select {
-                                width: 200px;
-                                -webkit-appearance: none;
-                                -moz-appearance: none;
-                                appearance: revert;
+                            .edit-popup {
+                                position: fixed;
+                                z-index: 1000;
+                                width: 100vw;
+                                height: 100vh;
+                                top: 50%;
+                                left: 50%;
+                                display: none;
+                                transform: translate(-50%, -50%);
+                                background-color: rgba(163, 162, 162, 0.452);
+                                .post__items {
+                                    position: fixed;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);
+                                    width: 450px;
+                                    height: 450px;
+                                    #outbtn {
+                                        z-index: 1100;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        width: 20px;
+                                        height: 20px;
+                                        padding: 5px 5px;
+                                        border-radius: 50%;
+                                        background-color: #fff;
+                                        position: fixed;
+                                        top: 0%;
+                                        left: 0%;
+                                        transform: translate(-50%, -50%);
+                                        cursor: pointer;
+                                        transition: $transition_set;
+                                        &:hover {
+                                            background-color: rgba(255, 0, 0, 0.486);
+                                            transition: $transition_set;
+                                        }
+                                    }
+                                    .left-right {
+                                        .right {
+                                            .checkbox {
+                                                select {
+                                                    width: 200px;
+                                                    -webkit-appearance: none;
+                                                    -moz-appearance: none;
+                                                    appearance: revert;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            .active {
+                                display: block;
                             }
                         }
                     }
                 }
             }
-        }
-        .active {
-            display: block;
         }
     }
     .post-content {
@@ -663,7 +663,7 @@
                     .category__music {
                         .like {
                             width: calc(90%/3 - 5px);
-                            margin: 0px 19px;
+                            margin: 10px 19px;
                         }
                     }
                 }

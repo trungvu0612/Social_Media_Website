@@ -2,6 +2,8 @@ import axios from "axios";
 import { createContext, useReducer } from "react";
 import {
   apiPost,
+  apiUrl,
+  DELETE_POST,
   POSTS_LOADED_FAIL,
   POSTS_LOADED_SUCCESS,
 } from "../contexts/constants";
@@ -33,10 +35,22 @@ const PostContextProvider = ({ children }) => {
     }
   };
 
+  // Delete post
+  const deletePost = async (postId) => {
+    try {
+      const response = await axios.delete(`${apiUrl}/posts/delete/${postId}`);
+      if (response.data.success)
+        dispatch({ type: DELETE_POST, payload: postId });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   // post context data
   const postContextData = {
     postState,
     getPosts,
+    deletePost,
   };
   return (
     <PostContext.Provider value={postContextData}>

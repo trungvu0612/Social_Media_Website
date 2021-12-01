@@ -48,14 +48,15 @@ export default function PostEdit() {
         .put(`${apiUrl}/update/user/${decoded.userId}`, formData)
         .then((response) => {
           if (updatedUser.userPassword == updatedUser.confirmPassword) {
-            console.log(response.data);
             if (response.data.success) {
+              window.alert("Upload Success");
               dispatch({ type: UPDATE_USER, payload: response.data.user });
               return response.data;
             }
           }
-          alert("Passwords do not match");
+          window.alert("Passwords do not match");
         })
+
         .catch((error) => {
           return error.response
             ? error.response
@@ -95,6 +96,7 @@ export default function PostEdit() {
                   value={updatedUser.userName}
                   onChange={onChangeUser}
                   placeholder="enter your new name"
+                  required
                 />
               </div>
               <div className="right__items file-right">
@@ -108,6 +110,7 @@ export default function PostEdit() {
                   onChange={onChangeUser}
                   type="password"
                   placeholder="enter your new password"
+                  required
                 />
               </div>
               <div className="right__items">
@@ -118,6 +121,7 @@ export default function PostEdit() {
                   onChange={onChangeUser}
                   type="password"
                   placeholder="Please confirm your new password"
+                  required
                 />
               </div>
             </div>
