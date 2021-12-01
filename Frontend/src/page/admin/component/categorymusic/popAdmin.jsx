@@ -14,7 +14,6 @@ export default function PopAdmin() {
   const getCategory = musics.filter((music) => {
     return music.musicCategory == "pop";
   });
-  console.log(getCategory);
 
   if (musicsLoading) {
     return (

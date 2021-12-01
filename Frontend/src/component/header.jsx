@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../contexts/authContext";
 import { apiUpload, LOCAL_STORAGE_TOKEN_NAME } from "../contexts/constants";
 
@@ -20,6 +20,12 @@ export default function Header() {
     console.log(isAuthenticated);
   };
 
+  const [search, setSearch] = useState("");
+
+  const onChangeSearch = function (search) {
+    setSearch(search.target.value);
+  };
+
   return (
     <header className="header__main">
       <div className="container-fluid">
@@ -33,8 +39,9 @@ export default function Header() {
           <input
             type="text"
             inputMode="search"
-            placeholder="Search for song, arties etc..."
+            placeholder="Searching for other people's posts"
             className="search-input"
+            onChange={onChangeSearch}
           />
         </div>
         <div className="right">

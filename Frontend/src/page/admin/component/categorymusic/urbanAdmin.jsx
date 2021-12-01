@@ -14,7 +14,6 @@ export default function UrbanAdmin() {
   const getCategory = musics.filter((music) => {
     return music.musicCategory == "urban";
   });
-  console.log(getCategory);
 
   if (musicsLoading) {
     return (

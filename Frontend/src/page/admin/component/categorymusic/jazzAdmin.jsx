@@ -13,7 +13,6 @@ export default function JazzAdmin() {
   const getCategory = musics.filter((music) => {
     return music.musicCategory == "jazz";
   });
-  console.log(getCategory);
 
   if (musicsLoading) {
     return (

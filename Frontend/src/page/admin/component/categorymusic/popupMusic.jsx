@@ -3,22 +3,15 @@ import React, { useContext, useState } from "react";
 import { apiUrl, UPDATE_MUSIC } from "../../../../contexts/constants";
 import { MusicContext } from "../../../../contexts/musicContext";
 
-export default function PopupMusic() {
+export default function PopupMusic({ currentIdmusic }) {
   // close popup
   function outPopupMusic() {
     const popUpEdit = document.querySelector(".edit-popup");
     popUpEdit.classList.remove("active");
   }
+  console.log(currentIdmusic);
 
-  const {
-    musicState: {
-      music: { _id },
-      musics,
-      musicsLoading,
-    },
-    dispatch,
-  } = useContext(MusicContext);
-  console.log(_id);
+  const { dispatch } = useContext(MusicContext);
 
   // local state
   const [updateMusic, setupdateMusic] = useState({
@@ -56,7 +49,7 @@ export default function PopupMusic() {
     formData.append("musicCategory", updateMusic.musicCategory);
 
     axios
-      .put(`${apiUrl}/music/update/${_id}`, formData)
+      .put(`${apiUrl}/music/update/`, formData)
       .then((response) => {
         if (response.data.success) {
           dispatch({ type: UPDATE_MUSIC, payload: response.data.music });

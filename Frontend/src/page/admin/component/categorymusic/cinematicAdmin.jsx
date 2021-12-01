@@ -14,7 +14,7 @@ export default function CinematicAdmin() {
   const getCategory = musics.filter((music) => {
     return music.musicCategory == "cinematic";
   });
-  console.log(getCategory);
+
   if (musicsLoading) {
     return (
       <div style={{ width: "100%", height: "100vh", position: "absolute" }}>

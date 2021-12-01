@@ -147,7 +147,7 @@ router.put("/update/:id", middlewareMp3, async(req, res) => {
         console.log(error);
         res
             .status(500)
-            .json({ success: false, message: "Internal server error123!!!!" });
+            .json({ success: false, message: "Internal server error!!!!" });
     }
 });
 module.exports = router;
