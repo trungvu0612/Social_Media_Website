@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Header from "../../component/header";
 import Notification from "../../component/notification";
-import MenuFooter from "./component/menuFooter";
+
 import MusicFooter from "./component/musicFooter";
 import MusicPopup from "./component/musicPopup";
 import PostCreate from "./component/postCreate";
@@ -80,7 +80,43 @@ export default function Home() {
           <Music />
           {/* section music for table, smart phone */}
           <MusicFooter />
-          <MenuFooter />
+          <section className="menu-footer">
+            <div className="menu__list">
+              <h3 className="menu__list-title">Menu</h3>
+              <ul className="menu__list-items">
+                <li className="item">
+                  <NavLink exact to={`${path}/`} className="item__option">
+                    <i className="fa fa-home" />
+                    <span>Home page</span>
+                  </NavLink>
+                </li>
+                <li className="item">
+                  <NavLink to={`${path}/personal`} className="item__option">
+                    <i className="fa fa-user-circle-o" />
+                    <span>My personal page</span>
+                  </NavLink>
+                </li>
+                <li className="item">
+                  <NavLink to={`${path}/edit`} className="item__option">
+                    <i className="fa fa-pencil" />
+                    <span>Edit personal information</span>
+                  </NavLink>
+                </li>
+                <li className="item">
+                  <NavLink to={`${path}/favorite`} className="item__option">
+                    <i className="fa fa-heart-o" />
+                    <span>My favorite playlist</span>
+                  </NavLink>
+                </li>
+                <li className="item">
+                  <NavLink to={`${path}/create-post`} className="item__option">
+                    <i className="fa fa-plus" />
+                    <span>Create post</span>
+                  </NavLink>
+                </li>
+              </ul>
+            </div>
+          </section>
           <MusicPopup />
         </div>
       </main>

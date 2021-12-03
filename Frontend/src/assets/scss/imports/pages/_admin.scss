@@ -259,12 +259,15 @@
     }
     /* left box */
     .home-content .sales-boxes .recent-sales {
-        width: 65%;
+        width: 100%;
         background: #fff;
         padding: 20px 30px;
         margin: 0 20px;
         border-radius: 12px;
         box-shadow: $border__admin;
+        overflow: scroll;
+        scroll-behavior: smooth;
+        height: 400px;
     }
     .home-content .sales-boxes .sales-details {
         display: flex;
@@ -274,21 +277,33 @@
     .sales-boxes .box .title {
         font-size: 24px;
         font-weight: 500;
+        font-weight: bold;
         /* margin-bottom: 10px; */
     }
     .sales-boxes .sales-details li.topic {
         font-size: 20px;
         font-weight: 500;
+        font-weight: bold;
     }
     .sales-boxes .sales-details li {
         list-style: none;
         margin: 8px 0;
+    }
+    .sales-boxes .sales-details .details {
+        width: calc(100%/4);
+        text-align: center;
     }
     .sales-boxes .sales-details li a {
         font-size: 18px;
         color: #333;
         font-size: 400;
         text-decoration: none;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 25px;
+        -webkit-line-clamp: 1;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
     }
     .sales-boxes .box .button {
         width: 100%;
@@ -408,6 +423,7 @@
                             opacity: 1;
                             cursor: pointer;
                             transition: $transition_set;
+                            text-decoration: none;
                             &:hover {
                                 transition: $transition_set;
                                 opacity: 0.7;

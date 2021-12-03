@@ -12,8 +12,9 @@ export default function AcousticAdmin() {
   useEffect(() => getMusics(), []);
 
   const getCategory = musics.filter((music) => {
-    return music.musicCategory == "acoustic";
+    return music.musicCategory === "acoustic";
   });
+  console.log(getCategory);
 
   if (musicsLoading) {
     return (
@@ -34,7 +35,7 @@ export default function AcousticAdmin() {
     return (
       <div className="category__music acoustic">
         {getCategory.map((music) => (
-          <ListMusicAdmin music={music} />
+          <ListMusicAdmin music={music} key={music._id} />
         ))}
       </div>
     );

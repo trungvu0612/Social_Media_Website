@@ -1,197 +1,115 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { PostContext } from "../../../contexts/postContext";
 
 export default function SaleBox() {
+  const {
+    postState: { posts },
+    getPosts,
+  } = useContext(PostContext);
+  useEffect(() => getPosts(), []);
+
+  console.log(posts);
+
   return (
     <div className="sales-boxes">
       <div className="recent-sales box">
-        <div className="title">Recent posts</div>
+        <div className="title">Most recent posts</div>
         <div className="sales-details">
           <ul className="details">
             <li className="topic">Date</li>
-            <li>
-              <a href="#">02 Jan 2021</a>
-            </li>
-            <li>
-              <a href="#">02 Jan 2021</a>
-            </li>
-            <li>
-              <a href="#">02 Jan 2021</a>
-            </li>
-            <li>
-              <a href="#">02 Jan 2021</a>
-            </li>
-            <li>
-              <a href="#">02 Jan 2021</a>
-            </li>
-            <li>
-              <a href="#">02 Jan 2021</a>
-            </li>
-            <li>
-              <a href="#">02 Jan 2021</a>
-            </li>
-            <li>
-              <a href="#">02 Jan 2021</a>
-            </li>
-            <li>
-              <a href="#">02 Jan 2021</a>
-            </li>
+            {posts.map((post) => (
+              <li>
+                <a href="#">{post.postCreationDate.replace(/\T.*/, "")}</a>
+              </li>
+            ))}
           </ul>
           <ul className="details">
             <li className="topic">Customer</li>
-            <li>
-              <a href="#">Alex Doe</a>
-            </li>
-            <li>
-              <a href="#">David Mart</a>
-            </li>
-            <li>
-              <a href="#">Roe Parter</a>
-            </li>
-            <li>
-              <a href="#">Diana Penty</a>
-            </li>
-            <li>
-              <a href="#">Martin Paw</a>
-            </li>
-            <li>
-              <a href="#">Doe Alex</a>
-            </li>
-            <li>
-              <a href="#">Aiana Lexa</a>
-            </li>
-            <li>
-              <a href="#">Rexel Mags</a>
-            </li>
-            <li>
-              <a href="#">Tiana Loths</a>
-            </li>
+            {posts.map((post) => (
+              <li>
+                <a href="#">{post.user.userName}</a>
+              </li>
+            ))}
           </ul>
           <ul className="details">
-            <li className="topic">Comments</li>
-            <li>
-              <a href="#">345</a>
-            </li>
-            <li>
-              <a href="#">123</a>
-            </li>
-            <li>
-              <a href="#">3454</a>
-            </li>
-            <li>
-              <a href="#">234</a>
-            </li>
-            <li>
-              <a href="#">234</a>
-            </li>
-            <li>
-              <a href="#">456</a>
-            </li>
-            <li>
-              <a href="#">234</a>
-            </li>
-            <li>
-              <a href="#">234</a>
-            </li>
-            <li>
-              <a href="#">123</a>
-            </li>
+            <li className="topic">Content</li>
+            {posts.map((post) => (
+              <li>
+                <a href="#">{post.postContent}</a>
+              </li>
+            ))}
           </ul>
           <ul className="details">
-            <li className="topic">Like</li>
-            <li>
-              <a href="#">204</a>
-            </li>
-            <li>
-              <a href="#">124</a>
-            </li>
-            <li>
-              <a href="#">88</a>
-            </li>
-            <li>
-              <a href="#">87</a>
-            </li>
-            <li>
-              <a href="#">76</a>
-            </li>
-            <li>
-              <a href="#">70</a>
-            </li>
-            <li>
-              <a href="#">68</a>
-            </li>
-            <li>
-              <a href="#">66</a>
-            </li>
-            <li>
-              <a href="#">65</a>
-            </li>
+            <li className="topic">Music</li>
+            {posts.map((post) => (
+              <li>
+                <a href="#">{post.music.musicName}</a>
+              </li>
+            ))}
           </ul>
-        </div>
-        <div className="button">
-          <a href="#">Edit</a>
         </div>
       </div>
-      <div className="top-sales box">
+      {/* <div className="top-sales box">
         <div className="title">Top favorite songs</div>
         <ul className="top-sales-details">
           <li>
             <a href="#">
-              {/*<img src="images/sunglasses.jpg" alt="">*/}
+              <img src="images/sunglasses.jpg" alt="">
               <span className="product">Vuitton Sunglasses</span>
             </a>
             <span className="price">1107</span>
           </li>
           <li>
             <a href="#">
-              {/*<img src="images/jeans.jpg" alt="">*/}
+              <img src="images/jeans.jpg" alt="">
               <span className="product">Hourglass Jeans </span>
             </a>
             <span className="price">1567</span>
           </li>
           <li>
             <a href="#">
-              {/* <img src="images/nike.jpg" alt="">*/}
+              <img src="images/nike.jpg" alt="">
               <span className="product">Nike Sport Shoe</span>
             </a>
             <span className="price">1234</span>
           </li>
           <li>
             <a href="#">
-              {/*<img src="images/scarves.jpg" alt="">*/}
+              <img src="images/scarves.jpg" alt="">
               <span className="product">Hermes Silk Scarves.</span>
             </a>
             <span className="price">2312</span>
           </li>
           <li>
             <a href="#">
-              {/*<img src="images/blueBag.jpg" alt="">*/}
+              <img src="images/blueBag.jpg" alt="">
               <span className="product">Succi Ladies Bag</span>
             </a>
             <span className="price">1456</span>
           </li>
           <li>
             <a href="#">
-              {/*<img src="images/bag.jpg" alt="">*/}
+              <img src="images/bag.jpg" alt="">
               <span className="product">Gucci Womens's Bags</span>
             </a>
             <span className="price">2345</span>
           </li>
           <li>
             <a href="#">
-              {/*<img src="images/addidas.jpg" alt="">*/}
+              <img src="images/addidas.jpg" alt="">
               <span className="product">Addidas Running Shoe</span>
             </a>
             <span className="price">2345</span>
           </li>
           <li>
             <a href="#">
-              {/*<img src="images/shirt.jpg" alt="">*/}
+              <img src="images/shirt.jpg" alt="">
               <span className="product">Bilack Wear's Shirt</span>
             </a>
             <span className="price">1245</span>
           </li>
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 }

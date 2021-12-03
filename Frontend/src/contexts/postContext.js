@@ -24,7 +24,6 @@ const PostContextProvider = ({ children }) => {
     try {
       const response = await axios.get(`${apiPost}/datapost`);
       if (response.data.success) {
-        console.log(response.data.posts);
         dispatch({
           type: POSTS_LOADED_SUCCESS,
           payload: response.data.posts,

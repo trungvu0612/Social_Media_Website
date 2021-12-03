@@ -1,17 +1,20 @@
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { apiUrl, UPDATE_MUSIC } from "../../../../contexts/constants";
 import { MusicContext } from "../../../../contexts/musicContext";
+import Ripple from "@bit/joshk.react-spinners-css.ripple";
 
-export default function PopupMusic({ currentIdmusic }) {
+export default function PopupMusic() {
   // close popup
   function outPopupMusic() {
     const popUpEdit = document.querySelector(".edit-popup");
     popUpEdit.classList.remove("active");
   }
-  console.log(currentIdmusic);
 
-  const { dispatch } = useContext(MusicContext);
+  const { music, dispatch, findIDMusic, musicsLoading } =
+    useContext(MusicContext);
+  const [currentIdmusic, setCurrentIdmusic] = useState("");
+  // console.log(music);
 
   // local state
   const [updateMusic, setupdateMusic] = useState({

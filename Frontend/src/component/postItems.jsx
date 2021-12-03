@@ -26,6 +26,7 @@ export default function PostItems({
       user: { _id: userId },
     },
   } = useContext(AuthContext);
+  const { getComments } = useContext(CommentContext);
 
   const musicError = document.querySelector(".music__noti");
   const musicPlayed = document.querySelector(".music__audio");

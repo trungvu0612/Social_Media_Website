@@ -10,15 +10,13 @@ import PopupMusic from "./popupMusic";
 
 export default function ListMusicAdmin({
   music: { _id, musicName, musicAuthor, musicImg, musicFile },
-  currentIdmusic,
 }) {
-  const { dispatch, findIDMusic } = useContext(MusicContext);
+  const { music, dispatch, findIDMusic } = useContext(MusicContext);
 
   function editMussic(musicId) {
     const popUpEdit = document.querySelector(".edit-popup");
     popUpEdit.classList.add("active");
     findIDMusic(musicId);
-    currentIdmusic = musicId;
   }
 
   // // close popup
@@ -53,7 +51,6 @@ export default function ListMusicAdmin({
 
   // const onSubmitUpdate = function (e) {
   //   e.preventDefault();
-  //   console.log(currentIdmusic);
 
   //   // initialize formdata to store values in state and assign those values to name in input
   //   const formData = new FormData();
@@ -64,7 +61,7 @@ export default function ListMusicAdmin({
   //   formData.append("musicCategory", updateMusic.musicCategory);
 
   //   axios
-  //     .put(`${apiUrl}/music/update/${currentIdmusic}`, formData)
+  //     .put(`${apiUrl}/music/update/`, formData)
   //     .then((response) => {
   //       if (response.data.success) {
   //         dispatch({ type: UPDATE_MUSIC, payload: response.data.music });
@@ -174,7 +171,7 @@ export default function ListMusicAdmin({
           </div>
         </div>
       </div> */}
-      <PopupMusic currentIdmusic={currentIdmusic} />
+      <PopupMusic />
     </div>
   );
 }
