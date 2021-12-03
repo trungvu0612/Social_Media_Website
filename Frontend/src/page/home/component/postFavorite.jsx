@@ -9,6 +9,7 @@ export default function PostFavorite() {
   const {
     favoriteState: { favorites, favoritesLoading },
     getFavorites,
+    deleteFavorite,
   } = useContext(FavoriteContext);
   const {
     authState: {
@@ -18,15 +19,15 @@ export default function PostFavorite() {
 
   // start get all favorites
   useEffect(() => getFavorites(), []);
-  console.log(userId);
-  console.log(favorites);
 
   // check id for render favorites data
   const checkIdFavorite = favorites.filter((favorite) => {
     return favorite.user._id === userId;
   });
 
-  console.log(checkIdFavorite);
+  const deleteFavoriteClick = (favoriteId) => {
+    deleteFavorite(favoriteId);
+  };
 
   //check data uploaded for render
   if (favoritesLoading) {
@@ -50,24 +51,29 @@ export default function PostFavorite() {
         <div className="post__items">
           <div className="favorites">
             <h3 className="title">My favorite playlist</h3>
-            {checkIdFavorite.map((favorite) => (
-              <div className="like">
-                <img
-                  src={`${apiUploadImgMp3}${favorite.music.musicImg}`}
-                  className="img"
-                  alt=""
-                />
-                <h4 className="name">{favorite.music.musicName}</h4>
-                <h4 className="author">{favorite.music.musicAuthor}</h4>
-                <a href="#">
-                  <i className="fa fa-heart" />
-                </a>
-                <audio
-                  className="audio"
-                  src={`${apiUploadFileMp3}${favorite.music.musicFile}`}
-                />
-              </div>
-            ))}
+            <div className="box__favor">
+              {checkIdFavorite.map((favorite) => (
+                <div className="like">
+                  <img
+                    src={`${apiUploadImgMp3}${favorite.music.musicImg}`}
+                    className="img"
+                    alt=""
+                  />
+                  <h4 className="name">{favorite.music.musicName}</h4>
+                  <h4 className="author">{favorite.music.musicAuthor}</h4>
+                  <a href="#">
+                    <i
+                      onClick={deleteFavoriteClick.bind(this, favorite._id)}
+                      className="fa fa-heart"
+                    />
+                  </a>
+                  <audio
+                    className="audio"
+                    src={`${apiUploadFileMp3}${favorite.music.musicFile}`}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

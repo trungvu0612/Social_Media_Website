@@ -23,10 +23,22 @@
                     margin-right: 20px;
                 }
                 a {
+                    width: 85%;
                     font-size: 18px;
                     font-weight: bold;
                     text-decoration: none;
                     color: rgb(65, 65, 65);
+                }
+                #edit {
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 0%;
+                    opacity: 1;
+                    transition: $transition_set;
+                    &:hover {
+                        opacity: 0.5;
+                        transition: $transition_set;
+                    }
                 }
             }
             .contents {
@@ -79,6 +91,11 @@
                     text-align: center;
                     i {
                         color: $gray_text;
+                        transition: $transition_set;
+                        &:hover {
+                            color: rgb(146, 23, 23);
+                            transition: $transition_set;
+                        }
                     }
                 }
                 .time {

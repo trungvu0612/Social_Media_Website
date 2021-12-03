@@ -3,6 +3,7 @@ import PostItems from "../../../component/postItems";
 import { PostContext } from "../../../../src/contexts/postContext";
 import Ripple from "@bit/joshk.react-spinners-css.ripple";
 import { AuthContext } from "../../../contexts/authContext";
+import PostItemsPerson from "../../../component/postPersonal";
 
 export default function PostPerson() {
   // get global data by useContext
@@ -44,7 +45,7 @@ export default function PostPerson() {
     return (
       <div className="postperson post-list post-list-1">
         {checkIdpost.map((post) => (
-          <PostItems post={post} />
+          <PostItemsPerson post={post} />
         ))}
       </div>
     );

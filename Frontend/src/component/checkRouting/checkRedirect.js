@@ -31,25 +31,14 @@ const CheckRedirect = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={
-        // (props) => {
-        //   if (isAuthenticated) {
-        //     <>
-        //       <Component {...rest} {...props} />{" "}
-        //     </>;
-        //   } else {
-        //     <Redirect to="/login" />;
-        //   }
-        // }
-
-        (props) =>
-          isAuthenticated ? (
-            <>
-              <Component {...rest} {...props} />{" "}
-            </>
-          ) : (
-            <Redirect to="/login" />
-          )
+      render={(props) =>
+        isAuthenticated ? (
+          <>
+            <Component {...rest} {...props} />{" "}
+          </>
+        ) : (
+          <Redirect to="/login" />
+        )
       }
     />
   );

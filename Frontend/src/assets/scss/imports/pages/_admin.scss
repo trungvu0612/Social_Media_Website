@@ -178,7 +178,7 @@
     .home-content .overview-boxes {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         flex-wrap: wrap;
         padding: 0 20px;
         margin-bottom: 26px;
@@ -192,6 +192,7 @@
         padding: 15px 14px;
         border-radius: 12px;
         box-shadow: $border__admin;
+        margin: 0px 10px;
     }
     .overview-boxes .box-topic {
         font-size: 18px;

@@ -52,14 +52,6 @@ export default function Login() {
     }
   };
 
-  // login with google
-  const responseSuccessGoogle = (response) => {
-    console.log(response);
-  };
-
-  const responseErrorGoogle = (response) => {
-    alert("Login fail!!!");
-  };
   return (
     <div className="login">
       <div className="l-form">

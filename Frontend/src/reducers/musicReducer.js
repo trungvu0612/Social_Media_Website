@@ -9,8 +9,15 @@ import {
     MUSIC_CLICK_HOME,
     UPDATE_MUSIC,
 } from "../contexts/constants";
+export const statemusic = {
+    musicFavorite: {},
+    musicHome: {},
+    music: {},
+    musics: [],
+    musicsLoading: true,
+};
 
-export const musicReducer = (state, action) => {
+export const musicReducer = (state = statemusic, action) => {
     const { type, payload } = action;
 
     switch (type) {
@@ -41,7 +48,7 @@ export const musicReducer = (state, action) => {
 
             return {
                 ...state,
-                posts: newMusics,
+                musics: newMusics,
             };
 
         case MUSICS_LOADED_SUCCESS:

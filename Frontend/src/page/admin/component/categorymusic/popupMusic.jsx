@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { apiUrl, UPDATE_MUSIC } from "../../../../contexts/constants";
 import { MusicContext } from "../../../../contexts/musicContext";
 import Ripple from "@bit/joshk.react-spinners-css.ripple";
+import { useRef } from "react";
 
 export default function PopupMusic() {
   // close popup
@@ -11,10 +12,12 @@ export default function PopupMusic() {
     popUpEdit.classList.remove("active");
   }
 
-  const { music, dispatch, findIDMusic, musicsLoading } =
-    useContext(MusicContext);
-  const [currentIdmusic, setCurrentIdmusic] = useState("");
-  // console.log(music);
+  const {
+    musicState: {
+      music: { _id },
+    },
+    dispatch,
+  } = useContext(MusicContext);
 
   // local state
   const [updateMusic, setupdateMusic] = useState({
@@ -52,7 +55,9 @@ export default function PopupMusic() {
     formData.append("musicCategory", updateMusic.musicCategory);
 
     axios
-      .put(`${apiUrl}/music/update/`, formData)
+
+      .put(`${apiUrl}/music/update/${_id}`, formData)
+
       .then((response) => {
         if (response.data.success) {
           dispatch({ type: UPDATE_MUSIC, payload: response.data.music });
@@ -65,7 +70,6 @@ export default function PopupMusic() {
           : { success: false, message: "Server error" };
       });
   };
-
   return (
     <div className="edit-popup">
       <div className="post__items">

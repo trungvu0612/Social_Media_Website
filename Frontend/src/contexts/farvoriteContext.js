@@ -3,6 +3,7 @@ import { createContext, useEffect, useReducer } from "react";
 import { favoriteReducer } from "../reducers/favoriteReducer";
 import {
   apiUrl,
+  DELETE_FAVORITE,
   FAVORITES_LOADED_FAIL,
   FAVORITES_LOADED_SUCCESS,
   FAVORITE_CLICK,
@@ -21,9 +22,8 @@ const FavoriteContextProvider = ({ children }) => {
 
   const favoriteFirst =
     favoriteState.favorites[favoriteState.favorites.length - 1];
-  console.log(favoriteFirst);
 
-  // Get all posts
+  // Get all favorites
   const getFavorites = async () => {
     try {
       const response = await axios.get(`${apiUrl}/favorites/datafavorites`);
@@ -38,7 +38,7 @@ const FavoriteContextProvider = ({ children }) => {
     }
   };
 
-  //   // Find id favorite when user is updating post
+  //   // Find id favorite when user is updating favorite
   //   const findIDFavorite = (favoriteId) => {
   //     const favorite = favoriteState.favorites.find(
   //       (favorite) => favorite._id === favoriteId
@@ -57,6 +57,18 @@ const FavoriteContextProvider = ({ children }) => {
   //     payload: favoriteGet,
   //   });
   // };
+  // Delete favorite
+  const deleteFavorite = async (favoriteId) => {
+    try {
+      const response = await axios.delete(
+        `${apiUrl}/favorites/delete/${favoriteId}`
+      );
+      if (response.data.success)
+        dispatch({ type: DELETE_FAVORITE, payload: favoriteId });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   // favorite context data
   const favoriteContextData = {
@@ -65,6 +77,7 @@ const FavoriteContextProvider = ({ children }) => {
     // findIDFavorite,
     // getIdFavoriteHome,
     favoriteFirst,
+    deleteFavorite,
   };
   return (
     <FavoriteContext.Provider value={favoriteContextData}>

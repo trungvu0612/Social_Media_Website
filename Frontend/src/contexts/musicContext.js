@@ -11,18 +11,13 @@ import {
   MUSIC_CLICK_FAVORITE,
   MUSIC_CLICK_HOME,
 } from "./constants";
+import { statemusic } from "../reducers/musicReducer";
 
 export const MusicContext = createContext();
 
 const MusicContextProvider = ({ children }) => {
   // State
-  const [musicState, dispatch] = useReducer(musicReducer, {
-    musicFavorite: {},
-    musicHome: {},
-    music: {},
-    musics: [],
-    musicsLoading: true,
-  });
+  const [musicState, dispatch] = useReducer(musicReducer, statemusic);
 
   // Get all posts
   const getMusics = async () => {

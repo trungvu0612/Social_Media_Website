@@ -163,6 +163,93 @@
                 .postperson {
                     display: flex;
                     flex-direction: column-reverse;
+                    .edit-popup {
+                        position: fixed;
+                        z-index: 1000;
+                        width: 100vw;
+                        height: 100vh;
+                        top: 50%;
+                        left: 50%;
+                        display: none;
+                        transform: translate(-50%, -50%);
+                        background-color: rgba(163, 162, 162, 0.452);
+                        .post__items {
+                            position: fixed;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            width: 450px;
+                            height: 350px;
+                            .title {
+                                margin-top: 10px;
+                                margin-bottom: 10px;
+                                font-size: 18px;
+                                font-weight: bold;
+                                text-transform: uppercase;
+                            }
+                            #outbtn {
+                                z-index: 1100;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                width: 20px;
+                                height: 20px;
+                                padding: 5px 5px;
+                                border-radius: 50%;
+                                background-color: #fff;
+                                position: fixed;
+                                top: 0%;
+                                left: 0%;
+                                transform: translate(-50%, -50%);
+                                cursor: pointer;
+                                transition: $transition_set;
+                                &:hover {
+                                    background-color: rgba(255, 0, 0, 0.486);
+                                    transition: $transition_set;
+                                }
+                            }
+                            form {
+                                width: 100%;
+                                height: 250px;
+                                /* Textarea style */
+                                .brise-text {
+                                    width: 100%;
+                                    height: 95%;
+                                    position: relative;
+                                    overflow: hidden;
+                                    padding-top: 15px;
+                                }
+                                .brise-text textarea {
+                                    width: 100%!important;
+                                    padding: 10px;
+                                    border: none;
+                                    outline: none;
+                                    border: 1px solid #999;
+                                    box-sizing: border-box;
+                                    font-size: 16px;
+                                    position: relative;
+                                    z-index: 5;
+                                    background: none;
+                                }
+                                .brise-text label {
+                                    position: absolute;
+                                    top: 20px;
+                                    left: 10px;
+                                    color: #999;
+                                    opacity: 1;
+                                    transition: .15s;
+                                }
+                                .brise-text textarea:focus~label,
+                                textarea:valid~label {
+                                    opacity: 0;
+                                }
+                                /* End Textarea */
+                            }
+                        }
+                    }
+                    .active {
+                        display: block;
+                    }
                 }
                 .postfavrorite {
                     .favorites {
@@ -175,48 +262,52 @@
                             display: flex;
                             justify-content: center;
                         }
-                        .like {
-                            width: 100%;
-                            height: 50px;
-                            position: relative;
-                            margin-bottom: 20px;
+                        .box__favor {
                             display: flex;
-                            justify-content: space-evenly;
-                            align-items: center;
-                            background-color: $background_music;
-                            border-radius: 10px;
-                            transition: 0.5s;
-                            .img {
-                                width: 35px;
-                                height: 35px;
-                                border-radius: 50px;
-                                object-fit: cover;
-                            }
-                            .name {
-                                font-size: 14px;
-                                font-weight: bold;
-                                color: $gray_text;
-                            }
-                            .author {
-                                font-size: 14px;
-                                font-weight: bold;
-                                color: $textfield;
-                            }
-                            a {
-                                text-decoration: none;
-                                text-align: center;
-                                i {
+                            flex-direction: column-reverse;
+                            .like {
+                                width: 100%;
+                                height: 50px;
+                                position: relative;
+                                margin-bottom: 20px;
+                                display: flex;
+                                justify-content: space-evenly;
+                                align-items: center;
+                                background-color: $background_music;
+                                border-radius: 10px;
+                                transition: 0.5s;
+                                .img {
+                                    width: 35px;
+                                    height: 35px;
+                                    border-radius: 50px;
+                                    object-fit: cover;
+                                }
+                                .name {
+                                    font-size: 14px;
+                                    font-weight: bold;
                                     color: $gray_text;
                                 }
-                            }
-                            .time {
-                                font-size: 14px;
-                                font-weight: bold;
-                                color: $textfield;
-                            }
-                            &:hover {
-                                transition: 0.5s;
-                                background-color: $btn_play;
+                                .author {
+                                    font-size: 14px;
+                                    font-weight: bold;
+                                    color: $textfield;
+                                }
+                                a {
+                                    text-decoration: none;
+                                    text-align: center;
+                                    i {
+                                        color: $gray_text;
+                                    }
+                                }
+                                .time {
+                                    font-size: 14px;
+                                    font-weight: bold;
+                                    color: $textfield;
+                                }
+                                &:hover {
+                                    transition: 0.5s;
+                                    background-color: $btn_play;
+                                }
                             }
                         }
                     }

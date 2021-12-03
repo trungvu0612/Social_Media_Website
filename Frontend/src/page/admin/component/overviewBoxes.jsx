@@ -27,14 +27,14 @@ export default function OverviewBoxes() {
         </div>
         <i className="bx bxs-pencil cart" />
       </div>
-      <div className="box">
+      {/* <div className="box">
         <div className="right-side">
           <div className="box-topic">Total Comments</div>
           <div className="number">38,876</div>
           {/* <div className="indicator">
             <i className="bx bx-up-arrow-alt" />
             <span className="text">Up from yesterday</span>
-          </div> */}
+          </div> 
         </div>
         <i className="bx bxs-comment-detail cart two" />
       </div>
@@ -45,10 +45,10 @@ export default function OverviewBoxes() {
           {/* <div className="indicator">
             <i className="bx bx-up-arrow-alt" />
             <span className="text">Up from yesterday</span>
-          </div> */}
+          </div>
         </div>
         <i className="bx bx-download cart three" />
-      </div>
+      </div> */}
       <div className="box">
         <div className="right-side">
           <div className="box-topic">Total Users</div>

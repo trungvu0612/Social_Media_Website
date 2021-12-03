@@ -11,10 +11,14 @@ import {
 } from "../contexts/constants";
 import { FavoriteContext } from "../contexts/farvoriteContext";
 import { MusicContext } from "../contexts/musicContext";
-import edit from "../component/img/editing.png";
+import editimg from "../component/img/editing.png";
+import deleteimg from "../component/img/delete.png";
+import PopupUpdatePost from "../page/home/component/popupUpdatepost";
+import { PostContext } from "../contexts/postContext";
 
-export default function PostItems({
+export default function PostItemsPerson({
   post: {
+    _id: postId,
     user: { userName, userAvatar },
     postContent,
     music: { _id, musicName, musicImg, musicAuthor, musicFile },
@@ -63,12 +67,41 @@ export default function PostItems({
       });
   };
 
+  const { findIDPost, deletePost } = useContext(PostContext);
+
+  // open popup
+  function onPopupMusic(postId) {
+    const popUpEdit = document.querySelector(".edit-popup");
+    popUpEdit.classList.add("active");
+    findIDPost(postId);
+  }
+
+  const deletePostId = (postId) => {
+    const promtPost = window.confirm(
+      `Are you sure you want to delete this's post`
+    );
+    if (promtPost) {
+      deletePost(postId);
+    }
+  };
+
   return (
     <div className="post__items">
       <div className="owner">
         <img src={`${apiUpload}${userAvatar}`} alt="" />
         <a href="#">{userName}</a>
-        {/* <img id="edit" src={edit} alt="" /> */}
+        <img
+          onClick={onPopupMusic.bind(this, postId)}
+          id="edit"
+          src={editimg}
+          alt=""
+        />
+        <img
+          onClick={deletePostId.bind(this, postId)}
+          id="edit"
+          src={deleteimg}
+          alt=""
+        />
       </div>
       <div className="contents">
         <span className="content">{postContent}</span>
@@ -118,6 +151,7 @@ export default function PostItems({
           </div>
         </div>
       </div> */}
+      <PopupUpdatePost />
     </div>
   );
 }
