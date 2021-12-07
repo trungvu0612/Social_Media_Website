@@ -4,6 +4,7 @@ import {
     POSTS_LOADED_FAIL,
     POSTS_LOADED_SUCCESS,
     POST_CLICK,
+    POST_SEARCH,
     UPDATE_POST,
 } from "../contexts/constants";
 
@@ -21,8 +22,12 @@ export const postReducer = (state, action) => {
                 posts: payload,
                 postsLoading: false,
             };
+
         case POST_CLICK:
             return {...state, post: payload };
+
+        case POST_SEARCH:
+            return {...state, searchpost: payload };
 
         case DELETE_POST:
             return {

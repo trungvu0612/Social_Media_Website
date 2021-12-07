@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../contexts/authContext";
 import { apiUpload, LOCAL_STORAGE_TOKEN_NAME } from "../contexts/constants";
+import { PostContext } from "../contexts/postContext";
 
 export default function Header() {
   const {
@@ -19,11 +20,15 @@ export default function Header() {
 
     console.log(isAuthenticated);
   };
+  // search function
+  const { searchPost } = useContext(PostContext);
 
   const [search, setSearch] = useState("");
 
-  const onChangeSearch = function (search) {
-    setSearch(search.target.value);
+  const onChangeSearch = function (value) {
+    setSearch(value.target.value);
+    searchPost(search);
+    console.log(search);
   };
 
   return (

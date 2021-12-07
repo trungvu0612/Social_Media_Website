@@ -7,6 +7,7 @@ import {
   POSTS_LOADED_FAIL,
   POSTS_LOADED_SUCCESS,
   POST_CLICK,
+  POST_SEARCH,
   UPDATE_MUSIC,
 } from "../contexts/constants";
 import { postReducer } from "../reducers/postReducer";
@@ -16,6 +17,7 @@ export const PostContext = createContext();
 const PostContextProvider = ({ children }) => {
   // State
   const [postState, dispatch] = useReducer(postReducer, {
+    searchpost: "",
     post: {},
     posts: [],
     postsLoading: true,
@@ -42,6 +44,13 @@ const PostContextProvider = ({ children }) => {
     dispatch({ type: POST_CLICK, payload: post });
   };
 
+  // search posts
+  const searchPost = (value) => {
+    console.log(value);
+
+    dispatch({ type: POST_SEARCH, payload: value });
+  };
+
   // Delete post
   const deletePost = async (postId) => {
     try {
@@ -59,6 +68,7 @@ const PostContextProvider = ({ children }) => {
     getPosts,
     deletePost,
     findIDPost,
+    searchPost,
   };
   return (
     <PostContext.Provider value={postContextData}>

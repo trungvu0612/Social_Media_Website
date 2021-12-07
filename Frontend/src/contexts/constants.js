@@ -61,6 +61,7 @@ export const POSTS_LOADED_FAIL = "POSTS_LOADED_FAIL";
 export const DELETE_POST = "DELETE_POST";
 export const UPDATE_POST = "UPDATE_POST";
 export const POST_CLICK = "POST_CLICK";
+export const POST_SEARCH = "POST_SEARCH";
 
 // *** FAVORITE ***
 // api FAVORITE a new post to db

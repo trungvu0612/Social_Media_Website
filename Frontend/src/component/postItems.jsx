@@ -31,12 +31,18 @@ export default function PostItems({
 
   const musicError = document.querySelector(".music__noti");
   const musicPlayed = document.querySelector(".music__audio");
+  const musicFooter = document.querySelector(".music-footer .music__audio");
+  const musicFooterError = document.querySelector(
+    ".music-footer .music-notify"
+  );
 
   // set  music state at MusicContext to data music selected
   const getMusicSelected = async (music) => {
     getIdMusicHome(music);
     musicError.style.display = "none";
     musicPlayed.style.display = "block";
+    musicFooter.style.display = "flex";
+    musicFooterError.style.display = "none";
   };
   const { dispatch } = useContext(FavoriteContext);
   const clickFavorite = (e) => {

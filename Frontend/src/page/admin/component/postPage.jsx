@@ -6,12 +6,21 @@ import PostAdmin from "./categorymusic/postAdmin";
 export default function PostPage() {
   // get global data by useContext
   const {
-    postState: { posts, postsLoading },
+    postState: { searchpost, posts, postsLoading },
     getPosts,
   } = useContext(PostContext);
 
   // start get all posts
   useEffect(() => getPosts(), []);
+
+  // search filter post
+  const postData = posts.filter((post) => {
+    if (searchpost == "") {
+      return post;
+    }
+    return post.user.userName == searchpost;
+  });
+  console.log(postData);
 
   if (postsLoading) {
     return (
@@ -41,7 +50,7 @@ export default function PostPage() {
             </div>
 
             <div className="list__post-admin">
-              {posts.map((post) => (
+              {postData.map((post) => (
                 <PostAdmin post={post} />
               ))}
             </div>

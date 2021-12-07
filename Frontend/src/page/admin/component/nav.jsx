@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../../../contexts/authContext";
 import { apiUpload } from "../../../contexts/constants";
+import { PostContext } from "../../../contexts/postContext";
 
 export default function Nav() {
   const {
@@ -9,6 +10,17 @@ export default function Nav() {
     },
   } = useContext(AuthContext);
 
+  // search function
+  const { searchPost } = useContext(PostContext);
+
+  const [search, setSearch] = useState("");
+
+  const onChangeSearch = function (value) {
+    setSearch(value.target.value);
+    searchPost(search);
+    console.log(search);
+  };
+
   return (
     <nav>
       <div className="sidebar-button">
@@ -16,8 +28,12 @@ export default function Nav() {
         <span className="dashboard">Dashboard</span>
       </div>
       <div className="search-box">
-        <input type="text" placeholder="Search..." />
-        <i className="bx bx-search" />
+        <input
+          type="text"
+          inputMode="search"
+          onChange={onChangeSearch}
+          placeholder="Search..."
+        />
       </div>
       <div className="profile-details">
         <img src={`${apiUpload}${userAvatar}`} alt="" />

@@ -7,22 +7,22 @@ import { CommentContext } from "../../../contexts/cmtContext";
 export default function PostDisplay() {
   // get global data by useContext
   const {
-    postState: { posts, postsLoading },
+    postState: { searchpost, posts, postsLoading },
     getPosts,
   } = useContext(PostContext);
+  console.log(searchpost);
 
   // start get all posts
   useEffect(() => getPosts(), []);
 
-  // // comment function
-  // // get global data by useContext
-  // const {
-  //   commentState: { comments },
-  //   getComments,
-  // } = useContext(CommentContext);
-
-  // // start get all cmts
-  // useEffect(() => getComments(), []);
+  // search filter post
+  const postData = posts.filter((post) => {
+    if (searchpost == "") {
+      return post;
+    }
+    return post.user.userName == searchpost;
+  });
+  console.log(postData);
 
   if (postsLoading) {
     return (
@@ -42,7 +42,7 @@ export default function PostDisplay() {
   } else {
     return (
       <div className="postdisplay post-list post-list-0 ">
-        {posts.map((post, i) => (
+        {postData.map((post, i) => (
           <PostItems post={post} key={i} />
         ))}
       </div>
