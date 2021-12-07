@@ -23,14 +23,23 @@ export default function ListMusic({
       <button className="item-create" onClick={createPost.bind(this, _id)}>
         Create post
       </button>
-      <Link
+      {/* <Link
         to={`${apiUploadFileMp3}${musicFile}`}
         className="item-create"
         target="_blank"
         download={musicFile}
       >
         Download
-      </Link>
+      </Link> */}
+      <a
+        href={`${apiUploadFileMp3}${musicFile}`}
+        className="item-create"
+        target="_blank"
+        rel="noopener noreferrer"
+        download
+      >
+        Download
+      </a>
     </div>
   );
 }
