@@ -130,29 +130,31 @@ router.post("/login", uploadlogin.array(), async(req, res) => {
                 message: "Admin logged in successfully",
                 accessToken,
             });
+        } 
+        else if (user.roleId !== "615aba567b19409446d0128e"){
+            if (!user)
+                return res
+                    .status(400)
+                    .json({ success: false, message: "Incorrect username or password" });
+
+            // Check user's password
+            const passwordValid = await argon2.verify(user.userPassword, userPassword);
+            if (!passwordValid)
+                return res
+                    .status(400)
+                    .json({ success: false, message: "Incorrect  username or password" });
+
+            // Return token
+            const accessToken = jwt.sign({ userId: user._id },
+                process.env.ACCESS_TOKEN_SECRET
+            );
+
+            res.json({
+                success: true,
+                message: "User logged in successfully",
+                accessToken,
+            });
         }
-        if (!user)
-            return res
-                .status(400)
-                .json({ success: false, message: "Incorrect username or password" });
-
-        // Check user's password
-        const passwordValid = await argon2.verify(user.userPassword, userPassword);
-        if (!passwordValid)
-            return res
-                .status(400)
-                .json({ success: false, message: "Incorrect  username or password" });
-
-        // Return token
-        const accessToken = jwt.sign({ userId: user._id },
-            process.env.ACCESS_TOKEN_SECRET
-        );
-
-        res.json({
-            success: true,
-            message: "User logged in successfully",
-            accessToken,
-        });
     } catch (error) {
         console.log(error);
         res.status(500).json({

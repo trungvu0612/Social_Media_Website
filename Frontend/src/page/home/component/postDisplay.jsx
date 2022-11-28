@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from "react";
 import PostItems from "../../../component/postItems";
 import { PostContext } from "../../../../src/contexts/postContext";
 import Ripple from "@bit/joshk.react-spinners-css.ripple";
-import { CommentContext } from "../../../contexts/cmtContext";
 
 export default function PostDisplay() {
   // get global data by useContext
@@ -10,7 +9,6 @@ export default function PostDisplay() {
     postState: { searchpost, posts, postsLoading },
     getPosts,
   } = useContext(PostContext);
-  console.log(searchpost);
 
   // start get all posts
   useEffect(() => getPosts(), []);
@@ -22,7 +20,6 @@ export default function PostDisplay() {
     }
     return post.user.userName == searchpost;
   });
-  console.log(postData);
 
   if (postsLoading) {
     return (
